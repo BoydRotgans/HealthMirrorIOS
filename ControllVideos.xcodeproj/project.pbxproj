@@ -17,6 +17,9 @@
 		23B1305823D5DE1600B6AC50 /* example-3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 23B1305523D5DE1600B6AC50 /* example-3.mp4 */; };
 		23B1305923D5DE1600B6AC50 /* example-1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 23B1305623D5DE1600B6AC50 /* example-1.mp4 */; };
 		23B1306B23D6FEAE00B6AC50 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B1306A23D6FEAE00B6AC50 /* FloatRatingView.swift */; };
+		311BB79C23D74F160009718A /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BB79A23D74F160009718A /* ItemCell.swift */; };
+		311BB79D23D74F160009718A /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 311BB79B23D74F160009718A /* ItemCell.xib */; };
+		311BB7A023D758FC0009718A /* UserBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BB79F23D758FC0009718A /* UserBoardViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,10 +31,13 @@
 		23B1304923D5D99D00B6AC50 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		23B1304C23D5D99D00B6AC50 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		23B1304E23D5D99D00B6AC50 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		23B1305423D5DE1600B6AC50 /* example-2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-2.mp4"; path = "../../../../Downloads/example-2.mp4"; sourceTree = "<group>"; };
-		23B1305523D5DE1600B6AC50 /* example-3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-3.mp4"; path = "../../../../Downloads/example-3.mp4"; sourceTree = "<group>"; };
-		23B1305623D5DE1600B6AC50 /* example-1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-1.mp4"; path = "../../../../Downloads/example-1.mp4"; sourceTree = "<group>"; };
+		23B1305423D5DE1600B6AC50 /* example-2.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-2.mp4"; path = "../../../../../../Downloads/example-2.mp4"; sourceTree = "<group>"; };
+		23B1305523D5DE1600B6AC50 /* example-3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-3.mp4"; path = "../../../../../../Downloads/example-3.mp4"; sourceTree = "<group>"; };
+		23B1305623D5DE1600B6AC50 /* example-1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-1.mp4"; path = "../../../../../../Downloads/example-1.mp4"; sourceTree = "<group>"; };
 		23B1306A23D6FEAE00B6AC50 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
+		311BB79A23D74F160009718A /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
+		311BB79B23D74F160009718A /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
+		311BB79F23D758FC0009718A /* UserBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBoardViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +70,8 @@
 		23B1303F23D5D99B00B6AC50 /* ControllVideos */ = {
 			isa = PBXGroup;
 			children = (
+				311BB79E23D758D20009718A /* UserBoardView */,
+				311BB79923D74ED40009718A /* ItemCell */,
 				23B1306A23D6FEAE00B6AC50 /* FloatRatingView.swift */,
 				23B1305623D5DE1600B6AC50 /* example-1.mp4 */,
 				23B1305423D5DE1600B6AC50 /* example-2.mp4 */,
@@ -77,6 +85,23 @@
 				23B1304E23D5D99D00B6AC50 /* Info.plist */,
 			);
 			path = ControllVideos;
+			sourceTree = "<group>";
+		};
+		311BB79923D74ED40009718A /* ItemCell */ = {
+			isa = PBXGroup;
+			children = (
+				311BB79A23D74F160009718A /* ItemCell.swift */,
+				311BB79B23D74F160009718A /* ItemCell.xib */,
+			);
+			path = ItemCell;
+			sourceTree = "<group>";
+		};
+		311BB79E23D758D20009718A /* UserBoardView */ = {
+			isa = PBXGroup;
+			children = (
+				311BB79F23D758FC0009718A /* UserBoardViewController.swift */,
+			);
+			path = UserBoardView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -141,6 +166,7 @@
 				23B1304D23D5D99D00B6AC50 /* LaunchScreen.storyboard in Resources */,
 				23B1304A23D5D99D00B6AC50 /* Assets.xcassets in Resources */,
 				23B1305823D5DE1600B6AC50 /* example-3.mp4 in Resources */,
+				311BB79D23D74F160009718A /* ItemCell.xib in Resources */,
 				23B1304823D5D99B00B6AC50 /* Main.storyboard in Resources */,
 				23B1305723D5DE1600B6AC50 /* example-2.mp4 in Resources */,
 			);
@@ -155,8 +181,10 @@
 			files = (
 				23B1304523D5D99B00B6AC50 /* ViewController.swift in Sources */,
 				23B1304123D5D99B00B6AC50 /* AppDelegate.swift in Sources */,
+				311BB7A023D758FC0009718A /* UserBoardViewController.swift in Sources */,
 				23B1306B23D6FEAE00B6AC50 /* FloatRatingView.swift in Sources */,
 				23B1304323D5D99B00B6AC50 /* SceneDelegate.swift in Sources */,
+				311BB79C23D74F160009718A /* ItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
