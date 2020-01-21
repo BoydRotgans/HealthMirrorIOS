@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2373567923D7500D00D9F5DF /* example-2-animation.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2373567623D7500D00D9F5DF /* example-2-animation.mp4 */; };
+		2373567A23D7500D00D9F5DF /* example-3-animation.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2373567723D7500D00D9F5DF /* example-3-animation.mp4 */; };
+		2373567B23D7500D00D9F5DF /* example-1-animation.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2373567823D7500D00D9F5DF /* example-1-animation.mp4 */; };
 		23B1304123D5D99B00B6AC50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B1304023D5D99B00B6AC50 /* AppDelegate.swift */; };
 		23B1304323D5D99B00B6AC50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B1304223D5D99B00B6AC50 /* SceneDelegate.swift */; };
 		23B1304523D5D99B00B6AC50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B1304423D5D99B00B6AC50 /* ViewController.swift */; };
@@ -20,6 +23,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2373567623D7500D00D9F5DF /* example-2-animation.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "example-2-animation.mp4"; sourceTree = SOURCE_ROOT; };
+		2373567723D7500D00D9F5DF /* example-3-animation.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "example-3-animation.mp4"; sourceTree = SOURCE_ROOT; };
+		2373567823D7500D00D9F5DF /* example-1-animation.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "example-1-animation.mp4"; sourceTree = SOURCE_ROOT; };
 		23B1303D23D5D99B00B6AC50 /* ControllVideos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControllVideos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B1304023D5D99B00B6AC50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23B1304223D5D99B00B6AC50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -64,6 +70,9 @@
 		23B1303F23D5D99B00B6AC50 /* ControllVideos */ = {
 			isa = PBXGroup;
 			children = (
+				2373567823D7500D00D9F5DF /* example-1-animation.mp4 */,
+				2373567623D7500D00D9F5DF /* example-2-animation.mp4 */,
+				2373567723D7500D00D9F5DF /* example-3-animation.mp4 */,
 				23B1306A23D6FEAE00B6AC50 /* FloatRatingView.swift */,
 				23B1305623D5DE1600B6AC50 /* example-1.mp4 */,
 				23B1305423D5DE1600B6AC50 /* example-2.mp4 */,
@@ -138,11 +147,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				23B1305923D5DE1600B6AC50 /* example-1.mp4 in Resources */,
+				2373567B23D7500D00D9F5DF /* example-1-animation.mp4 in Resources */,
 				23B1304D23D5D99D00B6AC50 /* LaunchScreen.storyboard in Resources */,
+				2373567923D7500D00D9F5DF /* example-2-animation.mp4 in Resources */,
 				23B1304A23D5D99D00B6AC50 /* Assets.xcassets in Resources */,
 				23B1305823D5DE1600B6AC50 /* example-3.mp4 in Resources */,
 				23B1304823D5D99B00B6AC50 /* Main.storyboard in Resources */,
 				23B1305723D5DE1600B6AC50 /* example-2.mp4 in Resources */,
+				2373567A23D7500D00D9F5DF /* example-3-animation.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
