@@ -16,6 +16,8 @@ var listOfVideoPath = ["example-1", "example-2", "example-3"]
 class ViewController: UIViewController {
     
     @IBOutlet weak var nextPage: UIButton!
+    
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,7 +91,7 @@ class ViewController: UIViewController {
         
         let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
 
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "ratingCard")
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RatingCard")
         self.present(nextViewController, animated:true, completion:nil)
     }
     
@@ -129,11 +131,12 @@ class newPage: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }
 }
 
-class ratingCard: UIViewController {
+class RatingCard: UIViewController {
     
-    @IBOutlet var floatRatingView: FloatRatingView!
-    @IBOutlet var liveLabel: UILabel!
-    @IBOutlet var updatedLabel: UILabel!
+    @IBOutlet weak var floatRatingView: FloatRatingView!
+    @IBOutlet weak var liveLabel: UILabel!
+    @IBOutlet weak var updatedLabel: UILabel!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -146,14 +149,14 @@ class ratingCard: UIViewController {
         floatRatingView.delegate = self
         floatRatingView.contentMode = UIView.ContentMode.scaleAspectFit
         floatRatingView.type = .wholeRatings
-        
+
         // Labels init
         liveLabel.text = String(format: "%.2f", self.floatRatingView.rating)
         updatedLabel.text = String(format: "%.2f", self.floatRatingView.rating)
     }
 }
 
-extension ratingCard: FloatRatingViewDelegate {
+extension RatingCard: FloatRatingViewDelegate {
 
     // MARK: FloatRatingViewDelegate
     

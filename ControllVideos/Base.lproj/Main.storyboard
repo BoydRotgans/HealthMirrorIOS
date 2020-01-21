@@ -16,11 +16,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OdL-oR-naB">
-                                <rect key="frame" x="350" y="934" width="68" height="30"/>
+                                <rect key="frame" x="337" y="934" width="95" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="next Page"/>
+                                <state key="normal" title="Card with List"/>
                                 <connections>
                                     <segue destination="q5m-xF-52h" kind="show" id="U5X-sR-QIr"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vkV-dR-7yH">
+                                <rect key="frame" x="326" y="882" width="118" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Card with Rating "/>
+                                <connections>
+                                    <segue destination="NsR-TU-Zw7" kind="show" id="NKC-TH-ftD"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -75,17 +83,14 @@
         <!--Rating Card-->
         <scene sceneID="VtV-53-L1N">
             <objects>
-                <viewController storyboardIdentifier="ratingCard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NsR-TU-Zw7" customClass="ratingCard" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RatingCard" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NsR-TU-Zw7" customClass="RatingCard" customModule="ControllVideos" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5qz-nn-ul0">
-                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <rect key="frame" x="0.0" y="0.0" width="712" height="984"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="j17-hz-xBZ" customClass="FloatRatingView" customModule="Rating_Demo" customModuleProvider="target">
-                                <rect key="frame" x="212" y="490" width="344" height="44"/>
-                                <color key="backgroundColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="44" id="ibc-Xd-ehy"/>
-                                </constraints>
+                            <view multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="j17-hz-xBZ" customClass="FloatRatingView" customModule="ControllVideos" customModuleProvider="target">
+                                <rect key="frame" x="212" y="470" width="288" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
                                     <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>
@@ -96,64 +101,53 @@
                                         <integer key="value" value="5"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="number" keyPath="rating">
-                                        <real key="value" value="2.5"/>
+                                        <real key="value" value="3"/>
                                     </userDefinedRuntimeAttribute>
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Live Rating:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9K8-Tz-BbJ">
-                                <rect key="frame" x="212" y="595.5" width="312" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Live Rating:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9K8-Tz-BbJ">
+                                <rect key="frame" x="212" y="564" width="89" height="20.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVD-ZP-M3r">
-                                <rect key="frame" x="532" y="595.5" width="24" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Updated Rating:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpm-2g-nN1">
+                                <rect key="frame" x="212" y="604.5" width="124.5" height="21.5"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqZ-0i-ra2">
-                                <rect key="frame" x="532" y="624" width="24" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cVD-ZP-M3r">
+                                <rect key="frame" x="400" y="563" width="100" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Updated Rating:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cpm-2g-nN1">
-                                <rect key="frame" x="212" y="624" width="124.5" height="20.5"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0.0" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lqZ-0i-ra2">
+                                <rect key="frame" x="400" y="603" width="100" height="22"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemGreenColor" red="0.20392156859999999" green="0.78039215689999997" blue="0.34901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="j17-hz-xBZ" firstAttribute="centerY" secondItem="5qz-nn-ul0" secondAttribute="centerY" id="0l5-j0-Tdd"/>
-                            <constraint firstItem="j17-hz-xBZ" firstAttribute="trailing" secondItem="lqZ-0i-ra2" secondAttribute="trailing" id="4uM-W7-z84"/>
-                            <constraint firstItem="cpm-2g-nN1" firstAttribute="top" secondItem="9K8-Tz-BbJ" secondAttribute="bottom" constant="8" id="FGr-bi-hAF"/>
-                            <constraint firstItem="j17-hz-xBZ" firstAttribute="centerX" secondItem="5qz-nn-ul0" secondAttribute="centerX" id="HdE-xV-iIZ"/>
-                            <constraint firstItem="cpm-2g-nN1" firstAttribute="leading" secondItem="40k-AO-v6P" secondAttribute="leading" constant="399.5" id="IzP-m7-XG9"/>
-                            <constraint firstItem="cVD-ZP-M3r" firstAttribute="leading" secondItem="lqZ-0i-ra2" secondAttribute="leading" id="LNq-22-ZTw"/>
-                            <constraint firstItem="cpm-2g-nN1" firstAttribute="baseline" secondItem="lqZ-0i-ra2" secondAttribute="baseline" id="Tin-fC-eW2"/>
-                            <constraint firstItem="cpm-2g-nN1" firstAttribute="trailing" secondItem="9K8-Tz-BbJ" secondAttribute="trailing" id="YSA-wZ-7HJ"/>
-                            <constraint firstItem="9K8-Tz-BbJ" firstAttribute="leading" secondItem="j17-hz-xBZ" secondAttribute="leading" id="Z2R-3j-4lR"/>
-                            <constraint firstItem="9K8-Tz-BbJ" firstAttribute="baseline" secondItem="cVD-ZP-M3r" secondAttribute="baseline" id="lXz-DQ-CCc"/>
-                            <constraint firstItem="9K8-Tz-BbJ" firstAttribute="top" secondItem="j17-hz-xBZ" secondAttribute="bottom" constant="61.5" id="ntF-sp-hpg"/>
-                            <constraint firstItem="j17-hz-xBZ" firstAttribute="leading" secondItem="40k-AO-v6P" secondAttribute="leading" constant="212" id="t3k-pG-8NI"/>
-                            <constraint firstItem="j17-hz-xBZ" firstAttribute="trailing" secondItem="cVD-ZP-M3r" secondAttribute="trailing" id="z4d-Zd-tcW"/>
-                        </constraints>
+                        <color key="backgroundColor" systemColor="systemTealColor" red="0.35294117650000001" green="0.7843137255" blue="0.98039215690000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="40k-AO-v6P"/>
                     </view>
                     <navigationItem key="navigationItem" id="Wlo-tC-AAh"/>
                     <connections>
-                        <outlet property="floatRatingView" destination="j17-hz-xBZ" id="2Wx-zf-BzT"/>
-                        <outlet property="liveLabel" destination="cVD-ZP-M3r" id="BU8-XX-7qn"/>
-                        <outlet property="updatedLabel" destination="lqZ-0i-ra2" id="7ou-jY-VRj"/>
+                        <outlet property="floatRatingView" destination="j17-hz-xBZ" id="Pyp-ms-jCl"/>
+                        <outlet property="liveLabel" destination="cVD-ZP-M3r" id="kfS-6H-Vp9"/>
+                        <outlet property="updatedLabel" destination="lqZ-0i-ra2" id="kAC-Og-8y4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Li6-Tb-42B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="802" y="74"/>
+            <point key="canvasLocation" x="801.5625" y="73.828125"/>
         </scene>
     </scenes>
     <resources>
