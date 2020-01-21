@@ -82,11 +82,28 @@
                                     <segue destination="NsR-TU-Zw7" kind="show" id="NKC-TH-ftD"/>
                                 </connections>
                             </button>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bb3-JZ-G2g">
+                                <rect key="frame" x="639" y="80" width="51" height="31"/>
+                            </switch>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Animation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y5L-Yk-Ht7">
+                                <rect key="frame" x="542" y="85" width="77" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bb3-JZ-G2g" secondAttribute="trailing" constant="80" id="C9i-8l-MMk"/>
+                            <constraint firstItem="bb3-JZ-G2g" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="I6t-Ed-UP0"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bb3-JZ-G2g" secondAttribute="trailing" constant="80" id="MCr-KU-zTf"/>
+                            <constraint firstItem="bb3-JZ-G2g" firstAttribute="centerY" secondItem="Y5L-Yk-Ht7" secondAttribute="centerY" id="RXg-6d-q8y"/>
+                            <constraint firstItem="bb3-JZ-G2g" firstAttribute="leading" secondItem="Y5L-Yk-Ht7" secondAttribute="trailing" constant="20" id="nlz-Dv-ihf"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
+                        <outlet property="animationSwitch" destination="bb3-JZ-G2g" id="OJp-Ro-p45"/>
                         <outlet property="nextPage" destination="OdL-oR-naB" id="smE-5p-JMz"/>
                     </connections>
                 </viewController>

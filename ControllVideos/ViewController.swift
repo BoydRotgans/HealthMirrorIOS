@@ -16,7 +16,8 @@ var listOfVideoPath = ["example-1", "example-2", "example-3"]
 class ViewController: UIViewController {
     
     @IBOutlet weak var nextPage: UIButton!
-    
+    @IBOutlet weak var animationSwitch: UISwitch!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -39,12 +40,27 @@ class ViewController: UIViewController {
             
             y = y + 75
         }
+        
+        animationSwitch.addTarget(self, action: #selector(switchIsChanged), for: UIControl.Event.valueChanged)
+        self.view.addSubview(animationSwitch)
     }
     
     @objc func buttonTapped(sender: UIButton) {
         playVideo(id: sender.tag)
     }
     
+    @objc func switchIsChanged(switchButton: UISwitch) {
+        
+        var animationStatus:Bool = true
+        if switchButton.isOn {
+            animationStatus = true
+            UserDefaults.standard.set(animationStatus, forKey: "animationStatus")
+        } else {
+            animationStatus = false
+            UserDefaults.standard.set(animationStatus, forKey: "animationStatus")
+        }
+        
+    }
     
     
     func playVideo(id: Int) {
@@ -56,7 +72,15 @@ class ViewController: UIViewController {
         closeInFullscreen.addTarget(self, action: #selector(exitFullscreenVideo), for: .touchUpInside)
         
         
-        if let path = Bundle.main.path(forResource: listOfVideoPath[id], ofType: "mp4")
+        // check from UserDefaults if Switch of Animation is ON or OFF
+        var name = listOfVideoPath[id]
+        if let animationSwitch = UserDefaults.standard.string(forKey: "animationStatus") {
+            if animationSwitch == "1" {
+                name = "\(listOfVideoPath[id])-animation"
+            }
+        }
+        
+        if let path = Bundle.main.path(forResource: name, ofType: "mp4")
         {
             let video = AVPlayer(url: URL(fileURLWithPath: path))
             let videoPlayer = AVPlayerViewController()
@@ -74,8 +98,6 @@ class ViewController: UIViewController {
     
     @objc func videoDidEnd(notification: NSNotification) {
         print("video ended")
-        
-//        UserDefaults.standard.set(numberOfRecords, forKey: id)
         
         self.dismiss(animated: true, completion: nil)
     }
