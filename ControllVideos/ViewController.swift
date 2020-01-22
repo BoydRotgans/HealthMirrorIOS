@@ -9,8 +9,6 @@
 import UIKit
 import AVKit
 import AVFoundation
-import Foundation
-import CSV
 
 var listOfVideos = ["toothbrush", "showering", "faceWashing"]
 var listOfVideoPath = ["example-1", "example-2", "example-3"]
@@ -20,8 +18,19 @@ class ViewController: UIViewController {
     @IBOutlet weak var nextPage: UIButton!
     @IBOutlet weak var animationSwitch: UISwitch!
     @IBOutlet weak var standbyButton: UIButton!
+    @IBOutlet weak var saveToCSV: UIButton!
     
     @IBOutlet weak var Standby: UIView!
+    
+    //timer
+    var start = Date()
+    var stopped: Date?
+    var resumed: Date?
+    var finished: Date?
+    var timer: Timer?
+    var timeElapsed = Double()
+    var timeStopped = Double()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,6 +60,9 @@ class ViewController: UIViewController {
         self.view.addSubview(animationSwitch)
         
 //        checkStandby()
+        
+        saveToCSV.addTarget(self, action: #selector(executeSaveCSV), for: .touchUpInside)
+        self.view.addSubview(saveToCSV)
         
         
         // set Standby Button
@@ -85,13 +97,13 @@ class ViewController: UIViewController {
 //        }
 //    }
     
-    
-    
-    
-    
-    
     @objc func buttonTapped(sender: UIButton) {
         playVideo(id: sender.tag)
+    }
+    
+    // call function in saveData/saveSCV
+    @objc func executeSaveCSV(sender: UIButton) {
+        checkAllData()
     }
     
     @objc func switchIsChanged(switchButton: UISwitch) {
@@ -125,8 +137,7 @@ class ViewController: UIViewController {
             }
         }
         
-        if let path = Bundle.main.path(forResource: name, ofType: "mp4")
-        {
+        if let path = Bundle.main.path(forResource: name, ofType: "mp4") {
             let video = AVPlayer(url: URL(fileURLWithPath: path))
             let videoPlayer = AVPlayerViewController()
             videoPlayer.player = video
@@ -135,6 +146,7 @@ class ViewController: UIViewController {
             
             present(videoPlayer, animated: true, completion: {
                 video.play()
+                self.startTimer()
             })
             
             NotificationCenter.default.addObserver(self, selector: #selector(videoDidEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
@@ -142,76 +154,108 @@ class ViewController: UIViewController {
     }
     
     @objc func videoDidEnd(notification: NSNotification) {
+        self.pause()
+        self.terminateTimerAndSave()
         print("video ended automatically")
         self.dismiss(animated: true, completion: nil)
     }
     
     @objc func exitFullscreenVideo(sender: AnyObject) {
-        self.dismiss(animated: true, completion: nil)
+        self.pause()
+        self.terminateTimerAndSave()
         print("video forced to quit ended")
+        self.dismiss(animated: true, completion: nil)
         
         // show Rating Card
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RatingCard")
         self.present(nextViewController, animated:true, completion:nil)
     }
-}
 
-class newPage: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    var actualTimeElapsedInMilliseconds : Int {
+        get {
+            return Int(timeElapsed - timeStopped)
+        }
     }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listOfVideos.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
-        cell.textLabel?.text = listOfVideos[indexPath.row]
-        return cell
-    }
-}
 
-class RatingCard: UIViewController {
+    var actualTimeElapsedInTenthOfSecond : Int {
+        get {
+            return Int((timeElapsed - timeStopped) / 10.0)
+        }
+    }
+
+    var actualTimeElapsedInSeconds : Int {
+        get {
+            return Int((timeElapsed - timeStopped) / 1000)
+        }
+    }
+
+    func startTimer() {
+        start = Date()
+        timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: {_ in
+//        timer = Timer.init(timeInterval: 0.01, repeats: true, block: { (this) in
+            self.performActiveTimer()
+        })
+        print("startTimer()")
+    }
+
+    func reStartTimer() {
+        resumed = Date()
+        if let stop = stopped, let resume = resumed {
+            timeStopped = timeStopped + (resume.timeIntervalSince1970 - stop.timeIntervalSince1970)
+        }
+        timer = Timer.init(timeInterval: 0.01, repeats: true, block: { (this) in
+            self.performActiveTimer()
+        })
+
+    }
+
+    func pause() {
+        timer?.invalidate()
+        stopped = Date()
+    }
+
+    func performActiveTimer() {
+        timeElapsed = Date().timeIntervalSince1970 - start.timeIntervalSince1970
+        //here i would call you UI update method
+        print("timer: \(timeElapsed)")
+    }
     
-    @IBOutlet weak var floatRatingView: FloatRatingView!
-    @IBOutlet weak var liveLabel: UILabel!
-    @IBOutlet weak var updatedLabel: UILabel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    func stringFromTimeInterval(interval: TimeInterval) -> NSString {
         
-        // Reset float rating view's background color
-        floatRatingView.backgroundColor = UIColor.clear
-
-        /** Note: With the exception of contentMode, type and delegate,
-         all properties can be set directly in Interface Builder **/
-        floatRatingView.delegate = self
-        floatRatingView.contentMode = UIView.ContentMode.scaleAspectFit
-        floatRatingView.type = .wholeRatings
-
-        // Labels init
-        liveLabel.text = String(format: "%.2f", self.floatRatingView.rating)
-        updatedLabel.text = String(format: "%.2f", self.floatRatingView.rating)
+        let ti = NSInteger(interval)
+        let ms = Int((interval.truncatingRemainder(dividingBy: 1)) * 1000)
+        let seconds = ti % 60
+        let minutes = (ti / 60) % 60
+        let hours = (ti / 3600)
+        
+        return NSString(format: "%0.2d:%0.2d:%0.2d.%0.3d",hours,minutes,seconds,ms)
+    }
+    
+    func terminateTimerAndSave() {
+        print("terminateTimerAndSave()")
+        let now = Date()
+        finished = now
+        timeElapsed = now.timeIntervalSince1970 - start.timeIntervalSince1970
+        let finalTime = stringFromTimeInterval(interval: timeElapsed)
+        print("final time: \(finalTime)")
+        
+        UserDefaults.standard.set(finalTime, forKey: "duration")
     }
 }
 
-extension RatingCard: FloatRatingViewDelegate {
-    
-    func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double) {
-        liveLabel.text = String(format: "%.2f", self.floatRatingView.rating)
-    }
-    
-    func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Double) {
-        updatedLabel.text = String(format: "%.2f", self.floatRatingView.rating)
-    }
-    
-}
-
-class Standby: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("hello standby")
-    }
-}
+//class newPage: UIViewController, UITableViewDataSource, UITableViewDelegate {
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return listOfVideos.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
+//        cell.textLabel?.text = listOfVideos[indexPath.row]
+//        return cell
+//    }
+//}
