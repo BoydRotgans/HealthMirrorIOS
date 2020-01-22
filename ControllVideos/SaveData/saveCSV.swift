@@ -23,9 +23,12 @@ func checkAllData() {
     let user = randomUser[Int.random(in: 0 ..< 5)]
     
     // get rating
-    let rating = UserDefaults.standard.string(forKey: "Rating") ?? "Unknown user"
+    let rating = UserDefaults.standard.string(forKey: "rating") ?? "Unknown user"
     
-    saveInCSV(timestamp: timestamp, user: user, rating: rating)
+    // get duration
+    let duration = UserDefaults.standard.string(forKey: "duration") ?? "Unknown user"
+    
+    saveInCSV(timestamp: timestamp, user: user, duration: duration, rating: rating)
 }
 
 func getDocumentsDirectory() -> URL {
@@ -34,7 +37,7 @@ func getDocumentsDirectory() -> URL {
     return documentsDirectory
 }
 
-func saveInCSV(timestamp: String, user: String, rating: String) {
+func saveInCSV(timestamp: String, user: String, duration: String, rating: String) {
         
     // get path + file
     let path = getDocumentsDirectory()
@@ -46,11 +49,11 @@ func saveInCSV(timestamp: String, user: String, rating: String) {
     let writeCSV = try! CSVWriter(stream: writeStream)
     
     if !exists {
-        try! writeCSV.write(row: ["timestamp", "user", "rating"])
+        try! writeCSV.write(row: ["timestamp", "user", "duration", "rating"])
     }
     
     // write new row
-    try! writeCSV.write(row: [timestamp, user, rating])
+    try! writeCSV.write(row: [timestamp, user, duration, rating])
     
     let data = [UInt8](writeCSV.configuration.newline.utf8)
     writeCSV.stream.write(data, maxLength: data.count)

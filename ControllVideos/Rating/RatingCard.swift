@@ -37,7 +37,7 @@ class RatingCard: UIViewController {
     
     @objc func buttonTapped(sender: UIButton) {
         let rating = String(format: "%.0f", self.floatRatingView.rating)
-        UserDefaults.standard.set(rating, forKey: "Rating")
+        UserDefaults.standard.set(rating, forKey: "rating")
         self.dismiss(animated: true, completion: nil)
     }
     
