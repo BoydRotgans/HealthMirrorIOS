@@ -26,9 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2373567623D7500D00D9F5DF /* example-2-animation.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-2-animation.mp4"; path = "../../../../../Downloads/example-2-animation.mp4"; sourceTree = SOURCE_ROOT; };
-		2373567723D7500D00D9F5DF /* example-3-animation.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-3-animation.mp4"; path = "../../../../../Downloads/example-3-animation.mp4"; sourceTree = SOURCE_ROOT; };
-		2373567823D7500D00D9F5DF /* example-1-animation.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-1-animation.mp4"; path = "../../../../../Downloads/example-1-animation.mp4"; sourceTree = SOURCE_ROOT; };
+		2373567623D7500D00D9F5DF /* example-2-animation.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "example-2-animation.mp4"; sourceTree = SOURCE_ROOT; };
+		2373567723D7500D00D9F5DF /* example-3-animation.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "example-3-animation.mp4"; sourceTree = SOURCE_ROOT; };
+		2373567823D7500D00D9F5DF /* example-1-animation.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "example-1-animation.mp4"; sourceTree = SOURCE_ROOT; };
 		23B1303D23D5D99B00B6AC50 /* ControllVideos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControllVideos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B1304023D5D99B00B6AC50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23B1304223D5D99B00B6AC50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
