@@ -9,6 +9,7 @@
 import UIKit
 import AVKit
 import AVFoundation
+import MessageUI
 
 var listOfVideos = ["toothbrush", "showering", "faceWashing"]
 var listOfVideoPath = ["example-1", "example-2", "example-3"]
@@ -172,31 +173,11 @@ class ViewController: UIViewController {
         self.present(nextViewController, animated:true, completion:nil)
     }
 
-    var actualTimeElapsedInMilliseconds : Int {
-        get {
-            return Int(timeElapsed - timeStopped)
-        }
-    }
-
-    var actualTimeElapsedInTenthOfSecond : Int {
-        get {
-            return Int((timeElapsed - timeStopped) / 10.0)
-        }
-    }
-
-    var actualTimeElapsedInSeconds : Int {
-        get {
-            return Int((timeElapsed - timeStopped) / 1000)
-        }
-    }
-
     func startTimer() {
         start = Date()
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: {_ in
-//        timer = Timer.init(timeInterval: 0.01, repeats: true, block: { (this) in
             self.performActiveTimer()
         })
-        print("startTimer()")
     }
 
     func reStartTimer() {
@@ -217,8 +198,7 @@ class ViewController: UIViewController {
 
     func performActiveTimer() {
         timeElapsed = Date().timeIntervalSince1970 - start.timeIntervalSince1970
-        //here i would call you UI update method
-        print("timer: \(timeElapsed)")
+//        print("timer: \(timeElapsed)")
     }
     
     func stringFromTimeInterval(interval: TimeInterval) -> NSString {
@@ -233,7 +213,6 @@ class ViewController: UIViewController {
     }
     
     func terminateTimerAndSave() {
-        print("terminateTimerAndSave()")
         let now = Date()
         finished = now
         timeElapsed = now.timeIntervalSince1970 - start.timeIntervalSince1970
@@ -242,7 +221,12 @@ class ViewController: UIViewController {
         
         UserDefaults.standard.set(finalTime, forKey: "duration")
     }
+    
+//    @IBAction func sendEmail(_ sender: Any) {
+//        newMail(sender: sender)
+//    }
 }
+
 
 //class newPage: UIViewController, UITableViewDataSource, UITableViewDelegate {
 //    override func viewDidLoad() {

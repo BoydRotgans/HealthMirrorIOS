@@ -13,6 +13,7 @@
 		237356A023D8511800D9F5DF /* CSV in Frameworks */ = {isa = PBXBuildFile; productRef = 2373569F23D8511800D9F5DF /* CSV */; };
 		237356A523D85A2900D9F5DF /* RatingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237356A423D85A2900D9F5DF /* RatingCard.swift */; };
 		237356A723D8621D00D9F5DF /* saveCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237356A623D8621D00D9F5DF /* saveCSV.swift */; };
+		237356A923D8999200D9F5DF /* sendAttachedMail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237356A823D8999200D9F5DF /* sendAttachedMail.swift */; };
 		23B1304123D5D99B00B6AC50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B1304023D5D99B00B6AC50 /* AppDelegate.swift */; };
 		23B1304323D5D99B00B6AC50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B1304223D5D99B00B6AC50 /* SceneDelegate.swift */; };
 		23B1304523D5D99B00B6AC50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B1304423D5D99B00B6AC50 /* ViewController.swift */; };
@@ -34,6 +35,7 @@
 		2373567823D7500D00D9F5DF /* example-1-animation.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = "example-1-animation.mp4"; sourceTree = SOURCE_ROOT; };
 		237356A423D85A2900D9F5DF /* RatingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingCard.swift; sourceTree = "<group>"; };
 		237356A623D8621D00D9F5DF /* saveCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveCSV.swift; sourceTree = "<group>"; };
+		237356A823D8999200D9F5DF /* sendAttachedMail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sendAttachedMail.swift; sourceTree = "<group>"; };
 		23B1303D23D5D99B00B6AC50 /* ControllVideos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControllVideos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B1304023D5D99B00B6AC50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23B1304223D5D99B00B6AC50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 		237356A123D8541F00D9F5DF /* SaveData */ = {
 			isa = PBXGroup;
 			children = (
+				237356A823D8999200D9F5DF /* sendAttachedMail.swift */,
 				237356A623D8621D00D9F5DF /* saveCSV.swift */,
 			);
 			path = SaveData;
@@ -224,6 +227,7 @@
 				237356A523D85A2900D9F5DF /* RatingCard.swift in Sources */,
 				23B1304523D5D99B00B6AC50 /* ViewController.swift in Sources */,
 				23B1304123D5D99B00B6AC50 /* AppDelegate.swift in Sources */,
+				237356A923D8999200D9F5DF /* sendAttachedMail.swift in Sources */,
 				237356A723D8621D00D9F5DF /* saveCSV.swift in Sources */,
 				311BB7A023D758FC0009718A /* UserBoardViewController.swift in Sources */,
 				23B1306B23D6FEAE00B6AC50 /* FloatRatingView.swift in Sources */,
