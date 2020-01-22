@@ -35,13 +35,11 @@ class UserBoardViewController: UIViewController {
         let path = getDocumentsDirectory()
         let usersList = path.appendingPathComponent("usersList.csv")
         
-        if FileManager.default.fileExists(atPath: usersList.path) == false {
+        if FileManager.default.fileExists(atPath: usersList.path) == false { // if file is not there
             print("we got no file!")
             let stream = OutputStream(toFileAtPath: usersList.path, append: false)!
             let csv = try! CSVWriter(stream: stream)
             try! csv.write(row: ["id", "name"])
-            try! csv.write(row: ["0", "Henk"])
-            try! csv.write(row: ["1", "Piet"])
             csv.stream.close()
         }
                
@@ -59,8 +57,6 @@ class UserBoardViewController: UIViewController {
         
         // setupGride view
         self.setupGridView()
-         
-        
     }
     
     @objc func buttonPressed() {
@@ -74,12 +70,30 @@ class UserBoardViewController: UIViewController {
         alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { [weak alert] (_) in
             let textField = alert?.textFields![0]
             let name = textField?.text!
+            self.writeNewRow(name: name!)
             self.dataArray.append(name!)
             self.setupGridView()
             self.collectionView.reloadData()
         }))
         
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    func writeNewRow(name: String) {
+       let path = getDocumentsDirectory()
+       let usersList = path.appendingPathComponent("usersList.csv")
+        
+       let writeStream = OutputStream(url: usersList, append: true)!
+       let writeCSV = try! CSVWriter(stream: writeStream)
+        
+       if(dataArray.count == 0) { // correction for first write
+            try! writeCSV.write(row: [""])
+       }
+        
+       try! writeCSV.write(row: [String(dataArray.count), name])
+       let data = [UInt8](writeCSV.configuration.newline.utf8)
+       writeCSV.stream.write(data, maxLength: data.count)
+       writeCSV.stream.close()
     }
     
     func getDocumentsDirectory() -> URL {
@@ -101,8 +115,6 @@ class UserBoardViewController: UIViewController {
         flow.minimumInteritemSpacing = CGFloat(self.cellMarginSize)
         flow.minimumLineSpacing = CGFloat(self.cellMarginSize)
     }
-    
-
 }
 
 extension UserBoardViewController : UICollectionViewDataSource {
@@ -116,7 +128,6 @@ extension UserBoardViewController : UICollectionViewDataSource {
         cell.setData(text: self.dataArray[indexPath.row])
         return cell
     }
-    
 }
 
 extension UserBoardViewController: UICollectionViewDelegateFlowLayout {
