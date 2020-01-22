@@ -18,6 +18,7 @@ class ViewController: UIViewController {
     @IBOutlet weak var nextPage: UIButton!
     @IBOutlet weak var animationSwitch: UISwitch!
     @IBOutlet weak var standbyButton: UIButton!
+    @IBOutlet weak var saveToCSV: UIButton!
     
     @IBOutlet weak var Standby: UIView!
     
@@ -50,7 +51,8 @@ class ViewController: UIViewController {
         
 //        checkStandby()
         
-//        SaveInCSV.newFunc()
+        saveToCSV.addTarget(self, action: #selector(executeSaveCSV), for: .touchUpInside)
+        self.view.addSubview(saveToCSV)
         
         
         // set Standby Button
@@ -92,6 +94,11 @@ class ViewController: UIViewController {
     
     @objc func buttonTapped(sender: UIButton) {
         playVideo(id: sender.tag)
+    }
+    
+    // call function in saveData/saveSCV
+    @objc func executeSaveCSV(sender: UIButton) {
+        checkAllData()
     }
     
     @objc func switchIsChanged(switchButton: UISwitch) {
