@@ -17,7 +17,10 @@ class ViewController: UIViewController {
     
     @IBOutlet weak var nextPage: UIButton!
     @IBOutlet weak var animationSwitch: UISwitch!
-
+    @IBOutlet weak var standbyButton: UIButton!
+    
+    @IBOutlet weak var Standby: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -41,9 +44,49 @@ class ViewController: UIViewController {
             y = y + 75
         }
         
+        // Direct Switch to func switchIsChanged
         animationSwitch.addTarget(self, action: #selector(switchIsChanged), for: UIControl.Event.valueChanged)
         self.view.addSubview(animationSwitch)
+        
+//        checkStandby()
+        
+        
+        // set Standby Button
+//        standbyButton.addTarget(self, action: #selector(checkStandby), for: .touchUpInside)
+//        self.view.addSubview(standbyButton)
+        
     }
+    
+//    @objc func checkStandby() {
+//       let currentTime = Date()
+//        
+//        func formatter(time: Date) -> String {
+//            let formatter = DateFormatter()
+//            formatter.dateFormat = "HH"
+//            return formatter.string(from: time)
+//        }
+//        
+//        let cTimeHH:Int = Int(formatter(time: currentTime))!
+//        
+//        print("time is \(cTimeHH)")
+//        
+//        if cTimeHH > 07 && cTimeHH < 14 {
+//            print("it is \(cTimeHH) -> NOT Standby")
+//            
+//        } else {
+//            print("it is \(cTimeHH) -> Standby")
+//            
+//            // show Standby
+//            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Standby")
+//            self.present(nextViewController, animated:true, completion:nil)
+//        }
+//    }
+    
+    
+    
+    
+    
     
     @objc func buttonTapped(sender: UIButton) {
         playVideo(id: sender.tag)
@@ -97,43 +140,20 @@ class ViewController: UIViewController {
     }
     
     @objc func videoDidEnd(notification: NSNotification) {
-        print("video ended")
-        
+        print("video ended automatically")
         self.dismiss(animated: true, completion: nil)
     }
     
     @objc func exitFullscreenVideo(sender: AnyObject) {
-
-//        self.pause()
-//        self.rate = 0
         self.dismiss(animated: true, completion: nil)
         print("video forced to quit ended")
         
-        let storyBoard : UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-
+        // show Rating Card
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RatingCard")
         self.present(nextViewController, animated:true, completion:nil)
     }
-    
-    
-    
-    
 }
-
-//extension ViewController: FloatRatingViewDelegate {
-//
-//    // MARK: FloatRatingViewDelegate
-//
-//    func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double) {
-//        liveLabel.text = String(format: "%.2f", self.floatRatingView.rating)
-//    }
-//
-//    func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Double) {
-//        updatedLabel.text = String(format: "%.2f", self.floatRatingView.rating)
-//    }
-//
-//}
-
 
 class newPage: UIViewController, UITableViewDataSource, UITableViewDelegate {
     override func viewDidLoad() {
@@ -157,7 +177,6 @@ class RatingCard: UIViewController {
     @IBOutlet weak var liveLabel: UILabel!
     @IBOutlet weak var updatedLabel: UILabel!
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -177,8 +196,6 @@ class RatingCard: UIViewController {
 }
 
 extension RatingCard: FloatRatingViewDelegate {
-
-    // MARK: FloatRatingViewDelegate
     
     func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double) {
         liveLabel.text = String(format: "%.2f", self.floatRatingView.rating)
@@ -188,4 +205,11 @@ extension RatingCard: FloatRatingViewDelegate {
         updatedLabel.text = String(format: "%.2f", self.floatRatingView.rating)
     }
     
+}
+
+class Standby: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        print("hello standby")
+    }
 }
