@@ -3,13 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		2373567923D7500D00D9F5DF /* example-2-animation.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2373567623D7500D00D9F5DF /* example-2-animation.mp4 */; };
 		2373567A23D7500D00D9F5DF /* example-3-animation.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2373567723D7500D00D9F5DF /* example-3-animation.mp4 */; };
 		2373567B23D7500D00D9F5DF /* example-1-animation.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 2373567823D7500D00D9F5DF /* example-1-animation.mp4 */; };
+		237356A023D8511800D9F5DF /* CSV in Frameworks */ = {isa = PBXBuildFile; productRef = 2373569F23D8511800D9F5DF /* CSV */; };
 		23B1304123D5D99B00B6AC50 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B1304023D5D99B00B6AC50 /* AppDelegate.swift */; };
 		23B1304323D5D99B00B6AC50 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B1304223D5D99B00B6AC50 /* SceneDelegate.swift */; };
 		23B1304523D5D99B00B6AC50 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B1304423D5D99B00B6AC50 /* ViewController.swift */; };
@@ -51,6 +52,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				237356A023D8511800D9F5DF /* CSV in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +131,9 @@
 			dependencies = (
 			);
 			name = ControllVideos;
+			packageProductDependencies = (
+				2373569F23D8511800D9F5DF /* CSV */,
+			);
 			productName = ControllVideos;
 			productReference = 23B1303D23D5D99B00B6AC50 /* ControllVideos.app */;
 			productType = "com.apple.product-type.application";
@@ -157,6 +162,9 @@
 				Base,
 			);
 			mainGroup = 23B1303423D5D99B00B6AC50;
+			packageReferences = (
+				2373569E23D8511800D9F5DF /* XCRemoteSwiftPackageReference "CSV" */,
+			);
 			productRefGroup = 23B1303E23D5D99B00B6AC50 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -394,6 +402,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		2373569E23D8511800D9F5DF /* XCRemoteSwiftPackageReference "CSV" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/yaslab/CSV.swift";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		2373569F23D8511800D9F5DF /* CSV */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2373569E23D8511800D9F5DF /* XCRemoteSwiftPackageReference "CSV" */;
+			productName = CSV;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 23B1303523D5D99B00B6AC50 /* Project object */;
 }
