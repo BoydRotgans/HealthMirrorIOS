@@ -11,7 +11,7 @@ import AVKit
 import AVFoundation
 import MessageUI
 
-var listOfVideos = ["toothbrush", "showering", "faceWashing"]
+var listOfVideos = ["Toothbrush", "Showering", "Face Washing"]
 var listOfVideoPath = ["example-1", "example-2", "example-3"]
 
 class ViewController: UIViewController {
@@ -59,8 +59,6 @@ class ViewController: UIViewController {
         // Direct Switch to func switchIsChanged
         animationSwitch.addTarget(self, action: #selector(switchIsChanged), for: UIControl.Event.valueChanged)
         self.view.addSubview(animationSwitch)
-        
-//        checkStandby()
         
         saveToCSV.addTarget(self, action: #selector(executeSaveCSV), for: .touchUpInside)
         self.view.addSubview(saveToCSV)
@@ -127,7 +125,7 @@ class ViewController: UIViewController {
         closeInFullscreen.frame = CGRect(x: 20, y: 20, width: 50, height: 50)
         closeInFullscreen.setTitle("X", for: .normal)
         closeInFullscreen.setTitleColor(UIColor.white, for: .normal)
-        closeInFullscreen.addTarget(self, action: #selector(exitFullscreenVideo), for: .touchUpInside)
+        closeInFullscreen.addTarget(self, action: #selector(videoDidEnd), for: .touchUpInside)
         
         
         // check from UserDefaults if Switch of Animation is ON or OFF
@@ -148,6 +146,9 @@ class ViewController: UIViewController {
             present(videoPlayer, animated: true, completion: {
                 video.play()
                 self.startTimer()
+                
+                // Save video name to UserDefaults
+                UserDefaults.standard.set(listOfVideos[id], forKey: "video")
             })
             
             NotificationCenter.default.addObserver(self, selector: #selector(videoDidEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
@@ -157,14 +158,7 @@ class ViewController: UIViewController {
     @objc func videoDidEnd(notification: NSNotification) {
         self.pause()
         self.terminateTimerAndSave()
-        print("video ended automatically")
-        self.dismiss(animated: true, completion: nil)
-    }
-    
-    @objc func exitFullscreenVideo(sender: AnyObject) {
-        self.pause()
-        self.terminateTimerAndSave()
-        print("video forced to quit ended")
+        print("video ended")
         self.dismiss(animated: true, completion: nil)
         
         // show Rating Card
@@ -219,12 +213,9 @@ class ViewController: UIViewController {
         let finalTime = stringFromTimeInterval(interval: timeElapsed)
         print("final time: \(finalTime)")
         
+        // Save Duration in UserDefaults
         UserDefaults.standard.set(finalTime, forKey: "duration")
     }
-    
-//    @IBAction func sendEmail(_ sender: Any) {
-//        newMail(sender: sender)
-//    }
 }
 
 
