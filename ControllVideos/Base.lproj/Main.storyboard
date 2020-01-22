@@ -51,6 +51,7 @@
                         <viewLayoutGuide key="safeArea" id="2ol-Az-yOy"/>
                     </view>
                     <connections>
+                        <outlet property="addUserButton" destination="Q42-Ge-aSv" id="cfV-lz-2v9"/>
                         <outlet property="collectionView" destination="g9I-RS-5tU" id="utQ-vk-umu"/>
                     </connections>
                 </viewController>
