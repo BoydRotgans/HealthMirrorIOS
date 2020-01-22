@@ -9,8 +9,6 @@
 import UIKit
 import AVKit
 import AVFoundation
-import Foundation
-import CSV
 
 var listOfVideos = ["toothbrush", "showering", "faceWashing"]
 var listOfVideoPath = ["example-1", "example-2", "example-3"]
@@ -51,6 +49,8 @@ class ViewController: UIViewController {
         self.view.addSubview(animationSwitch)
         
 //        checkStandby()
+        
+//        SaveInCSV.newFunc()
         
         
         // set Standby Button
@@ -157,61 +157,18 @@ class ViewController: UIViewController {
     }
 }
 
-class newPage: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return listOfVideos.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
-        cell.textLabel?.text = listOfVideos[indexPath.row]
-        return cell
-    }
-}
-
-class RatingCard: UIViewController {
-    
-    @IBOutlet weak var floatRatingView: FloatRatingView!
-    @IBOutlet weak var liveLabel: UILabel!
-    @IBOutlet weak var updatedLabel: UILabel!
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Reset float rating view's background color
-        floatRatingView.backgroundColor = UIColor.clear
-
-        /** Note: With the exception of contentMode, type and delegate,
-         all properties can be set directly in Interface Builder **/
-        floatRatingView.delegate = self
-        floatRatingView.contentMode = UIView.ContentMode.scaleAspectFit
-        floatRatingView.type = .wholeRatings
-
-        // Labels init
-        liveLabel.text = String(format: "%.2f", self.floatRatingView.rating)
-        updatedLabel.text = String(format: "%.2f", self.floatRatingView.rating)
-    }
-}
-
-extension RatingCard: FloatRatingViewDelegate {
-    
-    func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double) {
-        liveLabel.text = String(format: "%.2f", self.floatRatingView.rating)
-    }
-    
-    func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Double) {
-        updatedLabel.text = String(format: "%.2f", self.floatRatingView.rating)
-    }
-    
-}
-
-class Standby: UIViewController {
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        print("hello standby")
-    }
-}
+//class newPage: UIViewController, UITableViewDataSource, UITableViewDelegate {
+//    override func viewDidLoad() {
+//        super.viewDidLoad()
+//    }
+//
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return listOfVideos.count
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
+//        cell.textLabel?.text = listOfVideos[indexPath.row]
+//        return cell
+//    }
+//}
