@@ -85,9 +85,9 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D4k-9k-h6k">
-                                <rect key="frame" x="357" y="893" width="57" height="30"/>
+                                <rect key="frame" x="333" y="893" width="105" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Standby"/>
+                                <state key="normal" title="Check Standby"/>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1gb-G5-6Qy">
                                 <rect key="frame" x="324" y="843" width="121" height="30"/>
@@ -102,8 +102,15 @@
                                     <action selector="sendEmail:" destination="BYZ-38-t0r" eventType="touchUpInside" id="JxC-Ao-XHu"/>
                                 </connections>
                             </button>
+                            <containerView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="Standby" translatesAutoresizingMaskIntoConstraints="NO" id="L8O-e9-Zbf">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                                <connections>
+                                    <segue destination="xxg-qg-nfN" kind="embed" id="phv-KU-4N8"/>
+                                </connections>
+                            </containerView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="bb3-JZ-G2g" secondAttribute="trailing" constant="80" id="C9i-8l-MMk"/>
                             <constraint firstItem="bb3-JZ-G2g" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="80" id="I6t-Ed-UP0"/>
@@ -115,8 +122,10 @@
                     </view>
                     <navigationItem key="navigationItem" id="7fU-EC-Nw1"/>
                     <connections>
+                        <outlet property="Standby" destination="L8O-e9-Zbf" id="hnL-Yw-Z4j"/>
                         <outlet property="animationSwitch" destination="bb3-JZ-G2g" id="OJp-Ro-p45"/>
                         <outlet property="saveToCSV" destination="1gb-G5-6Qy" id="URe-Ko-KHH"/>
+                        <outlet property="standbyButton" destination="D4k-9k-h6k" id="qMr-Gu-Vmo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -234,6 +243,44 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Li6-Tb-42B" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="801.5625" y="73.828125"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ESe-fS-U5o">
+            <objects>
+                <viewController storyboardIdentifier="StandbyVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="xxg-qg-nfN" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="Standby" id="RDe-dU-178">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="U5o-cO-pI4">
+                                <rect key="frame" x="334" y="463" width="100" height="100"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="100" id="EaH-lH-ePy"/>
+                                    <constraint firstAttribute="height" constant="100" id="N4g-Sn-Rpo"/>
+                                    <constraint firstAttribute="width" secondItem="U5o-cO-pI4" secondAttribute="height" multiplier="1:1" id="OMP-cs-2cy"/>
+                                </constraints>
+                                <state key="normal">
+                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="backButton:" destination="K12-6q-R8J" eventType="touchUpInside" id="SUe-OW-SDy"/>
+                                    <action selector="backButton:" destination="K12-6q-R8J" eventType="touchDragExit" id="xtZ-sa-kfD"/>
+                                    <segue destination="BYZ-38-t0r" kind="show" id="gYh-Fw-IJU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="U5o-cO-pI4" firstAttribute="centerX" secondItem="RDe-dU-178" secondAttribute="centerX" id="84U-Jf-nif"/>
+                            <constraint firstItem="U5o-cO-pI4" firstAttribute="top" secondItem="RDe-dU-178" secondAttribute="top" constant="463.10791366916743" id="NUY-aS-v9i"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="FEG-Wg-wlj" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="K12-6q-R8J" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="137.5" y="-595.3125"/>
         </scene>
     </scenes>
     <resources>

@@ -16,7 +16,12 @@ var listOfVideoPath = ["example-1", "example-2", "example-3"]
 
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
-    @IBOutlet weak var nextPage: UIButton!
+    var isStatusBarHidden: Bool = false
+    
+    override var prefersStatusBarHidden: Bool {
+        return self.isStatusBarHidden
+    }
+    
     @IBOutlet weak var animationSwitch: UISwitch!
     @IBOutlet weak var standbyButton: UIButton!
     @IBOutlet weak var saveToCSV: UIButton!
@@ -32,10 +37,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     var timeElapsed = Double()
     var timeStopped = Double()
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+        
+        // hide Standby View
+        Standby.isHidden = true
         
         var buttons = [UIButton]()
         var button: UIButton
@@ -67,36 +73,40 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
         
         // set Standby Button
-//        standbyButton.addTarget(self, action: #selector(checkStandby), for: .touchUpInside)
-//        self.view.addSubview(standbyButton)
-        
+        standbyButton.addTarget(self, action: #selector(checkStandby), for: .touchUpInside)
+        self.view.addSubview(standbyButton)
     }
     
-//    @objc func checkStandby() {
-//       let currentTime = Date()
-//        
-//        func formatter(time: Date) -> String {
-//            let formatter = DateFormatter()
-//            formatter.dateFormat = "HH"
-//            return formatter.string(from: time)
-//        }
-//        
-//        let cTimeHH:Int = Int(formatter(time: currentTime))!
-//        
-//        print("time is \(cTimeHH)")
-//        
-//        if cTimeHH > 07 && cTimeHH < 14 {
-//            print("it is \(cTimeHH) -> NOT Standby")
-//            
-//        } else {
-//            print("it is \(cTimeHH) -> Standby")
-//            
-//            // show Standby
-//            let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//            let nextViewController = storyBoard.instantiateViewController(withIdentifier: "Standby")
-//            self.present(nextViewController, animated:true, completion:nil)
-//        }
-//    }
+    @objc func checkStandby() {
+        
+        let currentTime = Date()
+        
+        func formatter(time: Date) -> String {
+            let formatter = DateFormatter()
+            formatter.dateFormat = "HH"
+            return formatter.string(from: time)
+        }
+        
+        let cTimeHH:Int = Int(formatter(time: currentTime))!
+        
+        print("time is \(cTimeHH)")
+        
+        if cTimeHH > 07 && cTimeHH < 14 {
+            print("it is \(cTimeHH) -> NOT Standby")
+        } else {
+            print("it is \(cTimeHH) -> Standby")
+            
+            // enable Standby
+            Standby.isHidden = !Standby.isHidden
+            view.bringSubviewToFront(Standby)
+            
+            // hide status bar
+            self.isStatusBarHidden = !self.isStatusBarHidden
+            UIView.animate(withDuration: 0.3) {
+                self.setNeedsStatusBarAppearanceUpdate()
+            }
+        }
+    }
     
     @objc func buttonTapped(sender: UIButton) {
         playVideo(id: sender.tag)
@@ -158,7 +168,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 video.play()
             }
             
-//            NotificationCenter.default.addObserver(self, selector: #selector(videoDidEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+            //            NotificationCenter.default.addObserver(self, selector: #selector(videoDidEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
         }
         
     }
@@ -179,14 +189,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RatingCard")
         self.present(nextViewController, animated:true, completion:nil)
     }
-
+    
     func startTimer() {
         start = Date()
         timer = Timer.scheduledTimer(withTimeInterval: 0.01, repeats: true, block: {_ in
             self.performActiveTimer()
         })
     }
-
+    
     func reStartTimer() {
         resumed = Date()
         if let stop = stopped, let resume = resumed {
@@ -195,17 +205,17 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         timer = Timer.init(timeInterval: 0.01, repeats: true, block: { (this) in
             self.performActiveTimer()
         })
-
+        
     }
-
+    
     func pause() {
         timer?.invalidate()
         stopped = Date()
     }
-
+    
     func performActiveTimer() {
         timeElapsed = Date().timeIntervalSince1970 - start.timeIntervalSince1970
-//        print("timer: \(timeElapsed)")
+        //        print("timer: \(timeElapsed)")
     }
     
     func stringFromTimeInterval(interval: TimeInterval) -> NSString {
