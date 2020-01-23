@@ -27,6 +27,7 @@
 		311BB79C23D74F160009718A /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BB79A23D74F160009718A /* ItemCell.swift */; };
 		311BB79D23D74F160009718A /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 311BB79B23D74F160009718A /* ItemCell.xib */; };
 		311BB7A023D758FC0009718A /* UserBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BB79F23D758FC0009718A /* UserBoardViewController.swift */; };
+		311BB7A323D9C2270009718A /* UiTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BB7A223D9C2270009718A /* UiTypeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,7 @@
 		311BB79A23D74F160009718A /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		311BB79B23D74F160009718A /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		311BB79F23D758FC0009718A /* UserBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBoardViewController.swift; sourceTree = "<group>"; };
+		311BB7A223D9C2270009718A /* UiTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiTypeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +103,7 @@
 		23B1303F23D5D99B00B6AC50 /* ControllVideos */ = {
 			isa = PBXGroup;
 			children = (
+				311BB7A123D9C20B0009718A /* TypeView */,
 				237356A323D85A0000D9F5DF /* Rating */,
 				237356A123D8541F00D9F5DF /* SaveData */,
 				311BB79E23D758D20009718A /* UserBoardView */,
@@ -138,6 +141,14 @@
 				311BB79F23D758FC0009718A /* UserBoardViewController.swift */,
 			);
 			path = UserBoardView;
+			sourceTree = "<group>";
+		};
+		311BB7A123D9C20B0009718A /* TypeView */ = {
+			isa = PBXGroup;
+			children = (
+				311BB7A223D9C2270009718A /* UiTypeView.swift */,
+			);
+			path = TypeView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,6 +243,7 @@
 				311BB7A023D758FC0009718A /* UserBoardViewController.swift in Sources */,
 				23B1306B23D6FEAE00B6AC50 /* FloatRatingView.swift in Sources */,
 				23B1304323D5D99B00B6AC50 /* SceneDelegate.swift in Sources */,
+				311BB7A323D9C2270009718A /* UiTypeView.swift in Sources */,
 				311BB79C23D74F160009718A /* ItemCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
