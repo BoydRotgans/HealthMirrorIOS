@@ -11,6 +11,11 @@ import Foundation
 import CSV
     
 func checkAllData() {
+    // get ID
+    var ID = UserDefaults.standard.object(forKey: "ID") as? Int ?? 0
+    ID += 1
+    UserDefaults.standard.set(ID, forKey: "ID")
+    
     // get timestamp
     let now = Date()
     let formatter = DateFormatter()
@@ -23,15 +28,25 @@ func checkAllData() {
     let user = randomUser[Int.random(in: 0 ..< 5)]
     
     //get video
-    let video = UserDefaults.standard.string(forKey: "video") ?? "Unknown user"
+    let video = UserDefaults.standard.string(forKey: "video") ?? "no video data"
     
     // get rating
-    let rating = UserDefaults.standard.string(forKey: "rating") ?? "Unknown user"
+    let rating = UserDefaults.standard.string(forKey: "rating") ?? "no rating data"
     
     // get duration
-    let duration = UserDefaults.standard.string(forKey: "duration") ?? "Unknown user"
+    let duration = UserDefaults.standard.string(forKey: "duration") ?? "no duration data"
     
-    saveInCSV(timestamp: timestamp, user: user, video: video, duration: duration, rating: rating)
+    // get videoType
+    var videoType:String
+    let animationStatus = UserDefaults.standard.bool(forKey: "animationStatus")
+    switch animationStatus {
+    case true:
+        videoType = "animation"
+    case false:
+        videoType = "normal"
+    }
+    
+    saveInCSV(ID: ID, timestamp: timestamp, user: user, video: video, duration: duration, videoType: videoType, rating: rating)
 }
 
 func getDocumentsDirectory() -> URL {
@@ -40,7 +55,7 @@ func getDocumentsDirectory() -> URL {
     return documentsDirectory
 }
 
-func saveInCSV(timestamp: String, user: String, video: String, duration: String, rating: String) {
+func saveInCSV(ID: Int, timestamp: String, user: String, video: String, duration: String, videoType: String, rating: String) {
         
     // get path + file
     let path = getDocumentsDirectory()
@@ -52,11 +67,11 @@ func saveInCSV(timestamp: String, user: String, video: String, duration: String,
     let writeCSV = try! CSVWriter(stream: writeStream)
     
     if !exists {
-        try! writeCSV.write(row: ["timestamp", "user", "video", "duration", "rating"])
+        try! writeCSV.write(row: ["ID", "timestamp", "user", "video", "duration", "videoType", "rating"])
     }
     
-    // write new row
-    try! writeCSV.write(row: [timestamp, user, video, duration, rating])
+    // crate file and write header row
+    try! writeCSV.write(row: [String(ID), timestamp, user, video, duration, videoType, rating])
     
     let data = [UInt8](writeCSV.configuration.newline.utf8)
     writeCSV.stream.write(data, maxLength: data.count)
