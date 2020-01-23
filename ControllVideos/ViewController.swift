@@ -14,7 +14,7 @@ import MessageUI
 var listOfVideos = ["Toothbrush", "Showering", "Face Washing"]
 var listOfVideoPath = ["example-1", "example-2", "example-3"]
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     @IBOutlet weak var nextPage: UIButton!
     @IBOutlet weak var animationSwitch: UISwitch!
@@ -57,6 +57,8 @@ class ViewController: UIViewController {
         }
         
         // Direct Switch to func switchIsChanged
+        let animationStatus:Bool = UserDefaults.standard.bool(forKey: "animationStatus")
+        animationSwitch.setOn(animationStatus, animated: false)
         animationSwitch.addTarget(self, action: #selector(switchIsChanged), for: UIControl.Event.valueChanged)
         self.view.addSubview(animationSwitch)
         
@@ -106,8 +108,7 @@ class ViewController: UIViewController {
     }
     
     @objc func switchIsChanged(switchButton: UISwitch) {
-        
-        var animationStatus:Bool = true
+        var animationStatus:Bool
         if switchButton.isOn {
             animationStatus = true
             UserDefaults.standard.set(animationStatus, forKey: "animationStatus")
@@ -115,7 +116,6 @@ class ViewController: UIViewController {
             animationStatus = false
             UserDefaults.standard.set(animationStatus, forKey: "animationStatus")
         }
-        
     }
     
     
@@ -151,11 +151,24 @@ class ViewController: UIViewController {
                 UserDefaults.standard.set(listOfVideos[id], forKey: "video")
             })
             
-            NotificationCenter.default.addObserver(self, selector: #selector(videoDidEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
+            NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: video.currentItem, queue: .main) {
+                // loop video
+                [weak self] _ in
+                video.seek(to: CMTime.zero)
+                video.play()
+            }
+            
+//            NotificationCenter.default.addObserver(self, selector: #selector(videoDidEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
         }
+        
     }
     
-    @objc func videoDidEnd(notification: NSNotification) {
+    @objc func videoDidEnd(notification: NSNotification, didFinishWith result: NSNotification, error: Error?) {
+        
+        print("notification is \(notification)")
+        print("error is \(error)")
+        print("result is \(result)")
+        
         self.pause()
         self.terminateTimerAndSave()
         print("video ended")
@@ -217,20 +230,3 @@ class ViewController: UIViewController {
         UserDefaults.standard.set(finalTime, forKey: "duration")
     }
 }
-
-
-//class newPage: UIViewController, UITableViewDataSource, UITableViewDelegate {
-//    override func viewDidLoad() {
-//        super.viewDidLoad()
-//    }
-//
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return listOfVideos.count
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "cell")
-//        cell.textLabel?.text = listOfVideos[indexPath.row]
-//        return cell
-//    }
-//}
