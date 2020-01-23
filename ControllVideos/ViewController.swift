@@ -16,8 +16,8 @@ var listOfVideoPath = ["example-1", "example-2", "example-3"]
 
 class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
+    // check Status Bar
     var isStatusBarHidden: Bool = false
-    
     override var prefersStatusBarHidden: Bool {
         return self.isStatusBarHidden
     }
@@ -167,6 +167,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 video.seek(to: CMTime.zero)
                 video.play()
             }
+            
+//            NotificationCenter.default.addObserver(self, selector: #selector(videoDidEnd), name: UIWindow.didBecomeHiddenNotification, object: self.view.window)
             
             //            NotificationCenter.default.addObserver(self, selector: #selector(videoDidEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
         }
