@@ -15,7 +15,7 @@ import CSV
 var listOfVideos = ["Toothbrush", "Showering", "Face Washing"]
 var listOfVideoPath = ["example-1", "example-2", "example-3"]
 
-class ViewController: UIViewController, UIGestureRecognizerDelegate {
+class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerViewControllerDelegate {
     
     // check Status Bar
     var isStatusBarHidden: Bool = false
@@ -140,7 +140,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             videoPlayer.player = video
             videoPlayer.showsPlaybackControls = false
             videoPlayer.contentOverlayView?.addSubview(closeInFullscreen)
-
+            videoPlayer.delegate = self
+            
             present(videoPlayer, animated: true, completion: {
                 video.play()
                 self.startTimer()
@@ -154,12 +155,24 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 video.seek(to: CMTime.zero)
                 video.play()
             }
+            
+            
+            
 
 //            NotificationCenter.default.addObserver(self, selector: #selector(videoDidEnd), name: UIWindow.didBecomeHiddenNotification, object: self.view.window)
 
             //            NotificationCenter.default.addObserver(self, selector: #selector(videoDidEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
         }
 
+    }
+    
+    func playerViewController(_ playerViewController: AVPlayerViewController, willEndFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
+        print("hi im done here")
+        
+        // show Rating Card
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RatingCard")
+        self.present(nextViewController, animated:true, completion:nil)
     }
 
     @objc func videoDidEnd(notification: NSNotification, didFinishWith result: NSNotification, error: Error?) {
