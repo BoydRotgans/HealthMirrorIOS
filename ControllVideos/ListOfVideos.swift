@@ -22,11 +22,8 @@ class ListOfVideos: UIViewController, UITableViewDelegate, UITableViewDataSource
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        performSegue(withIdentifier: "segue", sender: <#T##Any?#>)
-        
         print("did selected \(indexPath.row) should be \(listOfVideos[indexPath.row])")
-        
-//        ViewController().playVideo(id: indexPath.row)
+        ViewController().playVideo(id: indexPath.row)
         
     }
     

@@ -38,6 +38,10 @@ class RatingCard: UIViewController {
     @objc func buttonTapped(sender: UIButton) {
         let rating = String(format: "%.0f", self.floatRatingView.rating)
         UserDefaults.standard.set(rating, forKey: "rating")
+        
+        // save in CSV
+        checkAllData()
+        
         self.dismiss(animated: true, completion: nil)
     }
     
