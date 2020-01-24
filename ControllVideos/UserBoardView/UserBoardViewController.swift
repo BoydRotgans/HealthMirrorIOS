@@ -90,7 +90,7 @@ class UserBoardViewController: UIViewController {
        let writeCSV = try! CSVWriter(stream: writeStream)
         
        if(dataArray.count == 0) { // correction for first write
-            try! writeCSV.write(row: ["name"])
+            try! writeCSV.write(row: [""])
        }
         
        try! writeCSV.write(row: [String(dataArray.count), name])
