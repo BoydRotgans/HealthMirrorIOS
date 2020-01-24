@@ -130,6 +130,11 @@ extension UserBoardViewController : UICollectionViewDelegate {
         print(selection)
         UserDefaults.standard.set(selection, forKey: "selectedUser")
         
+        // set session ID
+        let timeNow = time(nil)
+        let sessionID = String(format: "%@%x", "", timeNow)
+        UserDefaults.standard.set(sessionID, forKey: "sessionID")
+        
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "TypeViewController") as! UiTypeView
         newViewController.modalPresentationStyle = .fullScreen

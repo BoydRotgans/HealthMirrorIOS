@@ -16,11 +16,14 @@ func checkAllData() {
     ID += 1
     UserDefaults.standard.set(ID, forKey: "ID")
     
+    // get sessionID
+    let sessionID = UserDefaults.standard.string(forKey: "sessionID") ?? "no sessionID data"
+    
     // get timestamp
     let now = Date()
     let formatter = DateFormatter()
     formatter.timeZone = TimeZone.current
-    formatter.dateFormat = "yyyy_MM_dd-HH:mm:ss"
+    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
     let timestamp = formatter.string(from: now)
     
     //get user
@@ -50,7 +53,7 @@ func checkAllData() {
         videoType = "normal"
     }
     
-    saveInCSV(ID: ID, timestamp: timestamp, user: user, location: location, video: video, duration: duration, videoType: videoType, rating: rating)
+    saveInCSV(ID: ID, sessionID: sessionID, timestamp: timestamp, user: user, location: location, video: video, duration: duration, videoType: videoType, rating: rating)
 }
 
 func getDocumentsDirectory() -> URL {
@@ -59,7 +62,7 @@ func getDocumentsDirectory() -> URL {
     return documentsDirectory
 }
 
-func saveInCSV(ID: Int, timestamp: String, user: String, location: String, video: String, duration: String, videoType: String, rating: String) {
+func saveInCSV(ID: Int, sessionID: String, timestamp: String, user: String, location: String, video: String, duration: String, videoType: String, rating: String) {
         
     // get path + file
     let path = getDocumentsDirectory()
@@ -71,11 +74,11 @@ func saveInCSV(ID: Int, timestamp: String, user: String, location: String, video
     let writeCSV = try! CSVWriter(stream: writeStream)
     
     if !exists {
-        try! writeCSV.write(row: ["ID", "timestamp", "user", "location", "video", "duration", "videoType", "rating"])
+        try! writeCSV.write(row: ["ID", "sessionID", "timestamp", "user", "location", "video", "duration", "videoType", "rating"])
     }
     
     // crate file and write header row
-    try! writeCSV.write(row: [String(ID), timestamp, user, location, video, duration, videoType, rating])
+    try! writeCSV.write(row: [String(ID), sessionID, timestamp, user, location, video, duration, videoType, rating])
     
     let data = [UInt8](writeCSV.configuration.newline.utf8)
     writeCSV.stream.write(data, maxLength: data.count)

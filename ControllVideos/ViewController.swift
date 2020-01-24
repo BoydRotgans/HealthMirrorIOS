@@ -43,30 +43,9 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("viewController did load!!!!")
         
         // hide Standby View
         Standby.isHidden = true
-        
-        
-//        var buttons = [UIButton]()
-//        var button: UIButton
-//
-//        var y = 100
-//        for (index, video) in listOfVideos.enumerated() {
-//
-//            button = UIButton(type: UIButton.ButtonType.system) as UIButton
-//            button.frame = CGRect(x: 80, y: y, width: 250, height: 50)
-//            button.setTitle("\(video)", for: .normal)
-//            button.backgroundColor = .systemYellow
-//            button.setTitleColor(UIColor.white, for: .normal)
-//            button.tag = index
-//            button.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
-//            self.view.addSubview(button)
-//            buttons.append(button)
-//
-//            y = y + 75
-//        }
         
         // set delegates
         self.tableView.delegate = self
@@ -74,26 +53,18 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         self.tableView.allowsSelection = true
         self.tableView.reloadData()
         
-//        self.tableView.register(UINib(nibName: "ItemCell", bundle: nil), forCellWithReuseIdentifier: "ItemCell")
-        
-        
         // Direct Switch to func switchIsChanged
         let animationStatus:Bool = UserDefaults.standard.bool(forKey: "animationStatus")
         animationSwitch.setOn(animationStatus, animated: false)
         animationSwitch.addTarget(self, action: #selector(switchIsChanged), for: UIControl.Event.valueChanged)
         self.view.addSubview(animationSwitch)
-        
-//        saveToCSV.addTarget(self, action: #selector(executeSaveCSV), for: .touchUpInside)
-//        self.view.addSubview(saveToCSV)
-        
-        
+
         // set Standby Button
         standbyButton.addTarget(self, action: #selector(checkStandby), for: .touchUpInside)
         self.view.addSubview(standbyButton)
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        
         let hasRating = UserDefaults.standard.bool(forKey: "hasRating")
         if(hasRating) {
             self.tableView.reloadData()
@@ -135,11 +106,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         playVideo(id: sender.tag)
     }
     
-    // call function in saveData/saveSCV
-//    @objc func executeSaveCSV(sender: UIButton) {
-//        checkAllData()
-//    }
-    
     @objc func switchIsChanged(switchButton: UISwitch) {
         var animationStatus:Bool
         if switchButton.isOn {
@@ -150,7 +116,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
             UserDefaults.standard.set(animationStatus, forKey: "animationStatus")
         }
     }
-    
     
     func playVideo(id: Int) {
 
@@ -184,9 +149,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
                 UserDefaults.standard.set(listOfVideos[id], forKey: "video")
             })
 
-            NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: video.currentItem, queue: .main) {
+            NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: video.currentItem, queue: .main) {_ in
                 // loop video
-                [weak self] _ in
                 video.seek(to: CMTime.zero)
                 video.play()
             }
@@ -265,26 +229,26 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         let path = getDocumentsDirectory()
         let fileURL = path.appendingPathComponent("trackingData.csv")
         
+        var checkPlays = 0
+        let currentSessionID = UserDefaults.standard.string(forKey: "sessionID") ?? "no sessionID data"
+        
         // read csv
         let readStream = InputStream(url: fileURL)!
-        let readCSV = try! CSVReader(stream: readStream, hasHeaderRow: true)
         
-        var checkPlays = 0
+        let exists = FileManager.default.fileExists(atPath: fileURL.path)
         
-        while readCSV.next() != nil {
-            let video = readCSV["video"]!
-            if video == listOfVideos[id] {
-                checkPlays += 1
+        if exists {
+            let readCSV = try! CSVReader(stream: readStream, hasHeaderRow: true)
 
-                print("video is \(video) checkPlays is \(checkPlays)")
+            while readCSV.next() != nil {
+                let sessionID = readCSV["sessionID"]!
+                let video = readCSV["video"]!
+                if sessionID == currentSessionID && video == listOfVideos[id] {
+                    checkPlays += 1
+                }
             }
         }
         
-//        let indexPath = IndexPath(item: id, section: 0)
-//        self.tableView.reloadRows(at: [indexPath], with: .top)
-
-        
-        print("checkPlays is \(checkPlays)")
         return checkPlays
     }
 }
@@ -311,7 +275,5 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         print("selected \(indexPath.row) -> \(listOfVideos[indexPath.row])")
         self.playVideo(id: indexPath.row)
-        self.readCSVFile(id: indexPath.row, withReload: true)
-//        tableView.reloadRows(at: [indexPath], with: .top)
     }
 }

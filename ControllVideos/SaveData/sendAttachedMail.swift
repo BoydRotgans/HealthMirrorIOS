@@ -29,7 +29,7 @@ extension ViewController: MFMailComposeViewControllerDelegate {
             do {
             let attachmentData = try Data(contentsOf: url)
                 mailComposer.addAttachmentData(attachmentData, mimeType: "text/csv", fileName: "trackingData")
-                mailComposer.mailComposeDelegate = self as? MFMailComposeViewControllerDelegate
+                mailComposer.mailComposeDelegate = self
                 self.present(mailComposer, animated: true
                     , completion: nil)
             } catch let error {
