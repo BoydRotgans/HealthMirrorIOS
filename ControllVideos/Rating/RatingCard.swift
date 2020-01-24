@@ -19,6 +19,8 @@ class RatingCard: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         // Reset float rating view's background color
         floatRatingView.backgroundColor = UIColor.clear
 
@@ -38,6 +40,9 @@ class RatingCard: UIViewController {
     @objc func buttonTapped(sender: UIButton) {
         let rating = String(format: "%.0f", self.floatRatingView.rating)
         UserDefaults.standard.set(rating, forKey: "rating")
+        UserDefaults.standard.set(true, forKey: "hasRating")
+        
+        
         
         // save in CSV
         checkAllData()

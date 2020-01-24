@@ -43,6 +43,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        print("viewController did load!!!!")
         
         // hide Standby View
         Standby.isHidden = true
@@ -89,6 +90,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         // set Standby Button
         standbyButton.addTarget(self, action: #selector(checkStandby), for: .touchUpInside)
         self.view.addSubview(standbyButton)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let hasRating = UserDefaults.standard.bool(forKey: "hasRating")
+        if(hasRating) {
+            self.tableView.reloadData()
+        }
     }
     
     @objc func checkStandby() {
@@ -251,7 +260,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         UserDefaults.standard.set(finalTime, forKey: "duration")
     }
     
-    func readCSVFile(id: Int) -> Int {
+    func readCSVFile(id: Int, withReload: Bool) -> Int {
         // csv data path
         let path = getDocumentsDirectory()
         let fileURL = path.appendingPathComponent("trackingData.csv")
@@ -273,6 +282,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate {
         
 //        let indexPath = IndexPath(item: id, section: 0)
 //        self.tableView.reloadRows(at: [indexPath], with: .top)
+
         
         print("checkPlays is \(checkPlays)")
         return checkPlays
@@ -290,15 +300,18 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let checkVideoPlays = UILabel.init(frame: CGRect(x:UIScreen.main.bounds.width - 70.0, y:0.0, width:50.0, height: 43.5))
         checkVideoPlays.textAlignment = NSTextAlignment.right
-        checkVideoPlays.text = String(self.readCSVFile(id: indexPath.row))
+        checkVideoPlays.text = String(self.readCSVFile(id: indexPath.row, withReload: false))
         cell.addSubview(checkVideoPlays)
         return(cell)
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        UserDefaults.standard.set(false, forKey: "hasRating")
+        
         print("selected \(indexPath.row) -> \(listOfVideos[indexPath.row])")
         self.playVideo(id: indexPath.row)
-        self.readCSVFile(id: indexPath.row)
+        self.readCSVFile(id: indexPath.row, withReload: true)
 //        tableView.reloadRows(at: [indexPath], with: .top)
     }
 }
