@@ -9,22 +9,39 @@
 import UIKit
 
 class UiTypeView: UIViewController {
-
+    
+    @IBOutlet weak var MirrorButton: UIButton!
+    @IBOutlet weak var StandButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+ 
+        MirrorButton.addTarget(self, action: #selector(clickMirror), for: .touchUpInside)
+        StandButton.addTarget(self, action: #selector(clickStand), for: .touchUpInside)
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    @objc func clickMirror() {
+        
+        UserDefaults.standard.set("mirror", forKey: "selectedType")
+        print("mirror")
+        
+        openPage()
     }
-    */
+    
+    @objc func clickStand() {
+        
+        UserDefaults.standard.set("stand", forKey: "selectedType")
+        print("stand")
+        
+        openPage()
+    }
+    
+    func openPage() {
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
+        newViewController.modalPresentationStyle = .fullScreen
+        self.present(newViewController, animated: true, completion: nil)
+    }
+    
 
 }

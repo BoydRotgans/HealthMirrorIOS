@@ -90,6 +90,10 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="9oN-v6-tde"/>
                     </view>
+                    <connections>
+                        <outlet property="MirrorButton" destination="VCZ-0H-5bc" id="Zkj-ON-8Zg"/>
+                        <outlet property="StandButton" destination="qaM-pI-iFA" id="bae-48-aA6"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bNg-eR-v41" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

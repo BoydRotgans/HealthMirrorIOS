@@ -13,7 +13,6 @@ import CSV
 class UserBoardViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    
     @IBOutlet weak var addUserButton: UIButton!
     
     
@@ -28,8 +27,10 @@ class UserBoardViewController: UIViewController {
         // set delegates
         self.collectionView.delegate = self
         self.collectionView.dataSource = self
+        self.collectionView.allowsSelection = true
         
         self.collectionView.register(UINib(nibName: "ItemCell", bundle: nil), forCellWithReuseIdentifier: "ItemCell")
+        
         
         // check if csv file excist
         let path = getDocumentsDirectory()
@@ -59,6 +60,8 @@ class UserBoardViewController: UIViewController {
         self.setupGridView()
     }
     
+    
+    
     @objc func buttonPressed() {
         
         let alert = UIAlertController(title: "New user", message: "Please enter a new username", preferredStyle: .alert)
@@ -87,7 +90,7 @@ class UserBoardViewController: UIViewController {
        let writeCSV = try! CSVWriter(stream: writeStream)
         
        if(dataArray.count == 0) { // correction for first write
-            try! writeCSV.write(row: [""])
+            try! writeCSV.write(row: ["name"])
        }
         
        try! writeCSV.write(row: [String(dataArray.count), name])
@@ -117,6 +120,25 @@ class UserBoardViewController: UIViewController {
     }
 }
 
+
+extension UserBoardViewController : UICollectionViewDelegate {
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        print(indexPath)
+        
+        let selection = self.dataArray[indexPath.row]
+        print(selection)
+        UserDefaults.standard.set(selection, forKey: "selectedUser")
+        
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        let newViewController = storyBoard.instantiateViewController(withIdentifier: "TypeViewController") as! UiTypeView
+        newViewController.modalPresentationStyle = .fullScreen
+        self.present(newViewController, animated: true, completion: nil)
+        
+    }
+    
+}
+
 extension UserBoardViewController : UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         print(self.dataArray.count)
@@ -128,7 +150,15 @@ extension UserBoardViewController : UICollectionViewDataSource {
         cell.setData(text: self.dataArray[indexPath.row])
         return cell
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//           print(indexPath.item)
+//    }
+       
+    
 }
+
+
 
 extension UserBoardViewController: UICollectionViewDelegateFlowLayout {
     

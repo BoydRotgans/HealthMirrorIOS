@@ -10,30 +10,38 @@ import UIKit
 
 class ItemCell: UICollectionViewCell {
     
-    @IBOutlet weak var userButton: UIButton!
+//    @IBOutlet weak var userButton: UIButton!
+    @IBOutlet weak var label: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()
     }
     
     func setData(text: String) {
-        self.userButton.setTitle(text, for:.normal)
-        
-        userButton.addTarget(self, action: #selector(buttonClick), for: .touchUpInside)
+        //self.userButton.setTitle(text, for:.normal)
+        self.label.text = text
+        //userButton.addTarget(self, action: #selector(buttonClick), for: .touchUpInside)
         
     }
     
-    @objc func buttonClick() {
-        print("set user \(self.userButton.titleLabel?.text as! String)")
-        
-        // save to userDefaults
-        
-        UserDefaults.standard.set(self.userButton.titleLabel?.text!, forKey: "selectedUser")
-        
-        // open next storyboard
-        //let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-        //let newViewController = storyBoard.instantiateViewController(withIdentifier: "TypeViewController") as! UiTypeView
-        //self.present(newViewController, animated: true, completion: nil)
-    }
+//    @objc func buttonClick() {
+//
+//        let name = self.userButton.titleLabel?.text as! String
+//        print("set user \(name)")
+//
+//        // save to userDefaults
+//        UserDefaults.standard.set(self.userButton.titleLabel?.text!, forKey: "selectedUser")
+//        self.isSelected = true
+//
+//        if(self.isSelected) {
+//                self.userButton.setTitle("_ \(name)", for:.normal)
+//
+//        }
+//
+//        // open next storyboard
+////        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+////        let newViewController = storyBoard.instantiateViewController(withIdentifier: "TypeViewController") as! UiTypeView
+////        self.present(newViewController, animated: true, completion: nil)
+//    }
 
 }
