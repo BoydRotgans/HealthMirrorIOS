@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="7VG-0F-GNZ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yUy-Fl-V9R">
     <device id="ipad9_7" orientation="portrait" layout="fullscreen" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -161,16 +161,6 @@
                                     <segue destination="yUy-Fl-V9R" kind="show" id="Uqn-6e-JOW"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3B-uB-hce">
-                                <rect key="frame" x="629" y="974" width="34" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <state key="normal" title="Start"/>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gc7-iB-4hY">
-                                <rect key="frame" x="680" y="974" width="32" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                                <state key="normal" title="Stop"/>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -197,8 +187,6 @@
                         <outlet property="animationSwitch" destination="bb3-JZ-G2g" id="OJp-Ro-p45"/>
                         <outlet property="doneSelection" destination="0Uv-8e-WuH" id="0YF-J4-HJY"/>
                         <outlet property="standbyButton" destination="D4k-9k-h6k" id="qMr-Gu-Vmo"/>
-                        <outlet property="startButton" destination="a3B-uB-hce" id="ytt-rR-iTF"/>
-                        <outlet property="stopButton" destination="gc7-iB-4hY" id="F6V-hp-vp1"/>
                         <outlet property="tableView" destination="T4Z-tj-fw9" id="mga-G7-qYw"/>
                     </connections>
                 </viewController>
@@ -426,4 +414,7 @@
         <image name="plus" catalog="system" width="64" height="56"/>
         <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="phv-KU-4N8"/>
+    </inferredMetricsTieBreakers>
 </document>

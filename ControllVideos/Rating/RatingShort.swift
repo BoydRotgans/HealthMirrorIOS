@@ -20,13 +20,13 @@ class RatingShort: UIViewController {
         super.viewDidLoad()
         
         // Reset float rating view's background color
-        floatRatingView.backgroundColor = UIColor.clear
+        self.floatRatingView.backgroundColor = UIColor.clear
 
         /** Note: With the exception of contentMode, type and delegate,
          all properties can be set directly in Interface Builder **/
-        floatRatingView.delegate = self
-        floatRatingView.contentMode = UIView.ContentMode.scaleAspectFit
-        floatRatingView.type = .wholeRatings
+        self.floatRatingView.delegate = self
+        self.floatRatingView.contentMode = UIView.ContentMode.scaleAspectFit
+        self.floatRatingView.type = .wholeRatings
 
         // Labels init
         liveLabel.text = String(format: "%.0f", self.floatRatingView.rating)
@@ -39,8 +39,6 @@ class RatingShort: UIViewController {
         let rating = String(format: "%.0f", self.floatRatingView.rating)
         UserDefaults.standard.set(rating, forKey: "rating")
         UserDefaults.standard.set(true, forKey: "hasRating")
-        
-        
         
         // save in CSV
         checkAllData()

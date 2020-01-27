@@ -11,13 +11,10 @@ import Foundation
 
 class RatingLong: UIViewController {
     
-    
     @IBOutlet weak var questionCollectionView: UICollectionView!
     @IBOutlet weak var submitRatingLong: UIButton!
     
     var listOfQuestions = ["Lorem ipsum dolor sit amet, amet amet et, est eu justo?", "Semper viverra nulla, aliquam quis?", "Et quis, urna nulla mauris, ornare in morbi?", "Ullamcorper fringilla tristique, nam sociosqu et?", "Egestas volutpat suspendisse, donec consequat nec?"]
-    
-    var questionRating = 0.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +26,14 @@ class RatingLong: UIViewController {
         self.questionCollectionView.register(UINib(nibName: "Questions", bundle: nil), forCellWithReuseIdentifier: "Questions")
         
         submitRatingLong.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+    }
+
+    func sendLiveRating(v: String) {
+        print("Live is \(v)")
+    }
+    
+    func sendUpdatedRating(v: String) {
+        print("Updated is \(v)")
     }
     
     @objc func buttonTapped(sender: UIButton) {
@@ -47,37 +52,16 @@ extension RatingLong: UICollectionViewDataSource, UICollectionViewDelegate {
 
         cell.questionLine.text = listOfQuestions[indexPath.row]
 
-        print("rating at \(indexPath.row) is \(cell.questionRating.rating)")
-
-        questionRating = cell.questionRating.rating
-
+        print("rating \(indexPath.row) is \(cell.questionRating.rating)")
+        
+        if(cell.questionRating.isFocused) {
+            print("self is focused \(indexPath.row)")
+        }
+        
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("you selected \(indexPath.item)")
-        
-        
-    }
-    
-}
-
-extension RatingLong: FloatRatingViewDelegate {
-    func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double) {
-
-        print("liveLabel")
-
-        let liveLabel = String(format: "%.0f", rating)
-
-        print("liveLabel is \(liveLabel)")
-    }
-
-    func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Double) {
-
-        print("updatedLabel")
-
-        let updatedLabel = String(format: "%.0f", rating)
-
-        print("updatedLabel is \(updatedLabel)")
     }
 }

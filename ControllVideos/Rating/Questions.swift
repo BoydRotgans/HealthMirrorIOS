@@ -10,33 +10,35 @@ import UIKit
 
 class Questions: UICollectionViewCell {
     
-    
     @IBOutlet weak var questionLine: UILabel!
     @IBOutlet weak var questionRating: FloatRatingView!
     
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        
+        questionRating.backgroundColor = UIColor.clear
+        questionRating.delegate = self
+        questionRating.contentMode = UIView.ContentMode.scaleAspectFit
+        questionRating.type = .wholeRatings
     }
 
 }
 
 extension Questions: FloatRatingViewDelegate {
     func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double) {
-
-        print("liveLabel")
-
         let liveLabel = String(format: "%.0f", questionRating.rating)
-
-        print("liveLabel is \(liveLabel)")
+//        print("liveLabel is \(liveLabel)")
+        RatingLong().sendLiveRating(v: liveLabel)
     }
 
     func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Double) {
-
-        print("updatedLabel")
-
         let updatedLabel = String(format: "%.0f", questionRating.rating)
-
-        print("updatedLabel is \(updatedLabel)")
+//        print("updatedLabel is \(updatedLabel)")
+        
+        RatingLong().sendUpdatedRating(v: updatedLabel)
     }
+
+    
+
 }

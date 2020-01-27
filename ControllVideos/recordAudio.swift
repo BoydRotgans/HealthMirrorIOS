@@ -26,7 +26,6 @@ extension ViewController: AVCaptureAudioDataOutputSampleBufferDelegate, AVAudioR
         return getDocumentsDirectory().appendingPathComponent(audioFileName)
     }
     
-    
     func startRecording() {
         let audioURL = getWhistleURL()
         print("start Recording")
