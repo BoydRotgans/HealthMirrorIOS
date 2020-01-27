@@ -153,6 +153,24 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Uv-8e-WuH">
+                                <rect key="frame" x="366" y="975" width="37" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="Done"/>
+                                <connections>
+                                    <segue destination="yUy-Fl-V9R" kind="show" id="Uqn-6e-JOW"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="a3B-uB-hce">
+                                <rect key="frame" x="629" y="974" width="34" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="Start"/>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gc7-iB-4hY">
+                                <rect key="frame" x="680" y="974" width="32" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="Stop"/>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -177,7 +195,10 @@
                     <connections>
                         <outlet property="Standby" destination="L8O-e9-Zbf" id="hnL-Yw-Z4j"/>
                         <outlet property="animationSwitch" destination="bb3-JZ-G2g" id="OJp-Ro-p45"/>
+                        <outlet property="doneSelection" destination="0Uv-8e-WuH" id="0YF-J4-HJY"/>
                         <outlet property="standbyButton" destination="D4k-9k-h6k" id="qMr-Gu-Vmo"/>
+                        <outlet property="startButton" destination="a3B-uB-hce" id="ytt-rR-iTF"/>
+                        <outlet property="stopButton" destination="gc7-iB-4hY" id="F6V-hp-vp1"/>
                         <outlet property="tableView" destination="T4Z-tj-fw9" id="mga-G7-qYw"/>
                     </connections>
                 </viewController>
@@ -185,10 +206,10 @@
             </objects>
             <point key="canvasLocation" x="138.28125" y="73.828125"/>
         </scene>
-        <!--Rating Card-->
+        <!--Rating Short-->
         <scene sceneID="VtV-53-L1N">
             <objects>
-                <viewController storyboardIdentifier="RatingCard" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NsR-TU-Zw7" customClass="RatingCard" customModule="ControllVideos" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RatingShort" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="NsR-TU-Zw7" customClass="RatingShort" customModule="ControllVideos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="5qz-nn-ul0">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -299,6 +320,105 @@
             </objects>
             <point key="canvasLocation" x="137.5" y="-595.3125"/>
         </scene>
+        <!--Rating Long-->
+        <scene sceneID="jfP-1k-LJr">
+            <objects>
+                <viewController storyboardIdentifier="RatingLong" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="yUy-Fl-V9R" customClass="RatingLong" customModule="ControllVideos" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wuv-dn-wnc">
+                        <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AlD-Aa-8Ii">
+                                <rect key="frame" x="359" y="974" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                <state key="normal" title="Submit"/>
+                            </button>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="39u-Gi-ej8">
+                                <rect key="frame" x="20" y="60" width="728" height="893"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="blh-ES-iOH">
+                                    <size key="itemSize" width="728" height="897"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="questionCell" id="6kr-7K-fvj" customClass="Questions" customModule="ControllVideos" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="728" height="175"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="63s-Jc-X2R">
+                                            <rect key="frame" x="0.0" y="0.0" width="728" height="175"/>
+                                            <autoresizingMask key="autoresizingMask" flexibleMinY="YES" flexibleMaxY="YES"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dlU-WA-CLb">
+                                                    <rect key="frame" x="7.4144508030349243" y="38" width="712" height="21.000000000000114"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="712" id="T2D-sQ-39C"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <view multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Of9-Bq-PYy" customClass="FloatRatingView" customModule="ControllVideos" customModuleProvider="target">
+                                                    <rect key="frame" x="219" y="67" width="288" height="44"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="288" id="OfH-cf-Oos"/>
+                                                        <constraint firstAttribute="width" secondItem="Of9-Bq-PYy" secondAttribute="height" multiplier="72:11" id="Zcn-zp-uHw"/>
+                                                        <constraint firstAttribute="height" constant="44" id="dhR-JO-Utc"/>
+                                                    </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="emptyImage" value="StarEmpty"/>
+                                                        <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="StarFull"/>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="minRating">
+                                                            <integer key="value" value="0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="maxRating">
+                                                            <integer key="value" value="5"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="number" keyPath="rating">
+                                                            <real key="value" value="0.0"/>
+                                                        </userDefinedRuntimeAttribute>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="editable" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
+                                                </view>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="dlU-WA-CLb" secondAttribute="trailing" constant="8" id="AIh-FU-Ppa"/>
+                                                <constraint firstItem="Of9-Bq-PYy" firstAttribute="centerX" secondItem="63s-Jc-X2R" secondAttribute="centerX" id="CCB-0B-POt"/>
+                                                <constraint firstAttribute="bottom" secondItem="Of9-Bq-PYy" secondAttribute="bottom" constant="40" id="Jfj-bD-Aho"/>
+                                                <constraint firstItem="dlU-WA-CLb" firstAttribute="leading" secondItem="63s-Jc-X2R" secondAttribute="leading" constant="8" id="LLH-66-67l"/>
+                                                <constraint firstItem="dlU-WA-CLb" firstAttribute="centerX" secondItem="63s-Jc-X2R" secondAttribute="centerX" id="Wjd-6d-LYg"/>
+                                                <constraint firstItem="Of9-Bq-PYy" firstAttribute="top" secondItem="dlU-WA-CLb" secondAttribute="bottom" constant="30" id="kkr-ZL-SPz"/>
+                                                <constraint firstItem="dlU-WA-CLb" firstAttribute="top" secondItem="63s-Jc-X2R" secondAttribute="top" constant="30" id="t5p-M6-iyX"/>
+                                            </constraints>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="728" height="175"/>
+                                        <connections>
+                                            <outlet property="questionLine" destination="dlU-WA-CLb" id="fcO-Wd-c09"/>
+                                            <outlet property="questionRating" destination="Of9-Bq-PYy" id="tKA-SR-3ph"/>
+                                        </connections>
+                                    </collectionViewCell>
+                                </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="yUy-Fl-V9R" id="16Y-yc-Odt"/>
+                                    <outlet property="delegate" destination="yUy-Fl-V9R" id="wQU-7m-F4o"/>
+                                </connections>
+                            </collectionView>
+                        </subviews>
+                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="79V-9P-HlN"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="CVv-JW-E08"/>
+                    <connections>
+                        <outlet property="questionCollectionView" destination="39u-Gi-ej8" id="Hoq-WT-uku"/>
+                        <outlet property="submitRatingLong" destination="AlD-Aa-8Ii" id="TXf-DK-xf0"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="X37-OM-57x" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="137.5" y="741.796875"/>
+        </scene>
     </scenes>
     <resources>
         <image name="StarEmpty" width="22" height="22"/>
@@ -306,7 +426,4 @@
         <image name="plus" catalog="system" width="64" height="56"/>
         <image name="square.and.arrow.up" catalog="system" width="56" height="64"/>
     </resources>
-    <inferredMetricsTieBreakers>
-        <segue reference="phv-KU-4N8"/>
-    </inferredMetricsTieBreakers>
 </document>

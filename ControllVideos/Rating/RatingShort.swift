@@ -1,5 +1,5 @@
 //
-//  RatingCard.swift
+//  RatingShort.swift
 //  ControllVideos
 //
 //  Created by Ferdinand Sorg on 22.01.20.
@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class RatingCard: UIViewController {
+class RatingShort: UIViewController {
     
     @IBOutlet weak var floatRatingView: FloatRatingView!
     @IBOutlet weak var liveLabel: UILabel!
@@ -18,8 +18,6 @@ class RatingCard: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
         
         // Reset float rating view's background color
         floatRatingView.backgroundColor = UIColor.clear
@@ -52,7 +50,7 @@ class RatingCard: UIViewController {
     
 }
 
-extension RatingCard: FloatRatingViewDelegate {
+extension RatingShort: FloatRatingViewDelegate {
     
     func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double) {
         liveLabel.text = String(format: "%.0f", self.floatRatingView.rating)

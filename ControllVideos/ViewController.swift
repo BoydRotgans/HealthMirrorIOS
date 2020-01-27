@@ -25,11 +25,14 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
     
     @IBOutlet weak var animationSwitch: UISwitch!
     @IBOutlet weak var standbyButton: UIButton!
-//    @IBOutlet weak var saveToCSV: UIButton!
-    
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var doneSelection: UIButton!
     @IBOutlet weak var Standby: UIView!
+    
+    // audio recording
+    var recordingSession: AVAudioSession!
+    var whistleRecorder: AVAudioRecorder!
+    var playAudio: AVAudioPlayer!
     
     
     //timer
@@ -62,6 +65,30 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
         // set Standby Button
         standbyButton.addTarget(self, action: #selector(checkStandby), for: .touchUpInside)
         self.view.addSubview(standbyButton)
+        
+        doneSelection.addTarget(self, action: #selector(pressedDoneSelection), for: .touchUpInside)
+        self.view.addSubview(doneSelection)
+        
+        // audio recording session
+        recordingSession = AVAudioSession.sharedInstance()
+        do {
+            try recordingSession.setCategory(.playAndRecord, mode: .default)
+            try recordingSession.setActive(true)
+            recordingSession.requestRecordPermission() { [unowned self] allowed in
+                DispatchQueue.main.async {
+                    if allowed {
+                        //self.loadRecordingUI()
+                    } else {
+                        // failed to record!
+                    }
+                }
+            }
+        } catch {
+            // failed to record!
+        }
+        
+        // record audio when ViewController is active
+        startRecording()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -69,6 +96,10 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
         if(hasRating) {
             self.tableView.reloadData()
         }
+    }
+    
+    @objc func pressedDoneSelection() {
+        finishRecording(success: true)
     }
     
     @objc func checkStandby() {
@@ -167,11 +198,13 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
     }
     
     func playerViewController(_ playerViewController: AVPlayerViewController, willEndFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        print("hi im done here")
+        self.pause()
+        self.terminateTimerAndSave()
+        print("video ended fullscreen")
         
-        // show Rating Card
+        // show Rating Short
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RatingCard")
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RatingShort")
         self.present(nextViewController, animated:true, completion:nil)
     }
 
@@ -183,7 +216,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
 
         // show Rating Card
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RatingCard")
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RatingShort")
         self.present(nextViewController, animated:true, completion:nil)
     }
 
