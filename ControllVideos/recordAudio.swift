@@ -20,7 +20,9 @@ extension ViewController: AVCaptureAudioDataOutputSampleBufferDelegate, AVAudioR
         formatter.timeZone = TimeZone.current
         formatter.dateFormat = "yyyy-MM-dd_HH-mm-ss"
         let timestamp = formatter.string(from: now)
-        let audioFileName = "recording-\(timestamp).m4a"
+        let sessionID = UserDefaults.standard.string(forKey: "sessionID") ?? ""
+        
+        let audioFileName = "\(sessionID)-recording-\(timestamp).m4a"
         print("recording time: \(timestamp)")
         
         return getDocumentsDirectory().appendingPathComponent(audioFileName)
@@ -29,6 +31,7 @@ extension ViewController: AVCaptureAudioDataOutputSampleBufferDelegate, AVAudioR
     func startRecording() {
         let audioURL = getWhistleURL()
         print("start Recording")
+        UserDefaults.standard.set(true, forKey: "isRecording")
         
         let settings = [
             AVFormatIDKey: Int(kAudioFormatMPEG4AAC),
@@ -54,8 +57,17 @@ extension ViewController: AVCaptureAudioDataOutputSampleBufferDelegate, AVAudioR
     }
     
     func finishRecording(success: Bool) {
-        whistleRecorder.stop()
-        whistleRecorder = nil
+        // check if a recording is on going
+        let isRecording = UserDefaults.standard.bool(forKey: "isRecording")
+        
+        if isRecording {
+            // stop recording
+            whistleRecorder.stop()
+            whistleRecorder = nil
+            
+            // reset recording session
+            UserDefaults.standard.set(false, forKey: "isRecording")
+        }
         
         print("finish Recording")
     }

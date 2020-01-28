@@ -27,22 +27,26 @@ class RatingLong: UIViewController {
         
         submitRatingLong.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
     }
-
-    func sendLiveRating(v: String) {
-        print("Live is \(v)")
-    }
-    
-    func sendUpdatedRating(v: String) {
-        print("Updated is \(v)")
-    }
     
     @objc func buttonTapped(sender: UIButton) {
-        print("submitted")
+        let finalRating = UserDefaults.standard.array(forKey: "QuestionRating") as? [Int] ?? [Int]()
+        
+        checkQuestionData()
+        
+        print("submitted with Rating: \(finalRating)")
+        
+        self.dismiss(animated: true, completion: nil)
+        
+//        for (index, rating) in finalRating.enumerated() {
+//            finalRating[index] = 0
+//        }
+//
+//        print("resetet Rating: \(finalRating)")
     }
 }
 
 extension RatingLong: UICollectionViewDataSource, UICollectionViewDelegate {
-
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return listOfQuestions.count
     }
@@ -50,18 +54,17 @@ extension RatingLong: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "questionCell", for: indexPath) as! Questions
 
+        // show question
         cell.questionLine.text = listOfQuestions[indexPath.row]
 
-        print("rating \(indexPath.row) is \(cell.questionRating.rating)")
-        
-        if(cell.questionRating.isFocused) {
-            print("self is focused \(indexPath.row)")
-        }
-        
+        // tag rating with ID
+        cell.questionRating.tag = indexPath.row
+
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("you selected \(indexPath.item)")
     }
+    
 }
