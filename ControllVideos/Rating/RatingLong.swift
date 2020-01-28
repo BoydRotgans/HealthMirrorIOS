@@ -35,13 +35,11 @@ class RatingLong: UIViewController {
         
         print("submitted with Rating: \(finalRating)")
         
-        self.dismiss(animated: true, completion: nil)
+//        self.dismiss(animated: true, completion: nil)
         
-//        for (index, rating) in finalRating.enumerated() {
-//            finalRating[index] = 0
-//        }
-//
-//        print("resetet Rating: \(finalRating)")
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "UserBoard") as UIViewController
+        present(vc, animated: true, completion: nil)
     }
 }
 

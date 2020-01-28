@@ -1,5 +1,5 @@
 //
-//  saveCSV.swift
+//  saveQuestionsCSV.swift
 //  ControllVideos
 //
 //  Created by Ferdinand Sorg on 20.01.20.
@@ -30,6 +30,20 @@ func checkQuestionData() {
     // get Question Rating
     let questionRatingData = UserDefaults.standard.array(forKey: "QuestionRating") as? [Int] ?? [Int]()
     
+    // define Headerline
+    var header = ["ID", "sessionID", "timestamp"]
+    
+    for (index, _) in questionRatingData.enumerated() {
+        header.append("Question \(index+1)")
+    }
+    
+    // get meta Data
+    let metaData = [String(ID), sessionID, timestamp]
+    let formattedQuestionRatingData:Array<String> = questionRatingData.map(String.init)
+    
+    // array of data to save
+    let completeDataString = metaData + formattedQuestionRatingData
+    
     // get path + file
     let path = getDocumentsDirectory()
     let trackingData = path.appendingPathComponent("questionData.csv")
@@ -40,11 +54,11 @@ func checkQuestionData() {
     let writeCSV = try! CSVWriter(stream: writeStream)
     
     if !exists {
-        try! writeCSV.write(row: ["ID", "sessionID", "timestamp", "Question 1", "Question 2", "Question 3", "Question 4", "Question 5"])
+        try! writeCSV.write(row: header)
     }
     
     // crate file and write header row
-    try! writeCSV.write(row: [String(ID), sessionID, timestamp, String(questionRatingData[0]), String(questionRatingData[1]), String(questionRatingData[2]), String(questionRatingData[3]), String(questionRatingData[4])])
+    try! writeCSV.write(row: completeDataString)
     
     let data = [UInt8](writeCSV.configuration.newline.utf8)
     writeCSV.stream.write(data, maxLength: data.count)

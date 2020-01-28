@@ -11,7 +11,7 @@
         <!--UserBoard-->
         <scene sceneID="hVh-qi-bIv">
             <objects>
-                <viewController title="UserBoard" id="7VG-0F-GNZ" customClass="UserBoardViewController" customModule="ControllVideos" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="UserBoard" title="UserBoard" modalPresentationStyle="fullScreen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="7VG-0F-GNZ" customClass="UserBoardViewController" customModule="ControllVideos" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="7sQ-fk-UDl">
                         <rect key="frame" x="0.0" y="0.0" width="768" height="1024"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
