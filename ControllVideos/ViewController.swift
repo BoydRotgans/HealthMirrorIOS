@@ -12,6 +12,7 @@ import AVFoundation
 import MessageUI
 import CSV
 
+
 var listOfVideos = ["Toothbrush", "Showering", "Face Washing"]
 var listOfVideoPath = ["example-1", "example-2", "example-3"]
 
@@ -43,6 +44,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
     var timer: Timer?
     var timeElapsed = Double()
     var timeStopped = Double()
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,10 +95,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        NotificationCenter.default.addObserver(self, selector: #selector(self.viewWasDone), name: NSNotification.Name("viewDidDisappearNow"), object: nil)
+        
         let hasRating = UserDefaults.standard.bool(forKey: "hasRating")
         if(hasRating) {
             self.tableView.reloadData()
         }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name("viewDidDisappearNow"), object: nil)
     }
     
     @objc func pressedDoneSelection() {
@@ -167,20 +176,24 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
         
         if let path = Bundle.main.path(forResource: checkVideoType(id: id), ofType: "mp4") {
             let video = AVPlayer(url: URL(fileURLWithPath: path))
-            let videoPlayer = AVPlayerViewController()
+            let videoPlayer = myVideoPlayer()
             videoPlayer.player = video
             videoPlayer.showsPlaybackControls = false
             videoPlayer.contentOverlayView?.addSubview(closeInFullscreen)
             videoPlayer.delegate = self
             
+            
             present(videoPlayer, animated: true, completion: {
+                print("play")
                 video.play()
                 self.startTimer()
                 
+           
                 // Save video name to UserDefaults
                 UserDefaults.standard.set(listOfVideos[id], forKey: "video")
             })
             
+
             NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: video.currentItem, queue: .main) {_ in
                 // loop video
                 video.seek(to: CMTime.zero)
@@ -188,6 +201,19 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
             }
         }
         
+    }
+        
+
+    @objc func viewWasDone() {
+        
+         self.pause()
+         self.terminateTimerAndSave()
+         print("video ended fullscreen")
+
+         // show Rating Short
+         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RatingShort")
+         self.present(nextViewController, animated:true, completion:nil)
     }
     
     func playerViewController(_ playerViewController: AVPlayerViewController, willEndFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
