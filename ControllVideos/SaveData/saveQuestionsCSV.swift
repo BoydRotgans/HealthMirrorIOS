@@ -64,4 +64,56 @@ func checkQuestionData() {
     writeCSV.stream.write(data, maxLength: data.count)
     
     writeCSV.stream.close()
+    
+    
+    
+//    loadAndShare()
+    
+    
+    
+    // share generated file
+//    print("share generated file")
+//
+//    let str = RatingLong().descriptionText.text
+////    var filename = getDocumentsDirectory().stringByAppendingPathComponent("questionData.csv")
+//    var filename = (getDirectoryPath() as NSString).appendingPathComponent("questionData.csv")
+//    
+//    do {
+//        try str.writeToFile(filename!, atomically: true, encoding: NSUTF8StringEncoding)
+//
+//        let fileURL = NSURL(fileURLWithPath: filename)
+//
+//        let objectsToShare = [fileURL]
+//        let activityVC = UIActivityViewController(activityItems: objectsToShare, applicationActivities: nil)
+//
+//        RatingLong().present(activityVC, animated: true, completion: nil)
+//
+//    } catch {
+//        print("cannot write file")
+//        // failed to write file – bad permissions, bad filename, missing permissions, or more likely it can't be converted to the encoding
+//    }
 }
+
+//func getDirectoryPath() -> String { let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+//    let documentsDirectory = paths[0]
+//    return documentsDirectory
+//}
+//
+//func loadAndShare() {
+//    print("load and share")
+//
+//    let fileManager = FileManager.default
+//    let documentoPath = (getDirectoryPath() as NSString).appendingPathComponent("questionData.csv")
+//
+//    print("documentoPath is \(documentoPath)")
+//
+//    if fileManager.fileExists(atPath: documentoPath){
+//        let documento = NSData(contentsOfFile: documentoPath)
+//        let activityViewController: UIActivityViewController = UIActivityViewController(activityItems: [documento!], applicationActivities: nil)
+//        activityViewController.popoverPresentationController?.sourceView=RatingLong().view
+//        RatingLong().present(activityViewController, animated: true, completion: nil)
+//    }
+//    else {
+//        print("document was not found")
+//    }
+//}

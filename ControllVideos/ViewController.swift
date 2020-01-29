@@ -133,10 +133,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
         }
     }
     
-    @objc func buttonTapped(sender: UIButton) {
-        playVideo(id: sender.tag)
-    }
-    
     @objc func switchIsChanged(switchButton: UISwitch) {
         var animationStatus:Bool
         if switchButton.isOn {
@@ -148,15 +144,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
         }
     }
     
-    func playVideo(id: Int) {
-
-        let closeInFullscreen = UIButton()
-        closeInFullscreen.frame = CGRect(x: 20, y: 20, width: 50, height: 50)
-        closeInFullscreen.setTitle("X", for: .normal)
-        closeInFullscreen.setTitleColor(UIColor.white, for: .normal)
-        closeInFullscreen.addTarget(self, action: #selector(videoDidEnd), for: .touchUpInside)
-
-
+    func checkVideoType(id: Int) -> String {
+        
         // check from UserDefaults if Switch of Animation is ON or OFF
         var name = listOfVideoPath[id]
         if let animationSwitch = UserDefaults.standard.string(forKey: "animationStatus") {
@@ -164,8 +153,19 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
                 name = "\(listOfVideoPath[id])-animation"
             }
         }
-
-        if let path = Bundle.main.path(forResource: name, ofType: "mp4") {
+        
+        return name
+    }
+    
+    func playVideo(id: Int) {
+        
+        let closeInFullscreen = UIButton()
+        closeInFullscreen.frame = CGRect(x: 20, y: 20, width: 50, height: 50)
+        closeInFullscreen.setTitle("X", for: .normal)
+        closeInFullscreen.setTitleColor(UIColor.white, for: .normal)
+        closeInFullscreen.addTarget(self, action: #selector(videoDidEnd), for: .touchUpInside)
+        
+        if let path = Bundle.main.path(forResource: checkVideoType(id: id), ofType: "mp4") {
             let video = AVPlayer(url: URL(fileURLWithPath: path))
             let videoPlayer = AVPlayerViewController()
             videoPlayer.player = video
@@ -176,25 +176,18 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
             present(videoPlayer, animated: true, completion: {
                 video.play()
                 self.startTimer()
-
+                
                 // Save video name to UserDefaults
                 UserDefaults.standard.set(listOfVideos[id], forKey: "video")
             })
-
+            
             NotificationCenter.default.addObserver(forName: .AVPlayerItemDidPlayToEndTime, object: video.currentItem, queue: .main) {_ in
                 // loop video
                 video.seek(to: CMTime.zero)
                 video.play()
             }
-            
-            
-            
-
-//            NotificationCenter.default.addObserver(self, selector: #selector(videoDidEnd), name: UIWindow.didBecomeHiddenNotification, object: self.view.window)
-
-            //            NotificationCenter.default.addObserver(self, selector: #selector(videoDidEnd), name: NSNotification.Name.AVPlayerItemDidPlayToEndTime, object: nil)
         }
-
+        
     }
     
     func playerViewController(_ playerViewController: AVPlayerViewController, willEndFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
@@ -202,10 +195,12 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
         self.terminateTimerAndSave()
         print("video ended fullscreen")
         
-        // show Rating Short
-        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RatingShort")
-        self.present(nextViewController, animated:true, completion:nil)
+        
+        
+//        // show Rating Short
+//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RatingShort")
+//        self.present(nextViewController, animated:true, completion:nil)
     }
 
     @objc func videoDidEnd(notification: NSNotification, didFinishWith result: NSNotification, error: Error?) {

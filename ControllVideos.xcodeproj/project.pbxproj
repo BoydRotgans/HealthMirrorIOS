@@ -26,6 +26,8 @@
 		23B1305823D5DE1600B6AC50 /* example-3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 23B1305523D5DE1600B6AC50 /* example-3.mp4 */; };
 		23B1305923D5DE1600B6AC50 /* example-1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 23B1305623D5DE1600B6AC50 /* example-1.mp4 */; };
 		23B1306B23D6FEAE00B6AC50 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B1306A23D6FEAE00B6AC50 /* FloatRatingView.swift */; };
+		23C531A923E0908300A823E3 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 23C531A823E0908300A823E3 /* ZIPFoundation */; };
+		23D111EA23E1DA5400E50EA7 /* shareData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D111E923E1DA5400E50EA7 /* shareData.swift */; };
 		23E95E2623DF09F0009047CD /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E95E2423DF09F0009047CD /* Questions.swift */; };
 		23E95E2723DF09F0009047CD /* Questions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23E95E2523DF09F0009047CD /* Questions.xib */; };
 		23E95E2923DF228C009047CD /* recordAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E95E2823DF228C009047CD /* recordAudio.swift */; };
@@ -56,6 +58,7 @@
 		23B1305523D5DE1600B6AC50 /* example-3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-3.mp4"; path = "../example-3.mp4"; sourceTree = "<group>"; };
 		23B1305623D5DE1600B6AC50 /* example-1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-1.mp4"; path = "../example-1.mp4"; sourceTree = "<group>"; };
 		23B1306A23D6FEAE00B6AC50 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
+		23D111E923E1DA5400E50EA7 /* shareData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shareData.swift; sourceTree = "<group>"; };
 		23E95E2423DF09F0009047CD /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		23E95E2523DF09F0009047CD /* Questions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Questions.xib; sourceTree = "<group>"; };
 		23E95E2823DF228C009047CD /* recordAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordAudio.swift; sourceTree = "<group>"; };
@@ -71,6 +74,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				237356A023D8511800D9F5DF /* CSV in Frameworks */,
+				23C531A923E0908300A823E3 /* ZIPFoundation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				237356A823D8999200D9F5DF /* sendAttachedMail.swift */,
+				23D111E923E1DA5400E50EA7 /* shareData.swift */,
 				234E76A023E0670700953445 /* saveQuestionsCSV.swift */,
 				237356A623D8621D00D9F5DF /* saveCSV.swift */,
 			);
@@ -184,6 +189,7 @@
 			name = ControllVideos;
 			packageProductDependencies = (
 				2373569F23D8511800D9F5DF /* CSV */,
+				23C531A823E0908300A823E3 /* ZIPFoundation */,
 			);
 			productName = ControllVideos;
 			productReference = 23B1303D23D5D99B00B6AC50 /* ControllVideos.app */;
@@ -215,6 +221,7 @@
 			mainGroup = 23B1303423D5D99B00B6AC50;
 			packageReferences = (
 				2373569E23D8511800D9F5DF /* XCRemoteSwiftPackageReference "CSV" */,
+				23C531A723E0908300A823E3 /* XCRemoteSwiftPackageReference "ZIPFoundation" */,
 			);
 			productRefGroup = 23B1303E23D5D99B00B6AC50 /* Products */;
 			projectDirPath = "";
@@ -251,6 +258,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				23D111EA23E1DA5400E50EA7 /* shareData.swift in Sources */,
 				237356A523D85A2900D9F5DF /* RatingShort.swift in Sources */,
 				23B1304523D5D99B00B6AC50 /* ViewController.swift in Sources */,
 				23B1304123D5D99B00B6AC50 /* AppDelegate.swift in Sources */,
@@ -472,6 +480,14 @@
 				minimumVersion = 2.4.2;
 			};
 		};
+		23C531A723E0908300A823E3 /* XCRemoteSwiftPackageReference "ZIPFoundation" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/weichsel/ZIPFoundation.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.9.10;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -479,6 +495,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 2373569E23D8511800D9F5DF /* XCRemoteSwiftPackageReference "CSV" */;
 			productName = CSV;
+		};
+		23C531A823E0908300A823E3 /* ZIPFoundation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 23C531A723E0908300A823E3 /* XCRemoteSwiftPackageReference "ZIPFoundation" */;
+			productName = ZIPFoundation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

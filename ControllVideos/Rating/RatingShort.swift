@@ -12,8 +12,8 @@ import Foundation
 class RatingShort: UIViewController {
     
     @IBOutlet weak var floatRatingView: FloatRatingView!
-    @IBOutlet weak var liveLabel: UILabel!
-    @IBOutlet weak var updatedLabel: UILabel!
+//    @IBOutlet weak var liveLabel: UILabel!
+//    @IBOutlet weak var updatedLabel: UILabel!
     @IBOutlet weak var submitRating: UIButton!
     
     override func viewDidLoad() {
@@ -29,8 +29,8 @@ class RatingShort: UIViewController {
         self.floatRatingView.type = .wholeRatings
 
         // Labels init
-        liveLabel.text = String(format: "%.0f", self.floatRatingView.rating)
-        updatedLabel.text = String(format: "%.0f", self.floatRatingView.rating)
+//        liveLabel.text = String(format: "%.0f", self.floatRatingView.rating)
+//        updatedLabel.text = String(format: "%.0f", self.floatRatingView.rating)
         
         submitRating.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
     }
@@ -51,11 +51,11 @@ class RatingShort: UIViewController {
 extension RatingShort: FloatRatingViewDelegate {
     
     func floatRatingView(_ ratingView: FloatRatingView, isUpdating rating: Double) {
-        liveLabel.text = String(format: "%.0f", self.floatRatingView.rating)
+//        liveLabel.text = String(format: "%.0f", self.floatRatingView.rating)
     }
     
     func floatRatingView(_ ratingView: FloatRatingView, didUpdate rating: Double) {
-        updatedLabel.text = String(format: "%.0f", self.floatRatingView.rating)
+//        updatedLabel.text = String(format: "%.0f", self.floatRatingView.rating)
     }
     
 }

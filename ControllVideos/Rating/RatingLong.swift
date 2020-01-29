@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class RatingLong: UIViewController {
+class RatingLong: UIViewController, UIDocumentInteractionControllerDelegate {
     
     @IBOutlet weak var questionCollectionView: UICollectionView!
     @IBOutlet weak var submitRatingLong: UIButton!
@@ -38,9 +38,42 @@ class RatingLong: UIViewController {
 //        self.dismiss(animated: true, completion: nil)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "UserBoard") as UIViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "startView") as UIViewController
         present(vc, animated: true, completion: nil)
     }
+    
+    final private let contentString = "hello bla bla..."
+    
+    
+    @IBAction func shareContent(_ sender: Any) {
+        print("hello")
+        
+//        let activityController = UIActivityViewController(activityItems: [contentString], applicationActivities: nil)
+//        
+//        print("hello2")
+//        
+//        activityController.completionWithItemsHandler = { (nil, completed, _, error)
+//            in
+//            if completed {
+//                print("completed")
+//            } else {
+//                print("cancled")
+//            }
+//        }
+//        
+//        print("hello3")
+//        
+////        present(activityController, animated: true) {
+////            print("presented")
+////        }
+//        
+//        present(activityController, animated: true) {
+//            print("presented")
+//        }
+        
+    }
+    
+    
 }
 
 extension RatingLong: UICollectionViewDataSource, UICollectionViewDelegate {

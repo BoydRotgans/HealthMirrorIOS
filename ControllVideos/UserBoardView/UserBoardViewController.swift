@@ -15,7 +15,7 @@ class UserBoardViewController: UIViewController {
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var addUserButton: UIButton!
     
-    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var shareData: UIBarButtonItem!
     
     var dataArray = [] as [String]
     
@@ -24,8 +24,9 @@ class UserBoardViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        shareButton.addTarget(self, action: #selector(sendEmail), for: .touchUpInside)
+        
+//        self.navigationController?.setToolbarHidden(false, animated: false)
+//        self.setToolbarItems([shareData], animated: true)
         
         // set delegates
         self.collectionView.delegate = self
