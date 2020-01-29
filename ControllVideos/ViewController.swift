@@ -216,18 +216,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
          self.present(nextViewController, animated:true, completion:nil)
     }
     
-    func playerViewController(_ playerViewController: AVPlayerViewController, willEndFullScreenPresentationWithAnimationCoordinator coordinator: UIViewControllerTransitionCoordinator) {
-        self.pause()
-        self.terminateTimerAndSave()
-        print("video ended fullscreen")
-        
-        
-        
-//        // show Rating Short
-//        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-//        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RatingShort")
-//        self.present(nextViewController, animated:true, completion:nil)
-    }
+
 
     @objc func videoDidEnd(notification: NSNotification, didFinishWith result: NSNotification, error: Error?) {
         self.pause()
