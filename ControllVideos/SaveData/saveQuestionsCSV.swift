@@ -20,12 +20,8 @@ func checkQuestionData() {
     // get sessionID
     let sessionID = UserDefaults.standard.string(forKey: "sessionID") ?? "no sessionID data"
     
-    // get timestamp
-    let now = Date()
-    let formatter = DateFormatter()
-    formatter.timeZone = TimeZone.current
-    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-    let timestamp = formatter.string(from: now)
+    // get startTimestamp
+    let startTimestamp = UserDefaults.standard.string(forKey: "startTimestamp") ?? "no startTimestamp data"
     
     // get Question Rating
     let questionRatingData = UserDefaults.standard.array(forKey: "QuestionRating") as? [Int] ?? [Int]()
@@ -38,7 +34,7 @@ func checkQuestionData() {
     }
     
     // get meta Data
-    let metaData = [String(ID), sessionID, timestamp]
+    let metaData = [String(ID), sessionID, startTimestamp]
     let formattedQuestionRatingData:Array<String> = questionRatingData.map(String.init)
     
     // array of data to save

@@ -25,7 +25,10 @@ class UserBoardViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
-    @IBOutlet weak var shareData: UIBarButtonItem!
+//    @IBOutlet weak var shareData: UIBarButtonItem!
+//    @IBOutlet weak var generateZip: UIBarButtonItem!
+    
+    
     
     var dataArray = [] as [DataHolder]
     
@@ -37,6 +40,8 @@ class UserBoardViewController: UIViewController {
         
 //        self.navigationController?.setToolbarHidden(false, animated: false)
 //        self.setToolbarItems([shareData], animated: true)
+        
+//        self.generateZip.action(self, action: #selector(pressedgenerateZip), for: .touchUpInside)
         
         // set delegates
         self.collectionView.delegate = self
@@ -72,6 +77,10 @@ class UserBoardViewController: UIViewController {
         
         // setupGride view
         self.setupGridView()
+    }
+    
+    @objc func pressedgenerateZip() {
+        print("hello")
     }
     
     func checkIfCompleted(name: String) -> Bool {

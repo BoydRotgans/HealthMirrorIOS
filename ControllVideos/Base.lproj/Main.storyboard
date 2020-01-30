@@ -38,6 +38,13 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Sc-hj-BxD">
+                                <rect key="frame" x="0.0" y="0.0" width="768" height="44"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <items>
+                                    <navigationItem title="User" id="XUS-lU-FNP"/>
+                                </items>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <viewLayoutGuide key="safeArea" id="2ol-Az-yOy"/>
@@ -45,7 +52,7 @@
                     <toolbarItems>
                         <barButtonItem title="Generate ZIP" style="plain" id="sGJ-kb-zoF">
                             <connections>
-                                <action selector="shareWithSender:" destination="7VG-0F-GNZ" id="Cq2-Xb-v0l"/>
+                                <action selector="shareWithSender:" destination="7VG-0F-GNZ" id="Oaz-eM-kdT"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="0VG-T6-W1M"/>
@@ -60,7 +67,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="g9I-RS-5tU" id="utQ-vk-umu"/>
-                        <outlet property="shareData" destination="sGJ-kb-zoF" id="j1t-QA-oD6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C48-oh-5Ub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -100,15 +106,6 @@
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" backIndicatorImage="arrow.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="87H-9i-aH8">
-                                <rect key="frame" x="0.0" y="-6" width="768" height="50"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
-                                <items>
-                                    <navigationItem title="Back" leftItemsSupplementBackButton="YES" id="T7Z-gd-RKh">
-                                        <barButtonItem key="backBarButtonItem" title="yes" id="IqL-QC-WfJ"/>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0DH-16-jSZ">
                                 <rect key="frame" x="91" y="60" width="34" height="30"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -131,6 +128,13 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" backIndicatorImage="arrow.left" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="87H-9i-aH8">
+                                <rect key="frame" x="0.0" y="-6" width="768" height="50"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <textAttributes key="titleTextAttributes">
+                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                </textAttributes>
+                            </navigationBar>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>

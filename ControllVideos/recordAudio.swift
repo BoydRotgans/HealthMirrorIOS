@@ -22,8 +22,11 @@ extension ViewController: AVCaptureAudioDataOutputSampleBufferDelegate, AVAudioR
         let timestamp = formatter.string(from: now)
         let sessionID = UserDefaults.standard.string(forKey: "sessionID") ?? ""
         
-        let audioFileName = "\(sessionID)-recording-\(timestamp).m4a"
+        let audioFileName = "\(sessionID)-recording.m4a"
         print("recording time: \(timestamp)")
+        
+        // save start Time of Recording
+        UserDefaults.standard.set(timestamp, forKey: "startTimestamp")
         
         return getDocumentsDirectory().appendingPathComponent(audioFileName)
     }

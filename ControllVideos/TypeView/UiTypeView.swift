@@ -20,6 +20,7 @@ class UiTypeView: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         // check csv
         self.calculateSessions()
  
@@ -84,7 +85,9 @@ class UiTypeView: UIViewController {
         
     }
     
- 
+//     @objc func backAction() {
+//         print("backkkk")
+//     }
     
     @objc func clickMirror() {
         UserDefaults.standard.set("mirror", forKey: "selectedType")

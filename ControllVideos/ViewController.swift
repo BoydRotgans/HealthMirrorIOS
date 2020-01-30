@@ -328,6 +328,15 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         UserDefaults.standard.set(false, forKey: "hasRating")
         
+        let now = Date()
+        let formatter = DateFormatter()
+        formatter.timeZone = TimeZone.current
+        formatter.dateFormat = "yyyy-MM-dd_HH-mm-ss"
+        let timestamp = formatter.string(from: now)
+        
+        UserDefaults.standard.set(timestamp, forKey: "startVideoPlayTimestamp")
+        print("startVideoPlayTimestamp is \(timestamp)")
+        
         print("selected \(indexPath.row) -> \(listOfVideos[indexPath.row])")
         self.playVideo(id: indexPath.row)
     }
