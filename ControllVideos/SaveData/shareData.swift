@@ -11,9 +11,15 @@ import UIKit
 
 extension UserBoardViewController {
     
+    
+    
     // share Data with UIActivityViewController
     
     @IBAction func share(sender: AnyObject) {
+        
+        generateZipFile()
+        
+//        self.textInput = "generate Zip"
         
         let ZipFileURL = UserDefaults.standard.string(forKey: "ZipFileURL") ?? "no ZipFile exist"
         let fileURL = NSURL(fileURLWithPath: ZipFileURL)

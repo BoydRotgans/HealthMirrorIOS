@@ -33,8 +33,6 @@ class RatingLong: UIViewController, UIDocumentInteractionControllerDelegate {
         
         checkQuestionData()
         
-        generateZipFile()
-        
         print("submitted with Rating: \(finalRating)")
         
 //        self.dismiss(animated: true, completion: nil)
