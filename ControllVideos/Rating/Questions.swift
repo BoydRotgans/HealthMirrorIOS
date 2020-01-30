@@ -19,7 +19,6 @@ class Questions: UICollectionViewCell {
         super.awakeFromNib()
         // Initialization code
         
-        
         let numberOfQuestions = RatingLong().listOfQuestions.count
         arrayOfRatings = Array(repeating: 0, count: numberOfQuestions)
         

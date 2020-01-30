@@ -31,6 +31,15 @@ class UiTypeView: UIViewController {
         self.calculateSessions()
     }
     
+    @IBAction func backButtonPressed(_ sender: Any) {
+        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "startView") as UIViewController
+        vc.modalTransitionStyle = .flipHorizontal
+        present(vc, animated: true, completion: nil)
+        
+    }
+    
     func calculateSessions() {
             
         // csv data path
@@ -71,14 +80,14 @@ class UiTypeView: UIViewController {
         countingMirrorLabel.text = "\(sessionsArrayMirror.count) / 10"
         
         if( sessionsArrayMirror.count >= 10) {
-            countingMirrorLabel.text = "✓ Completed \(sessionsArrayMirror.count) / 10"
+            countingMirrorLabel.text = "✓ Compleet \(sessionsArrayMirror.count) / 10"
             countingMirrorLabel.textColor = UIColor.init(red: 34.0/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)
         }
         
         countingStandLabel.text = "\(sessionsArrayStand.count) / 10"
         
         if( sessionsArrayStand.count >= 10) {
-            countingStandLabel.text = "✓ Completed \(sessionsArrayStand.count) / 10"
+            countingStandLabel.text = "✓ Compleet \(sessionsArrayStand.count) / 10"
             countingStandLabel.textColor = UIColor.init(red: 34.0/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)
         }
         
@@ -102,6 +111,7 @@ class UiTypeView: UIViewController {
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "ViewController") as! ViewController
         newViewController.modalPresentationStyle = .fullScreen
+        
         self.present(newViewController, animated: true, completion: nil)
     }
     
