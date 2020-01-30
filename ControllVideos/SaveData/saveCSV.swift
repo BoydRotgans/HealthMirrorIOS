@@ -20,11 +20,7 @@ func checkAllData() {
     let sessionID = UserDefaults.standard.string(forKey: "sessionID") ?? "no sessionID data"
     
     // get timestamp
-    let now = Date()
-    let formatter = DateFormatter()
-    formatter.timeZone = TimeZone.current
-    formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
-    let timestamp = formatter.string(from: now)
+    let timestamp = UserDefaults.standard.string(forKey: "startVideoPlayTimestamp") ?? "no startVideoPlayTimestamp data"
     
     //get user
 //    let randomUser = ["Suellen", "Rita", "Jamika", "Minh", "Tenesha"]
