@@ -25,7 +25,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
     }
     
     @IBOutlet weak var animationSwitch: UISwitch!
-    @IBOutlet weak var standbyButton: UIButton!
+    //@IBOutlet weak var standbyButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var doneSelection: UIButton!
     @IBOutlet weak var Standby: UIView!
@@ -65,8 +65,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
         self.view.addSubview(animationSwitch)
 
         // set Standby Button
-        standbyButton.addTarget(self, action: #selector(checkStandby), for: .touchUpInside)
-        self.view.addSubview(standbyButton)
+        //standbyButton.addTarget(self, action: #selector(checkStandby), for: .touchUpInside)
+        //self.view.addSubview(standbyButton)
         
         doneSelection.addTarget(self, action: #selector(pressedDoneSelection), for: .touchUpInside)
         self.view.addSubview(doneSelection)

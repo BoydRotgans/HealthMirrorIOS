@@ -38,8 +38,12 @@ class RatingLong: UIViewController, UIDocumentInteractionControllerDelegate {
 //        self.dismiss(animated: true, completion: nil)
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyboard.instantiateViewController(withIdentifier: "startView") as UIViewController
+        let vc = storyboard.instantiateViewController(withIdentifier: "startScreen") as UIViewController
+        vc.modalTransitionStyle = .flipHorizontal
+        
         present(vc, animated: true, completion: nil)
+        
+        
     }
     
     final private let contentString = "hello bla bla..."
