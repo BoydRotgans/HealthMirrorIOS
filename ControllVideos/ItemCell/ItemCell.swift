@@ -10,7 +10,6 @@ import UIKit
 
 class ItemCell: UICollectionViewCell {
     
-//    @IBOutlet weak var userButton: UIButton!
     @IBOutlet weak var label: UILabel!
     
     override func awakeFromNib() {
@@ -22,8 +21,8 @@ class ItemCell: UICollectionViewCell {
         self.label.backgroundColor = .link
         
         if(completed) {
-            self.label.backgroundColor = UIColor.init(red: 34.0/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)
             self.label.text = "✓ \(text)"
+            self.label.backgroundColor = UIColor.init(red: 34.0/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)
         }
         
     }

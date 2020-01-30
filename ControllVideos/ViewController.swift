@@ -13,17 +13,12 @@ import MessageUI
 import CSV
 
 
-var listOfVideos = ["Toothbrush", "Showering", "Face Washing"]
+var listOfVideos = ["Tandenpoetsen", "Douchen", "Gezicht wassen"]
 var listOfVideoPath = ["example-1", "example-2", "example-3"]
 
 class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerViewControllerDelegate {
     
-    // check Status Bar
-    var isStatusBarHidden: Bool = false
-    override var prefersStatusBarHidden: Bool {
-        return self.isStatusBarHidden
-    }
-    
+
     @IBOutlet weak var animationSwitch: UISwitch!
     //@IBOutlet weak var standbyButton: UIButton!
     @IBOutlet weak var tableView: UITableView!
@@ -91,6 +86,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
         
         // record audio when ViewController is active
         startRecording()
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -108,37 +104,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
     
     @objc func pressedDoneSelection() {
         finishRecording(success: true)
-    }
-    
-    @objc func checkStandby() {
-        
-        let currentTime = Date()
-        
-        func formatter(time: Date) -> String {
-            let formatter = DateFormatter()
-            formatter.dateFormat = "HH"
-            return formatter.string(from: time)
-        }
-        
-        let cTimeHH:Int = Int(formatter(time: currentTime))!
-        
-        print("time is \(cTimeHH)")
-        
-        if cTimeHH > 07 && cTimeHH < 14 {
-            print("it is \(cTimeHH) -> NOT Standby")
-        } else {
-            print("it is \(cTimeHH) -> Standby")
-            
-            // enable Standby
-            Standby.isHidden = !Standby.isHidden
-            view.bringSubviewToFront(Standby)
-            
-            // hide status bar
-            self.isStatusBarHidden = !self.isStatusBarHidden
-            UIView.animate(withDuration: 0.3) {
-                self.setNeedsStatusBarAppearanceUpdate()
-            }
-        }
     }
     
     @objc func switchIsChanged(switchButton: UISwitch) {
@@ -316,10 +281,21 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: UITableViewCell.CellStyle.default, reuseIdentifier: "tableCell")
         cell.textLabel?.text = listOfVideos[indexPath.row]
+        cell.textLabel?.font = .systemFont(ofSize: 50.0)
         
-        let checkVideoPlays = UILabel.init(frame: CGRect(x:UIScreen.main.bounds.width - 70.0, y:0.0, width:50.0, height: 43.5))
+        let checkVideoPlays = UILabel.init(frame: CGRect(x:UIScreen.main.bounds.width - 70.0, y:40.0, width:50.0, height: 43.5))
         checkVideoPlays.textAlignment = NSTextAlignment.right
-        checkVideoPlays.text = String(self.readCSVFile(id: indexPath.row, withReload: false))
+        
+        let count = self.readCSVFile(id: indexPath.row, withReload: false)
+        var title = ""
+        if(count>0) {
+            title = "✓"
+        }
+        
+        checkVideoPlays.text = String(title)
+        
+        checkVideoPlays.font = .systemFont(ofSize: 50.0)
+        
         cell.addSubview(checkVideoPlays)
         return(cell)
     }

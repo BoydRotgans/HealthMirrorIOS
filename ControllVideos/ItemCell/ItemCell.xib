@@ -29,7 +29,7 @@
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <size key="customSize" width="308" height="346"/>
             <connections>
-                <outlet property="Label" destination="QP8-CZ-2dF" id="pwc-x1-ghN"/>
+                <outlet property="label" destination="QP8-CZ-2dF" id="DQb-Tp-gCf"/>
             </connections>
             <point key="canvasLocation" x="-46.376811594202906" y="252.45535714285714"/>
         </collectionViewCell>

@@ -78,17 +78,21 @@ class UiTypeView: UIViewController {
         }
         
         countingMirrorLabel.text = "\(sessionsArrayMirror.count) / 10"
+        MirrorButton.backgroundColor = .link
         
         if( sessionsArrayMirror.count >= 10) {
             countingMirrorLabel.text = "✓ Compleet \(sessionsArrayMirror.count) / 10"
             countingMirrorLabel.textColor = UIColor.init(red: 34.0/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)
+            MirrorButton.backgroundColor = UIColor.init(red: 34.0/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)
         }
         
         countingStandLabel.text = "\(sessionsArrayStand.count) / 10"
+        StandButton.backgroundColor = .link
         
         if( sessionsArrayStand.count >= 10) {
             countingStandLabel.text = "✓ Compleet \(sessionsArrayStand.count) / 10"
             countingStandLabel.textColor = UIColor.init(red: 34.0/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)
+            StandButton.backgroundColor = UIColor.init(red: 34.0/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)
         }
         
     }
