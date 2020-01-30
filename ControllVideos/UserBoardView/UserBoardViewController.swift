@@ -13,7 +13,8 @@ import CSV
 class UserBoardViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var addUserButton: UIButton!
+//    @IBOutlet weak var addUserButton: UIButton!
+    @IBOutlet weak var addUserButton: UIBarButtonItem!
     
     @IBOutlet weak var shareData: UIBarButtonItem!
     
@@ -58,16 +59,14 @@ class UserBoardViewController: UIViewController {
         }
         
         // button click
-        addUserButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
+//        addUserButton.addTarget(self, action: #selector(buttonPressed), for: .touchUpInside)
         
         // setupGride view
         self.setupGridView()
     }
     
     
-    
-    @objc func buttonPressed() {
-        
+    @IBAction func addUser(_ sender: Any) {
         let alert = UIAlertController(title: "New user", message: "Please enter a new username", preferredStyle: .alert)
         
         alert.addTextField { (textField) in

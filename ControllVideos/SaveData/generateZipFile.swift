@@ -10,24 +10,30 @@ import Foundation
 
 func generateZipFile() {
     
-    // get timestamp
-    let now = Date()
-    let formatter = DateFormatter()
-    formatter.timeZone = TimeZone.current
-    formatter.dateFormat = "yyyy-MM-dd_HH-mm-ss"
-    let timestamp = formatter.string(from: now)
-    
-    
     let fileManager = FileManager.default
-    let path = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true).first!
-    var sourceURL = URL(fileURLWithPath: path)
+    let documentPath = NSSearchPathForDirectoriesInDomains(.documentDirectory,.userDomainMask,true).first!
+    var sourceURL = URL(fileURLWithPath: documentPath)
     sourceURL.appendPathComponent("")
     
-    print("sourceURL is \(sourceURL)")
-    
     var destinationURL = URL(fileURLWithPath: NSTemporaryDirectory(), isDirectory: true)
-    destinationURL.appendPathComponent("dataPackage-\(timestamp).zip")
+    destinationURL.appendPathComponent("dataPackage.zip")
     
+    // delete previous version
+    if fileManager.fileExists(atPath: destinationURL.path) {
+        do {
+            try FileManager.default.removeItem(at: destinationURL)
+            
+            print("previous version was deleted")
+            
+        } catch let error as NSError {
+            print("Error: \(error.domain)")
+        }
+        
+    } else {
+        print("file does not exist")
+    }
+    
+    // generate new version
     do {
         try fileManager.zipItem(at: sourceURL, to: destinationURL, shouldKeepParent: false)
         
