@@ -10,15 +10,24 @@ import UIKit
 import Foundation
 import CSV
 
+class DataHolder {
+    var name : String
+    var completed : Bool
+    
+    init(name: String, completed: Bool) {
+        self.name = name
+        self.completed = completed
+    }
+}
+
+
 class UserBoardViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
-//    @IBOutlet weak var addUserButton: UIButton!
-    @IBOutlet weak var addUserButton: UIBarButtonItem!
     
     @IBOutlet weak var shareData: UIBarButtonItem!
     
-    var dataArray = [] as [String]
+    var dataArray = [] as [DataHolder]
     
     var estimateWidth = 160.0
     var cellMarginSize = 16.0
@@ -55,7 +64,7 @@ class UserBoardViewController: UIViewController {
         
         while readCSV.next() != nil {
             let name = readCSV["name"]! as String
-            dataArray.append(name)
+             dataArray.append(DataHolder.init(name: name, completed: checkIfCompleted(name: name)))
         }
         
         // button click
@@ -64,6 +73,52 @@ class UserBoardViewController: UIViewController {
         // setupGride view
         self.setupGridView()
     }
+    
+    func checkIfCompleted(name: String) -> Bool {
+            
+            // csv data path
+            let path = getDocumentsDirectory()
+            let fileURL = path.appendingPathComponent("trackingData.csv")
+    
+            var sessionsArrayMirror = [] as [String]
+            var sessionsArrayStand = [] as [String]
+    
+            let currentSelectedUser = name
+    
+            // read csv
+            let readStream = InputStream(url: fileURL)!
+            let exists = FileManager.default.fileExists(atPath: fileURL.path)
+    
+            if exists {
+                let readCSV = try! CSVReader(stream: readStream, hasHeaderRow: true)
+    
+                while readCSV.next() != nil {
+                    let user = readCSV["user"]
+                    let location = readCSV["location"]
+                    let sessionID = readCSV["sessionID"]!
+    
+                    if(user == currentSelectedUser) {
+                        if(location == "mirror") {
+                            if(!sessionsArrayMirror.contains(sessionID)) {
+                                sessionsArrayMirror.append(sessionID)
+                            }
+                        } else if(location == "stand") {
+                            if(!sessionsArrayStand.contains(sessionID)) {
+                                sessionsArrayStand.append(sessionID)
+                            }
+                        }
+                    }
+                }
+            }
+    
+            if( sessionsArrayMirror.count >= 10 && sessionsArrayStand.count >= 10  ) {
+                return true
+            } else {
+                return false
+            }
+    
+ 
+        }
     
     
     @IBAction func addUser(_ sender: Any) {
@@ -77,7 +132,7 @@ class UserBoardViewController: UIViewController {
             let textField = alert?.textFields![0]
             let name = textField?.text!
             self.writeNewRow(name: name!)
-            self.dataArray.append(name!)
+            self.dataArray.append(DataHolder.init(name: name!, completed: self.checkIfCompleted(name: name!)))
             self.setupGridView()
             self.collectionView.reloadData()
         }))
@@ -129,8 +184,7 @@ extension UserBoardViewController : UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print(indexPath)
         
-        let selection = self.dataArray[indexPath.row]
-        print(selection)
+        let selection = self.dataArray[indexPath.row].name
         UserDefaults.standard.set(selection, forKey: "selectedUser")
         
         // set session ID
@@ -155,7 +209,7 @@ extension UserBoardViewController : UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "ItemCell", for: indexPath) as! ItemCell
-        cell.setData(text: self.dataArray[indexPath.row])
+        cell.setData(text: self.dataArray[indexPath.row].name, completed: self.dataArray[indexPath.row].completed)
         return cell
     }
     

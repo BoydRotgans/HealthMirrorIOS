@@ -78,7 +78,7 @@ class UiTypeView: UIViewController {
         countingStandLabel.text = "\(sessionsArrayStand.count) / 10"
         
         if( sessionsArrayStand.count >= 10) {
-            countingStandLabel.text = "✓ Completed \(sessionsArrayMirror.count) / 10"
+            countingStandLabel.text = "✓ Completed \(sessionsArrayStand.count) / 10"
             countingStandLabel.textColor = UIColor.init(red: 34.0/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)
         }
         

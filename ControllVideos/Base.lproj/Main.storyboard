@@ -51,7 +51,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="0VG-T6-W1M"/>
                         <barButtonItem systemItem="add" id="I3l-gJ-rsi">
                             <connections>
-                                <action selector="addUser:" destination="7VG-0F-GNZ" id="WQt-8m-seF"/>
+                                <action selector="addUser:" destination="7VG-0F-GNZ" id="Q92-CL-6pR"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
@@ -59,7 +59,6 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="addUserButton" destination="I3l-gJ-rsi" id="dcR-De-EAj"/>
                         <outlet property="collectionView" destination="g9I-RS-5tU" id="utQ-vk-umu"/>
                         <outlet property="shareData" destination="sGJ-kb-zoF" id="j1t-QA-oD6"/>
                     </connections>

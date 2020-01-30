@@ -17,31 +17,17 @@ class ItemCell: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    func setData(text: String) {
-        //self.userButton.setTitle(text, for:.normal)
+    func setData(text: String, completed: Bool) {
         self.label.text = text
-        //userButton.addTarget(self, action: #selector(buttonClick), for: .touchUpInside)
+        self.label.backgroundColor = .link
+        
+        if(completed) {
+            self.label.backgroundColor = UIColor.init(red: 34.0/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)
+            self.label.text = "✓ \(text)"
+        }
         
     }
     
-//    @objc func buttonClick() {
-//
-//        let name = self.userButton.titleLabel?.text as! String
-//        print("set user \(name)")
-//
-//        // save to userDefaults
-//        UserDefaults.standard.set(self.userButton.titleLabel?.text!, forKey: "selectedUser")
-//        self.isSelected = true
-//
-//        if(self.isSelected) {
-//                self.userButton.setTitle("_ \(name)", for:.normal)
-//
-//        }
-//
-//        // open next storyboard
-////        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-////        let newViewController = storyBoard.instantiateViewController(withIdentifier: "TypeViewController") as! UiTypeView
-////        self.present(newViewController, animated: true, completion: nil)
-//    }
+
 
 }
