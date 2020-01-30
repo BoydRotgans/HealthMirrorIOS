@@ -49,7 +49,6 @@ extension UserBoardViewController {
                 print("zip is generated")
                 UserDefaults.standard.set(destinationURL, forKey: "ZipFileURL")
 
-                self.endLoading(success: status)
                 
             } catch {
                 print(error)

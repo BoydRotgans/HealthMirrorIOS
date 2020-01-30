@@ -37,6 +37,7 @@
 		311BB7A023D758FC0009718A /* UserBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BB79F23D758FC0009718A /* UserBoardViewController.swift */; };
 		311BB7A323D9C2270009718A /* UiTypeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BB7A223D9C2270009718A /* UiTypeView.swift */; };
 		311BB7A723E1DEA90009718A /* myVideoPlayer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BB7A623E1DEA90009718A /* myVideoPlayer.swift */; };
+		312BA0F223E3338F003EB0B9 /* StartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 312BA0F123E3338F003EB0B9 /* StartViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -70,6 +71,7 @@
 		311BB79F23D758FC0009718A /* UserBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBoardViewController.swift; sourceTree = "<group>"; };
 		311BB7A223D9C2270009718A /* UiTypeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UiTypeView.swift; sourceTree = "<group>"; };
 		311BB7A623E1DEA90009718A /* myVideoPlayer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = myVideoPlayer.swift; sourceTree = "<group>"; };
+		312BA0F123E3338F003EB0B9 /* StartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StartViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +143,7 @@
 				23B1305523D5DE1600B6AC50 /* example-3.mp4 */,
 				23B1304023D5D99B00B6AC50 /* AppDelegate.swift */,
 				23B1304223D5D99B00B6AC50 /* SceneDelegate.swift */,
+				312BA0F123E3338F003EB0B9 /* StartViewController.swift */,
 				23B1304423D5D99B00B6AC50 /* ViewController.swift */,
 				23E95E2823DF228C009047CD /* recordAudio.swift */,
 				23B1304623D5D99B00B6AC50 /* Main.storyboard */,
@@ -269,6 +272,7 @@
 				23B1304523D5D99B00B6AC50 /* ViewController.swift in Sources */,
 				23B1304123D5D99B00B6AC50 /* AppDelegate.swift in Sources */,
 				23A201E423DB479100D34AA6 /* RatingLong.swift in Sources */,
+				312BA0F223E3338F003EB0B9 /* StartViewController.swift in Sources */,
 				237356A923D8999200D9F5DF /* sendAttachedMail.swift in Sources */,
 				237356A723D8621D00D9F5DF /* saveCSV.swift in Sources */,
 				311BB7A023D758FC0009718A /* UserBoardViewController.swift in Sources */,
@@ -425,13 +429,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TG59HT53UM;
+				DEVELOPMENT_TEAM = XW5AXPD49K;
 				INFOPLIST_FILE = ControllVideos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ferdinandsorg.healthMirror;
+				PRODUCT_BUNDLE_IDENTIFIER = healthMirror;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -443,13 +447,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TG59HT53UM;
+				DEVELOPMENT_TEAM = XW5AXPD49K;
 				INFOPLIST_FILE = ControllVideos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ferdinandsorg.healthMirror;
+				PRODUCT_BUNDLE_IDENTIFIER = healthMirror;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

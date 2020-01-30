@@ -36,14 +36,14 @@ class StartViewController: UIViewController {
     
             let cTimeHH:Int = Int(formatter(time: currentTime))!
     
-            print("time is \(cTimeHH)")
+            //print("time is \(cTimeHH)")
     
             if cTimeHH > 07 && cTimeHH < 14 {
-                print("it is \(cTimeHH) -> NOT Standby")
+                //print("it is \(cTimeHH) -> NOT Standby")
                 startButton.titleLabel?.textColor = .link
                 self.isStatusBarHidden = false
             } else {
-                print("it is \(cTimeHH) -> Standby")
+                //print("it is \(cTimeHH) -> Standby")
                 startButton.titleLabel?.textColor = .black
                 self.isStatusBarHidden = true
             }

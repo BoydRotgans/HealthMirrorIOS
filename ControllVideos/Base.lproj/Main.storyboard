@@ -67,7 +67,6 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="g9I-RS-5tU" id="utQ-vk-umu"/>
-                        <outlet property="shareData" destination="sGJ-kb-zoF" id="j1t-QA-oD6"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C48-oh-5Ub" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -437,7 +436,7 @@
                         <viewLayoutGuide key="safeArea" id="ZqA-af-n84"/>
                     </view>
                     <connections>
-                        <outlet property="startButton" destination="zK4-0I-2Fp" id="0gA-TN-VQt"/>
+                        <outlet property="startButton" destination="zK4-0I-2Fp" id="5sy-00-isl"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QSS-rp-WHW" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
