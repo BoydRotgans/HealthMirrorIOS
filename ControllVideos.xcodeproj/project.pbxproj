@@ -28,6 +28,7 @@
 		23B1306B23D6FEAE00B6AC50 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B1306A23D6FEAE00B6AC50 /* FloatRatingView.swift */; };
 		23C531A923E0908300A823E3 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 23C531A823E0908300A823E3 /* ZIPFoundation */; };
 		23D111EA23E1DA5400E50EA7 /* shareData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D111E923E1DA5400E50EA7 /* shareData.swift */; };
+		23D111EC23E1EA2600E50EA7 /* generateZipFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D111EB23E1EA2600E50EA7 /* generateZipFile.swift */; };
 		23E95E2623DF09F0009047CD /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E95E2423DF09F0009047CD /* Questions.swift */; };
 		23E95E2723DF09F0009047CD /* Questions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23E95E2523DF09F0009047CD /* Questions.xib */; };
 		23E95E2923DF228C009047CD /* recordAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E95E2823DF228C009047CD /* recordAudio.swift */; };
@@ -60,6 +61,7 @@
 		23B1305623D5DE1600B6AC50 /* example-1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-1.mp4"; path = "../example-1.mp4"; sourceTree = "<group>"; };
 		23B1306A23D6FEAE00B6AC50 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
 		23D111E923E1DA5400E50EA7 /* shareData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shareData.swift; sourceTree = "<group>"; };
+		23D111EB23E1EA2600E50EA7 /* generateZipFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = generateZipFile.swift; sourceTree = "<group>"; };
 		23E95E2423DF09F0009047CD /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		23E95E2523DF09F0009047CD /* Questions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Questions.xib; sourceTree = "<group>"; };
 		23E95E2823DF228C009047CD /* recordAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordAudio.swift; sourceTree = "<group>"; };
@@ -90,6 +92,7 @@
 				23D111E923E1DA5400E50EA7 /* shareData.swift */,
 				234E76A023E0670700953445 /* saveQuestionsCSV.swift */,
 				237356A623D8621D00D9F5DF /* saveCSV.swift */,
+				23D111EB23E1EA2600E50EA7 /* generateZipFile.swift */,
 			);
 			path = SaveData;
 			sourceTree = "<group>";
@@ -271,6 +274,7 @@
 				311BB7A023D758FC0009718A /* UserBoardViewController.swift in Sources */,
 				234E76A123E0670700953445 /* saveQuestionsCSV.swift in Sources */,
 				311BB7A723E1DEA90009718A /* myVideoPlayer.swift in Sources */,
+				23D111EC23E1EA2600E50EA7 /* generateZipFile.swift in Sources */,
 				23B1306B23D6FEAE00B6AC50 /* FloatRatingView.swift in Sources */,
 				23B1304323D5D99B00B6AC50 /* SceneDelegate.swift in Sources */,
 				23E95E2623DF09F0009047CD /* Questions.swift in Sources */,
@@ -421,13 +425,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XW5AXPD49K;
+				DEVELOPMENT_TEAM = TG59HT53UM;
 				INFOPLIST_FILE = ControllVideos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = healthMirror;
+				PRODUCT_BUNDLE_IDENTIFIER = ferdinandsorg.healthMirror;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -439,13 +443,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = XW5AXPD49K;
+				DEVELOPMENT_TEAM = TG59HT53UM;
 				INFOPLIST_FILE = ControllVideos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = healthMirror;
+				PRODUCT_BUNDLE_IDENTIFIER = ferdinandsorg.healthMirror;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
