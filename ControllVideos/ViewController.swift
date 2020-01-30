@@ -46,7 +46,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
     var timeStopped = Double()
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
