@@ -78,22 +78,28 @@ class UiTypeView: UIViewController {
             }
         }
         
+//        let margin = 20.0
+//        let width = (UIScreen.main.bounds.width - CGFloat(3*margin))/2
+        
         countingMirrorLabel.text = "\(sessionsArrayMirror.count) / 10"
         MirrorButton.backgroundColor = .link
+        MirrorButton.layer.cornerRadius = 25.0
         
         if( sessionsArrayMirror.count >= 10) {
             countingMirrorLabel.text = "✓ Compleet \(sessionsArrayMirror.count) / 10"
-            countingMirrorLabel.textColor = UIColor.init(red: 34.0/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)
-            MirrorButton.backgroundColor = UIColor.init(red: 34.0/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)
+//            countingMirrorLabel.textColor = UIColor(named: "customGreen")
+            MirrorButton.backgroundColor = UIColor(named: "customGreen")
         }
         
         countingStandLabel.text = "\(sessionsArrayStand.count) / 10"
         StandButton.backgroundColor = .link
+        StandButton.layer.cornerRadius = 25.0
         
         if( sessionsArrayStand.count >= 10) {
             countingStandLabel.text = "✓ Compleet \(sessionsArrayStand.count) / 10"
-            countingStandLabel.textColor = UIColor.init(red: 34.0/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)
-            StandButton.backgroundColor = UIColor.init(red: 34.0/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)
+//            countingStandLabel.textColor = UIColor(named: "customGreen")
+            StandButton.backgroundColor = UIColor(named: "customGreen")
+            
         }
         
     }

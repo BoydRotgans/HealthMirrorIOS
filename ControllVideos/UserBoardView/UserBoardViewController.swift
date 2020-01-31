@@ -32,8 +32,8 @@ class UserBoardViewController: UIViewController {
     
     var dataArray = [] as [DataHolder]
     
-    var estimateWidth = 160.0
-    var cellMarginSize = 16.0
+    var estimateWidth = 229.0
+    var cellMarginSize = 20.0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -196,7 +196,7 @@ class UserBoardViewController: UIViewController {
     
     func setupGridView() {
         let flow = collectionView?.collectionViewLayout as! UICollectionViewFlowLayout
-        flow.minimumInteritemSpacing = CGFloat(self.cellMarginSize)
+//        flow.minimumInteritemSpacing = CGFloat(self.cellMarginSize)
         flow.minimumLineSpacing = CGFloat(self.cellMarginSize)
     }
 }
@@ -261,34 +261,4 @@ extension UserBoardViewController: UICollectionViewDelegateFlowLayout {
     }
     
     
-}
-
-//extension UserBoardViewController {
-//    func shake(){
-//        let animation = CABasicAnimation(keyPath: "position")
-//        animation.duration = 0.07
-//        animation.repeatCount = 3
-//        animation.autoreverses = true
-//        animation.fromValue = NSValue(cgPoint: CGPoint(x: self.center.x - 10, y: self.center.y))
-//        animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + 10, y: self.center.y))
-//        self.layer.add(animation, forKey: "position")
-//    }
-//}
-
-extension UIView {
-    func shake(duration: CFTimeInterval) {
-        let shakeValues = [-5, 5, -5, 5, -3, 3, -2, 2, 0]
-
-        let translation = CAKeyframeAnimation(keyPath: "transform.translation.x");
-        translation.timingFunction = CAMediaTimingFunction(name: .linear)
-        translation.values = shakeValues
-        
-        let rotation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
-        rotation.values = shakeValues.map { (Int(Double.pi) * $0) / 180 }
-        
-        let shakeGroup = CAAnimationGroup()
-        shakeGroup.animations = [translation, rotation]
-        shakeGroup.duration = 1.0
-        layer.add(shakeGroup, forKey: "shakeIt")
-    }
 }

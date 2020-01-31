@@ -44,9 +44,6 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // hide Standby View
-        Standby.isHidden = true
-        
         // set delegates
         self.tableView.delegate = self
         self.tableView.dataSource = self
@@ -290,6 +287,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         
         let checkVideoPlays = UILabel.init(frame: CGRect(x:UIScreen.main.bounds.width - 70.0, y:40.0, width:50.0, height: 43.5))
         checkVideoPlays.textAlignment = NSTextAlignment.right
+        checkVideoPlays.textColor = UIColor(named: "customGreen")
         
         let count = self.readCSVFile(id: indexPath.row, withReload: false)
         var title = ""

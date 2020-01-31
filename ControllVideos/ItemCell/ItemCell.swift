@@ -19,14 +19,14 @@ class ItemCell: UICollectionViewCell {
     func setData(text: String, completed: Bool) {
         self.label.text = text
         self.label.backgroundColor = .link
+        self.label.layer.masksToBounds = true
+        self.label.layer.cornerRadius = 25.0
         
         if(completed) {
             self.label.text = "✓ \(text)"
-            self.label.backgroundColor = UIColor.init(red: 34.0/255.0, green: 139/255.0, blue: 34/255.0, alpha: 1.0)
+            self.label.backgroundColor = UIColor(named: "customGreen")
         }
         
     }
-    
-
-
 }
+
