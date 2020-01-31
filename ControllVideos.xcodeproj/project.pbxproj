@@ -49,7 +49,7 @@
 		237356A623D8621D00D9F5DF /* saveCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveCSV.swift; sourceTree = "<group>"; };
 		237356A823D8999200D9F5DF /* sendAttachedMail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sendAttachedMail.swift; sourceTree = "<group>"; };
 		23A201E323DB479100D34AA6 /* RatingLong.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingLong.swift; sourceTree = "<group>"; };
-		23B1303D23D5D99B00B6AC50 /* ControllVideos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ControllVideos.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		23B1303D23D5D99B00B6AC50 /* Health Mirror.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Health Mirror.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		23B1304023D5D99B00B6AC50 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		23B1304223D5D99B00B6AC50 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		23B1304423D5D99B00B6AC50 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -121,7 +121,7 @@
 		23B1303E23D5D99B00B6AC50 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				23B1303D23D5D99B00B6AC50 /* ControllVideos.app */,
+				23B1303D23D5D99B00B6AC50 /* Health Mirror.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -201,7 +201,7 @@
 				23C531A823E0908300A823E3 /* ZIPFoundation */,
 			);
 			productName = ControllVideos;
-			productReference = 23B1303D23D5D99B00B6AC50 /* ControllVideos.app */;
+			productReference = 23B1303D23D5D99B00B6AC50 /* Health Mirror.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -436,7 +436,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ferdinandsorg.healthMirror;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Health Mirror";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -454,7 +454,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = ferdinandsorg.healthMirror;
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = "Health Mirror";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
