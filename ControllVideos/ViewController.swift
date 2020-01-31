@@ -89,6 +89,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
         
     }
     
+    @objc func appMovedToBackground() {
+        print("closed")
+        finishRecording(success: true)
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(self.viewWasDone), name: NSNotification.Name("viewDidDisappearNow"), object: nil)
         

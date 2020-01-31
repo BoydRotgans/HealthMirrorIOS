@@ -23,12 +23,12 @@ class DataHolder {
 
 class UserBoardViewController: UIViewController {
 
+    weak var actionToEnable : UIAlertAction?
+
     @IBOutlet weak var collectionView: UICollectionView!
     
 //    @IBOutlet weak var shareData: UIBarButtonItem!
 //    @IBOutlet weak var generateZip: UIBarButtonItem!
-    
-    
     
     var dataArray = [] as [DataHolder]
     
@@ -79,9 +79,9 @@ class UserBoardViewController: UIViewController {
         self.setupGridView()
     }
     
-    @objc func pressedgenerateZip() {
-        print("hello")
-    }
+//    @objc func pressedgenerateZip() {
+//        print("hello")
+//    }
     
     func checkIfCompleted(name: String) -> Bool {
             
@@ -129,24 +129,38 @@ class UserBoardViewController: UIViewController {
  
         }
     
-    
     @IBAction func addUser(_ sender: Any) {
-        let alert = UIAlertController(title: "New user", message: "Please enter a new username", preferredStyle: .alert)
-        
-        alert.addTextField { (textField) in
-            textField.text = ""
-        }
-        
-        alert.addAction(UIAlertAction(title: "Done", style: .default, handler: { [weak alert] (_) in
-            let textField = alert?.textFields![0]
-            let name = textField?.text!
-            self.writeNewRow(name: name!)
-            self.dataArray.append(DataHolder.init(name: name!, completed: self.checkIfCompleted(name: name!)))
+
+        let alert = UIAlertController(title: "Nieuwe gebruiker", message: "Vul een gebruikersnaam in", preferredStyle: UIAlertController.Style.alert)
+
+        alert.addTextField(configurationHandler: {(textField: UITextField) in
+            textField.placeholder = "gebruikersnaam"
+            textField.addTarget(self, action: #selector(self.textChanged(_:)), for: .editingChanged)
+        })
+
+        let action = UIAlertAction(title: "Opslaan", style: .default, handler: { (_) -> Void in
+            let textfield = alert.textFields!.first!
+            let name = textfield.text!
+            
+            self.writeNewRow(name: name)
+            self.dataArray.append(DataHolder.init(name: name, completed: self.checkIfCompleted(name: name)))
             self.setupGridView()
             self.collectionView.reloadData()
-        }))
-        
+        })
+
+        let cancel = UIAlertAction(title: "Annuleren", style: .cancel, handler: { (_) -> Void in })
+
+        alert.addAction(cancel)
+        alert.addAction(action)
+
+        self.actionToEnable = action
+        action.isEnabled = false
         self.present(alert, animated: true, completion: nil)
+    }
+    
+    @objc func textChanged(_ sender:UITextField) {
+        self.actionToEnable?.isEnabled = (sender.text! == "Validation")
+        self.actionToEnable?.isEnabled = true
     }
     
     func writeNewRow(name: String) {
@@ -247,4 +261,34 @@ extension UserBoardViewController: UICollectionViewDelegateFlowLayout {
     }
     
     
+}
+
+//extension UserBoardViewController {
+//    func shake(){
+//        let animation = CABasicAnimation(keyPath: "position")
+//        animation.duration = 0.07
+//        animation.repeatCount = 3
+//        animation.autoreverses = true
+//        animation.fromValue = NSValue(cgPoint: CGPoint(x: self.center.x - 10, y: self.center.y))
+//        animation.toValue = NSValue(cgPoint: CGPoint(x: self.center.x + 10, y: self.center.y))
+//        self.layer.add(animation, forKey: "position")
+//    }
+//}
+
+extension UIView {
+    func shake(duration: CFTimeInterval) {
+        let shakeValues = [-5, 5, -5, 5, -3, 3, -2, 2, 0]
+
+        let translation = CAKeyframeAnimation(keyPath: "transform.translation.x");
+        translation.timingFunction = CAMediaTimingFunction(name: .linear)
+        translation.values = shakeValues
+        
+        let rotation = CAKeyframeAnimation(keyPath: "transform.rotation.z")
+        rotation.values = shakeValues.map { (Int(Double.pi) * $0) / 180 }
+        
+        let shakeGroup = CAAnimationGroup()
+        shakeGroup.animations = [translation, rotation]
+        shakeGroup.duration = 1.0
+        layer.add(shakeGroup, forKey: "shakeIt")
+    }
 }

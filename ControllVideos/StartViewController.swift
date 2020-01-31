@@ -20,7 +20,12 @@ class StartViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(checkStandby), userInfo: nil, repeats: true)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
         
     @objc func checkStandby() {
