@@ -19,8 +19,7 @@ var listOfVideoPath = ["example-1", "example-2", "example-3"]
 class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerViewControllerDelegate {
     
 
-    @IBOutlet weak var animationSwitch: UISwitch!
-    //@IBOutlet weak var standbyButton: UIButton!
+    @IBOutlet weak var TypeSwitch: UISegmentedControl!
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var doneSelection: UIButton!
     @IBOutlet weak var Standby: UIView!
@@ -51,14 +50,15 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
         self.tableView.reloadData()
         
         // Direct Switch to func switchIsChanged
-        let animationStatus:Bool = UserDefaults.standard.bool(forKey: "animationStatus")
-        animationSwitch.setOn(animationStatus, animated: false)
-        animationSwitch.addTarget(self, action: #selector(switchIsChanged), for: UIControl.Event.valueChanged)
-        self.view.addSubview(animationSwitch)
-
-        // set Standby Button
-        //standbyButton.addTarget(self, action: #selector(checkStandby), for: .touchUpInside)
-        //self.view.addSubview(standbyButton)
+        let animationState = UserDefaults.standard.bool(forKey: "animationStatus") || false
+        TypeSwitch.addTarget(self, action: #selector(switchIsChanged), for: UIControl.Event.valueChanged)
+        if(animationState) {
+            TypeSwitch.selectedSegmentIndex = 1;
+        } else {
+            TypeSwitch.selectedSegmentIndex = 0;
+        }
+        let font = UIFont.systemFont(ofSize: 36)
+        TypeSwitch.setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
         
         doneSelection.addTarget(self, action: #selector(pressedDoneSelection), for: .touchUpInside)
         self.view.addSubview(doneSelection)
@@ -108,14 +108,11 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
         finishRecording(success: true)
     }
     
-    @objc func switchIsChanged(switchButton: UISwitch) {
-        var animationStatus:Bool
-        if switchButton.isOn {
-            animationStatus = true
-            UserDefaults.standard.set(animationStatus, forKey: "animationStatus")
+    @objc func switchIsChanged(switchButton: UISegmentedControl) {
+        if switchButton.selectedSegmentIndex == 1 {
+            UserDefaults.standard.set(true, forKey: "animationStatus")
         } else {
-            animationStatus = false
-            UserDefaults.standard.set(animationStatus, forKey: "animationStatus")
+            UserDefaults.standard.set(false, forKey: "animationStatus")
         }
     }
     
