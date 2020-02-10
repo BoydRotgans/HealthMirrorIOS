@@ -26,12 +26,14 @@
 		23B1305823D5DE1600B6AC50 /* example-3.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 23B1305523D5DE1600B6AC50 /* example-3.mp4 */; };
 		23B1305923D5DE1600B6AC50 /* example-1.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 23B1305623D5DE1600B6AC50 /* example-1.mp4 */; };
 		23B1306B23D6FEAE00B6AC50 /* FloatRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B1306A23D6FEAE00B6AC50 /* FloatRatingView.swift */; };
+		23B9415723F1790B002C5E9D /* thumbnailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23B9415523F1790B002C5E9D /* thumbnailCell.swift */; };
 		23C531A923E0908300A823E3 /* ZIPFoundation in Frameworks */ = {isa = PBXBuildFile; productRef = 23C531A823E0908300A823E3 /* ZIPFoundation */; };
 		23D111EA23E1DA5400E50EA7 /* shareData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D111E923E1DA5400E50EA7 /* shareData.swift */; };
 		23D111EC23E1EA2600E50EA7 /* generateZipFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23D111EB23E1EA2600E50EA7 /* generateZipFile.swift */; };
 		23E95E2623DF09F0009047CD /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E95E2423DF09F0009047CD /* Questions.swift */; };
 		23E95E2723DF09F0009047CD /* Questions.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23E95E2523DF09F0009047CD /* Questions.xib */; };
 		23E95E2923DF228C009047CD /* recordAudio.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23E95E2823DF228C009047CD /* recordAudio.swift */; };
+		23FB386C23F1A479000870FD /* videoOverview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23FB386B23F1A479000870FD /* videoOverview.swift */; };
 		311BB79C23D74F160009718A /* ItemCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BB79A23D74F160009718A /* ItemCell.swift */; };
 		311BB79D23D74F160009718A /* ItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 311BB79B23D74F160009718A /* ItemCell.xib */; };
 		311BB7A023D758FC0009718A /* UserBoardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 311BB79F23D758FC0009718A /* UserBoardViewController.swift */; };
@@ -61,11 +63,13 @@
 		23B1305523D5DE1600B6AC50 /* example-3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-3.mp4"; path = "../example-3.mp4"; sourceTree = "<group>"; };
 		23B1305623D5DE1600B6AC50 /* example-1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-1.mp4"; path = "../example-1.mp4"; sourceTree = "<group>"; };
 		23B1306A23D6FEAE00B6AC50 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
+		23B9415523F1790B002C5E9D /* thumbnailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = thumbnailCell.swift; path = ../../../../Downloads/thumbnailCell.swift; sourceTree = "<group>"; };
 		23D111E923E1DA5400E50EA7 /* shareData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shareData.swift; sourceTree = "<group>"; };
 		23D111EB23E1EA2600E50EA7 /* generateZipFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = generateZipFile.swift; sourceTree = "<group>"; };
 		23E95E2423DF09F0009047CD /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
 		23E95E2523DF09F0009047CD /* Questions.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Questions.xib; sourceTree = "<group>"; };
 		23E95E2823DF228C009047CD /* recordAudio.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = recordAudio.swift; sourceTree = "<group>"; };
+		23FB386B23F1A479000870FD /* videoOverview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = videoOverview.swift; sourceTree = "<group>"; };
 		311BB79A23D74F160009718A /* ItemCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ItemCell.swift; sourceTree = "<group>"; };
 		311BB79B23D74F160009718A /* ItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ItemCell.xib; sourceTree = "<group>"; };
 		311BB79F23D758FC0009718A /* UserBoardViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserBoardViewController.swift; sourceTree = "<group>"; };
@@ -137,7 +141,9 @@
 				2373567823D7500D00D9F5DF /* example-1-animation.mp4 */,
 				2373567623D7500D00D9F5DF /* example-2-animation.mp4 */,
 				2373567723D7500D00D9F5DF /* example-3-animation.mp4 */,
+				23B9415523F1790B002C5E9D /* thumbnailCell.swift */,
 				23B1306A23D6FEAE00B6AC50 /* FloatRatingView.swift */,
+				23FB386B23F1A479000870FD /* videoOverview.swift */,
 				23B1305623D5DE1600B6AC50 /* example-1.mp4 */,
 				23B1305423D5DE1600B6AC50 /* example-2.mp4 */,
 				23B1305523D5DE1600B6AC50 /* example-3.mp4 */,
@@ -275,8 +281,10 @@
 				312BA0F223E3338F003EB0B9 /* StartViewController.swift in Sources */,
 				237356A923D8999200D9F5DF /* sendAttachedMail.swift in Sources */,
 				237356A723D8621D00D9F5DF /* saveCSV.swift in Sources */,
+				23FB386C23F1A479000870FD /* videoOverview.swift in Sources */,
 				311BB7A023D758FC0009718A /* UserBoardViewController.swift in Sources */,
 				234E76A123E0670700953445 /* saveQuestionsCSV.swift in Sources */,
+				23B9415723F1790B002C5E9D /* thumbnailCell.swift in Sources */,
 				311BB7A723E1DEA90009718A /* myVideoPlayer.swift in Sources */,
 				23D111EC23E1EA2600E50EA7 /* generateZipFile.swift in Sources */,
 				23B1306B23D6FEAE00B6AC50 /* FloatRatingView.swift in Sources */,
