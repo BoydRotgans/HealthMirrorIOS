@@ -29,6 +29,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
 
 
     //timer
+    var thumbnails: Array<UIImage> = []
     var start = Date()
     var stopped: Date?
     var resumed: Date?
@@ -36,6 +37,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
     var timer: Timer?
     var timeElapsed = Double()
     var timeStopped = Double()
+    
+    //
 
     @IBOutlet var collectionViewThumbnail: UICollectionView!
     
@@ -77,17 +80,37 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
         } catch {
             // failed to record!
         }
+        
+        
+        
+        // generate thumbnails
+        storeThumbnails()
+
 
         // record audio when ViewController is active
         startRecording()
-
+        
+        let notificationCenter = NotificationCenter.default
+        
+        // detect if app goes in background
+        notificationCenter.addObserver(self, selector: #selector(appMovedToBackground), name: UIApplication.didEnterBackgroundNotification, object: nil)
+        // detect if app goes in foreground
+        notificationCenter.addObserver(self, selector: #selector(appMovedToForeground), name: UIApplication.willEnterForegroundNotification, object: nil)
     }
-
-    @objc func appMovedToBackground() {
-        print("closed")
+    
+    // finish all running task when app get closed
+    @objc func appMovedToBackground(_ application: UIApplication) {
+        print("App moved to Background!")
+        resetCheckPlays()
         finishRecording(success: true)
     }
-
+    
+    // reload collection view after ending the app
+    @objc func appMovedToForeground(_ application: UIApplication) {
+        print("App moved to Foreground!")
+        self.collectionViewThumbnail.reloadData()
+    }
+    
     override func viewDidAppear(_ animated: Bool) {
         NotificationCenter.default.addObserver(self, selector: #selector(self.viewWasDone), name: NSNotification.Name("viewDidDisappearNow"), object: nil)
 
@@ -114,15 +137,20 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
         }
         
         self.collectionViewThumbnail.reloadData()
+        storeThumbnails()
     }
 
     func checkVideoType(id: Int) -> String {
 
         // check from UserDefaults if Switch of Animation is ON or OFF
-        var name = listOfVideoPath[id]
+        var name = "\(getVideoMeta(id: id)[2])_video"
+        
+        
+        print("1 \(name)")
         if let animationSwitch = UserDefaults.standard.string(forKey: "animationStatus") {
             if animationSwitch == "1" {
-                name = "\(listOfVideoPath[id])-animation"
+                name = "\(getVideoMeta(id: id)[2])_animatie"
+                print("2 \(name)")
             }
         }
 
@@ -140,6 +168,7 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
         if let path = Bundle.main.path(forResource: checkVideoType(id: id), ofType: "mp4") {
             let video = AVPlayer(url: URL(fileURLWithPath: path))
             let videoPlayer = myVideoPlayer()
+            video.isMuted = true
             videoPlayer.player = video
             videoPlayer.showsPlaybackControls = false
             videoPlayer.contentOverlayView?.addSubview(closeInFullscreen)
@@ -153,7 +182,25 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
 
 
                 // Save video name to UserDefaults
-                UserDefaults.standard.set(listOfVideos[id], forKey: "video")
+                let videoName:String = self.getVideoMeta(id: id)[1] as! String
+                UserDefaults.standard.set(videoName, forKey: "video")
+                
+                // Save videoName to UserDefaults
+                
+                var checkPlays: Int = UserDefaults.standard.integer(forKey: "checkPlays-\(videoName)")
+                
+                checkPlays = checkPlays + 1
+                
+                UserDefaults.standard.set(checkPlays, forKey: "checkPlays-\(videoName)")
+                
+                print("checkPlays is \(checkPlays)")
+                
+                let count = UserDefaults.standard.integer(forKey: "checkPlays-\(videoName)")
+                
+                print("count of checkPlays-\(videoName) is \(count)")
+                
+                
+                print("3 \(videoName)")
             })
 
 
@@ -166,20 +213,16 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
 
     }
 
-
     @objc func viewWasDone() {
-
-         self.pause()
-         self.terminateTimerAndSave()
-         print("video ended fullscreen")
-
-         // show Rating Short
-         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
-         let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RatingShort")
-         self.present(nextViewController, animated:true, completion:nil)
+        self.pause()
+        self.terminateTimerAndSave()
+        print("video ended fullscreen")
+        
+        // show Rating Short
+        let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle:nil)
+        let nextViewController = storyBoard.instantiateViewController(withIdentifier: "RatingShort")
+        self.present(nextViewController, animated:true, completion:nil)
     }
-
-
 
     @objc func videoDidEnd(notification: NSNotification, didFinishWith result: NSNotification, error: Error?) {
         self.pause()
@@ -243,31 +286,114 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
         UserDefaults.standard.set(finalTime, forKey: "duration")
     }
 
-    func readCSVFile(id: Int, withReload: Bool) -> Int {
-        // csv data path
-        let path = getDocumentsDirectory()
-        let fileURL = path.appendingPathComponent("trackingData.csv")
+//    func readCSVFile(id: Int, withReload: Bool) -> Int {
+//        // csv data path
+//        let path = getDocumentsDirectory()
+//        let fileURL = path.appendingPathComponent("trackingData.csv")
+//
+//        var checkPlays = 0
+//        let currentSessionID = UserDefaults.standard.string(forKey: "sessionID") ?? "no sessionID data"
+//
+//        // read csv
+//        let readStream = InputStream(url: fileURL)!
+//
+//        let exists = FileManager.default.fileExists(atPath: fileURL.path)
+//
+//        if exists {
+//            let readCSV = try! CSVReader(stream: readStream, hasHeaderRow: true)
+//
+//            while readCSV.next() != nil {
+//                let sessionID = readCSV["sessionID"]!
+//                let video = readCSV["video"]!
+//                let currentVideoName:String = getVideoMeta(id: id)[1] as! String
+//                print("4 \(currentVideoName)")
+//
+//                if sessionID == currentSessionID && video == currentVideoName {
+//                    checkPlays += 1
+//                }
+//            }
+//        }
+//
+//        return checkPlays
+//    }
+    
+    func storeThumbnails()  {
+        let total = countVideo() - 1
+        
+        // clean already stored images
+        if thumbnails.count > 0  {
+            thumbnails.removeAll()
+        }
+        
+        // fill it again
+        for n in 0...total {
+            thumbnails.append(generateThumbnail(id: n))
+        }
+    }
+    
+    
+    // reset after session is done -> executed in saveQuestionsCSV.swift
+    func resetCheckPlays() {
+        let total = self.countVideo() - 1
+        
+        for n in 0...total {
+            let videoName = getVideoMeta(id: n)[1]
+            UserDefaults.standard.set(0, forKey: "checkPlays-\(videoName)")
+        }
+        print("reseted all checkPlays")
+    }
+}
 
-        var checkPlays = 0
-        let currentSessionID = UserDefaults.standard.string(forKey: "sessionID") ?? "no sessionID data"
+extension ViewController {
+    func getVideoMeta(id: Int) -> Array<Any> {
+        // csv data path
+        let path = Bundle.main.path(forResource: "videoMeta", ofType: "csv")
+        let fileURL = URL(fileURLWithPath: path!)
 
         // read csv
         let readStream = InputStream(url: fileURL)!
 
         let exists = FileManager.default.fileExists(atPath: fileURL.path)
+        
+        var videoRow: Array<Any> = []
 
         if exists {
             let readCSV = try! CSVReader(stream: readStream, hasHeaderRow: true)
 
             while readCSV.next() != nil {
-                let sessionID = readCSV["sessionID"]!
-                let video = readCSV["video"]!
-                if sessionID == currentSessionID && video == listOfVideos[id] {
-                    checkPlays += 1
+                let numberID: Int = Int(readCSV["id"]!)!
+                if numberID == id {
+                    videoRow.append(id)
+                    videoRow.append(readCSV["videoName"]!)
+                    videoRow.append(readCSV["videoPath"]!)
+                    videoRow.append(readCSV["question"]!)
                 }
             }
         }
 
-        return checkPlays
+        return videoRow
+    }
+    
+    func countVideo() -> Int {
+        // csv data path
+        let path = Bundle.main.path(forResource: "videoMeta", ofType: "csv")
+        let fileURL = URL(fileURLWithPath: path!)
+
+        // read csv
+        let readStream = InputStream(url: fileURL)!
+
+        let exists = FileManager.default.fileExists(atPath: fileURL.path)
+        
+        var count: Int = 0
+
+        if exists {
+            let readCSV = try! CSVReader(stream: readStream, hasHeaderRow: true)
+
+            while readCSV.next() != nil {
+                count = Int(readCSV["id"]!)!
+            }
+        }
+
+        return count + 1
     }
 }

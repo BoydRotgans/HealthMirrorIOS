@@ -39,47 +39,50 @@ extension ViewController {
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return listOfVideos.count
+        return countVideo()
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         let flowayout = collectionViewLayout as? UICollectionViewFlowLayout
         let space: CGFloat = (flowayout?.minimumInteritemSpacing ?? 0.0) + (flowayout?.sectionInset.left ?? 0.0) + (flowayout?.sectionInset.right ?? 0.0)
-        
-        let width:CGFloat = (collectionViewThumbnail.frame.size.width - space) / 2.0
-        
-        let widthOfVideo = Double(generateThumbnail(id: indexPath.row).cgImage!.width)
-        let heightOfVideo = Double(generateThumbnail(id: indexPath.row).cgImage!.height)
         let heightOfLabel = 70.0
         
-        let height:CGFloat = CGFloat(((heightOfVideo/widthOfVideo)*Double(width))+heightOfLabel)
+        let width:CGFloat = (collectionViewThumbnail.frame.size.width - space) / 2.0
+        let height:CGFloat = (1024/768)*width + CGFloat(heightOfLabel)
         
         return CGSize(width: width, height: height)
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "thumbnailCell", for: indexPath) as! ThumbnailCell
+        let videoName:String = getVideoMeta(id: indexPath.row)[1] as! String
         
-        cell.thumbnailImg.image = generateThumbnail(id: indexPath.row)
+        cell.thumbnailImg.image = thumbnails[indexPath.row]
         
-        cell.videoCaption.text = listOfVideos[indexPath.row]
-
-        let count = self.readCSVFile(id: indexPath.row, withReload: false)
+        cell.videoCaption.text = videoName
+        
         var title = ""
-        if(count>0) {
+        
+        let count = UserDefaults.standard.integer(forKey: "checkPlays-\(videoName)")
+        
+        if(count > 0) {
             title = "✓"
         }
         
-        cell.checkVideoPlay.text = String(title)
+        cell.checkVideoPlay.text = title
         cell.checkVideoPlay.textColor = UIColor(named: "customGreen")
 
         return cell
     }
+    
+    
         
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         print("you selected \(indexPath.item)")
+        
+        print("videoMeta is \(getVideoMeta(id: indexPath.item))")
         
         UserDefaults.standard.set(false, forKey: "hasRating")
 
@@ -92,7 +95,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         UserDefaults.standard.set(timestamp, forKey: "startVideoPlayTimestamp")
         print("startVideoPlayTimestamp is \(timestamp)")
 
-        print("selected \(indexPath.row) -> \(listOfVideos[indexPath.row])")
+        print("selected \(indexPath.row) -> \(getVideoMeta(id: indexPath.row)[1])")
         self.playVideo(id: indexPath.row)
     }
     
