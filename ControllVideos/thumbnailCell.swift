@@ -10,6 +10,8 @@ import UIKit
 
 class ThumbnailCell: UICollectionViewCell {
     @IBOutlet weak var thumbnailImg: UIImageView!
+    @IBOutlet weak var videoCaption: UILabel!
+    @IBOutlet weak var checkVideoPlay: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

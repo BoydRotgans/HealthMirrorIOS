@@ -63,7 +63,7 @@
 		23B1305523D5DE1600B6AC50 /* example-3.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-3.mp4"; path = "../example-3.mp4"; sourceTree = "<group>"; };
 		23B1305623D5DE1600B6AC50 /* example-1.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; name = "example-1.mp4"; path = "../example-1.mp4"; sourceTree = "<group>"; };
 		23B1306A23D6FEAE00B6AC50 /* FloatRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FloatRatingView.swift; sourceTree = "<group>"; };
-		23B9415523F1790B002C5E9D /* thumbnailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = thumbnailCell.swift; path = ../../../../Downloads/thumbnailCell.swift; sourceTree = "<group>"; };
+		23B9415523F1790B002C5E9D /* thumbnailCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = thumbnailCell.swift; sourceTree = "<group>"; };
 		23D111E923E1DA5400E50EA7 /* shareData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = shareData.swift; sourceTree = "<group>"; };
 		23D111EB23E1EA2600E50EA7 /* generateZipFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = generateZipFile.swift; sourceTree = "<group>"; };
 		23E95E2423DF09F0009047CD /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
