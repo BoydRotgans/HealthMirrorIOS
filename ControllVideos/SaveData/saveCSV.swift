@@ -49,7 +49,11 @@ func checkAllData() {
         videoType = "normal"
     }
     
-    saveInCSV(ID: ID, sessionID: sessionID, timestamp: timestamp, user: user, location: location, video: video, duration: duration, videoType: videoType, rating: rating)
+    // get extra Question
+    let extraQuestion = UserDefaults.standard.string(forKey: "extraQuestion") ?? "no extraQuestion data"
+    let extraAnswer = UserDefaults.standard.string(forKey: "extraAnswer") ?? "no extraAnswer data"
+    
+    saveInCSV(ID: ID, sessionID: sessionID, timestamp: timestamp, user: user, location: location, video: video, duration: duration, videoType: videoType, rating: rating, extraQuestion: extraQuestion, extraAnswer: extraAnswer)
 }
 
 func getDocumentsDirectory() -> URL {
@@ -58,7 +62,7 @@ func getDocumentsDirectory() -> URL {
     return documentsDirectory
 }
 
-func saveInCSV(ID: Int, sessionID: String, timestamp: String, user: String, location: String, video: String, duration: String, videoType: String, rating: String) {
+func saveInCSV(ID: Int, sessionID: String, timestamp: String, user: String, location: String, video: String, duration: String, videoType: String, rating: String, extraQuestion: String, extraAnswer: String) {
         
     // get path + file
     let path = getDocumentsDirectory()
@@ -70,11 +74,11 @@ func saveInCSV(ID: Int, sessionID: String, timestamp: String, user: String, loca
     let writeCSV = try! CSVWriter(stream: writeStream)
     
     if !exists {
-        try! writeCSV.write(row: ["ID", "sessionID", "timestamp", "user", "location", "video", "duration", "videoType", "rating"])
+        try! writeCSV.write(row: ["ID", "sessionID", "timestamp", "user", "location", "video", "duration", "videoType", "rating", "extraQuestion", "extraAnswer"])
     }
     
     // crate file and write header row
-    try! writeCSV.write(row: [String(ID), sessionID, timestamp, user, location, video, duration, videoType, rating])
+    try! writeCSV.write(row: [String(ID), sessionID, timestamp, user, location, video, duration, videoType, rating, extraQuestion, extraAnswer])
     
     let data = [UInt8](writeCSV.configuration.newline.utf8)
     writeCSV.stream.write(data, maxLength: data.count)

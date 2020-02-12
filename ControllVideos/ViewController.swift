@@ -81,11 +81,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
             // failed to record!
         }
         
-        
-        
         // generate thumbnails
         storeThumbnails()
-
 
         // record audio when ViewController is active
         startRecording()
@@ -181,23 +178,19 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
                 self.startTimer()
 
 
-                // Save video name to UserDefaults
+                // Save videoName to UserDefaults
                 let videoName:String = self.getVideoMeta(id: id)[1] as! String
                 UserDefaults.standard.set(videoName, forKey: "video")
                 
-                // Save videoName to UserDefaults
+                // Save videoID to UserDefaults
+                UserDefaults.standard.set(id, forKey: "videoID")
                 
+                // check Video Plays
                 var checkPlays: Int = UserDefaults.standard.integer(forKey: "checkPlays-\(videoName)")
-                
                 checkPlays = checkPlays + 1
                 
+                // update Video Plays
                 UserDefaults.standard.set(checkPlays, forKey: "checkPlays-\(videoName)")
-                
-                print("checkPlays is \(checkPlays)")
-                
-                let count = UserDefaults.standard.integer(forKey: "checkPlays-\(videoName)")
-                
-                print("count of checkPlays-\(videoName) is \(count)")
                 
                 
                 print("3 \(videoName)")

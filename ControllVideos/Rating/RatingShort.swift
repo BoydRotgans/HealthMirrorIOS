@@ -12,30 +12,64 @@ import Foundation
 class RatingShort: UIViewController {
     
     @IBOutlet weak var floatRatingView: FloatRatingView!
-//    @IBOutlet weak var liveLabel: UILabel!
-//    @IBOutlet weak var updatedLabel: UILabel!
     @IBOutlet weak var submitRating: UIButton!
+    
+    @IBOutlet weak var extraQuestionLine: UILabel!
+    @IBOutlet weak var extraButtonYes: UIButton!
+    @IBOutlet weak var extraButtonNo: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Reset float rating view's background color
         self.floatRatingView.backgroundColor = UIColor.clear
-
-        /** Note: With the exception of contentMode, type and delegate,
-         all properties can be set directly in Interface Builder **/
         self.floatRatingView.delegate = self
         self.floatRatingView.contentMode = UIView.ContentMode.scaleAspectFit
         self.floatRatingView.type = .wholeRatings
-
-        // Labels init
-//        liveLabel.text = String(format: "%.0f", self.floatRatingView.rating)
-//        updatedLabel.text = String(format: "%.0f", self.floatRatingView.rating)
         
-        submitRating.addTarget(self, action: #selector(self.buttonTapped), for: .touchUpInside)
+        submitRating.addTarget(self, action: #selector(self.submitButtonTapped), for: .touchUpInside)
+        
+        
+        
+        
+        let id = UserDefaults.standard.integer(forKey: "videoID")
+        let extraQuestion: String = ViewController().getVideoMeta(id: id)[3] as! String
+        
+        // safe Question in UserDefaults
+        UserDefaults.standard.set(extraQuestion, forKey: "extraQuestion")
+        UserDefaults.standard.set("", forKey: "extraAnswer")
+        
+        if extraQuestion == "" {
+            extraButtonYes.isHidden = true
+            extraButtonNo.isHidden = true
+            extraQuestionLine.isHidden = true
+        } else {
+            extraQuestionLine.text = extraQuestion
+            extraButtonYes.layer.cornerRadius = 10.0
+            extraButtonNo.layer.cornerRadius = 10.0
+            extraButtonNo.backgroundImage(for: UIControl.State.selected)
+            extraButtonYes.addTarget(self, action: #selector(self.extraButtonTapped), for: .touchUpInside)
+            extraButtonNo.addTarget(self, action: #selector(self.extraButtonTapped), for: .touchUpInside)
+        }
+        
     }
     
-    @objc func buttonTapped(sender: UIButton) {
+    @objc func extraButtonTapped(sender: UIButton) {
+        
+        extraButtonNo.backgroundColor = .link
+        extraButtonYes.backgroundColor = .link
+
+        sender.backgroundColor = UIColor(named: "customGreen")
+        
+        let buttonAnswer = sender.currentTitle!
+        
+        // safe Question Answer
+        UserDefaults.standard.set(buttonAnswer, forKey: "extraAnswer")
+        
+        print("buttonAnswer is \(buttonAnswer)")
+    }
+    
+    @objc func submitButtonTapped(sender: UIButton) {
         let rating = String(format: "%.0f", self.floatRatingView.rating)
         UserDefaults.standard.set(rating, forKey: "rating")
         UserDefaults.standard.set(true, forKey: "hasRating")
