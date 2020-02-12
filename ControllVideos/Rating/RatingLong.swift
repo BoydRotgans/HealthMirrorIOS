@@ -14,7 +14,9 @@ class RatingLong: UIViewController, UIDocumentInteractionControllerDelegate {
     @IBOutlet weak var questionCollectionView: UICollectionView!
     @IBOutlet weak var submitRatingLong: UIButton!
     
-    var listOfQuestions = ["Lorem ipsum dolor sit amet, amet amet et, est eu justo?", "Semper viverra nulla, aliquam quis?", "Et quis, urna nulla mauris, ornare in morbi?", "Ullamcorper fringilla tristique, nam sociosqu et?", "Egestas volutpat suspendisse, donec consequat nec?"]
+    var listOfQuestions = ["Hoe goed doet de cliënt mee?", "Hoe goed spiegelt de cliënt de bewegingen?", "Is de cliënt ontspannen?", " Is de cliënt angstiger?", "Is de cliënt meer of minder vrolijk?"]
+    var listOfLeft = ["niet goed", "niet goed", "niet ontspannen", "niet angstig", "Minder vrolijk"]
+    var listOfRight = ["goed", "goed", "ontspannen", "wel angstig", "meer vrolijk"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,38 +47,7 @@ class RatingLong: UIViewController, UIDocumentInteractionControllerDelegate {
         
         
     }
-    
-    final private let contentString = "hello bla bla..."
-    
-    
-    @IBAction func shareContent(_ sender: Any) {
-        print("hello")
-        
-//        let activityController = UIActivityViewController(activityItems: [contentString], applicationActivities: nil)
-//        
-//        print("hello2")
-//        
-//        activityController.completionWithItemsHandler = { (nil, completed, _, error)
-//            in
-//            if completed {
-//                print("completed")
-//            } else {
-//                print("cancled")
-//            }
-//        }
-//        
-//        print("hello3")
-//        
-////        present(activityController, animated: true) {
-////            print("presented")
-////        }
-//        
-//        present(activityController, animated: true) {
-//            print("presented")
-//        }
-        
-    }
-    
+       
     
 }
 
@@ -91,6 +62,8 @@ extension RatingLong: UICollectionViewDataSource, UICollectionViewDelegate {
 
         // show question
         cell.questionLine.text = listOfQuestions[indexPath.row]
+        cell.LabelLeft.text = listOfLeft[indexPath.row]
+        cell.LabelRight.text = listOfRight[indexPath.row]
 
         // tag rating with ID
         cell.questionRating.tag = indexPath.row

@@ -214,6 +214,8 @@ extension UserBoardViewController : UICollectionViewDelegate {
         let timeNow = time(nil)
         let sessionID = String(format: "%@%x", "", timeNow)
         UserDefaults.standard.set(sessionID, forKey: "sessionID")
+    
+        ViewController().resetCheckPlays()
         
         let storyBoard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
         let newViewController = storyBoard.instantiateViewController(withIdentifier: "TypeViewController") as! UiTypeView
