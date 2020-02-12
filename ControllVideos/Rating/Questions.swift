@@ -15,6 +15,9 @@ class Questions: UICollectionViewCell {
     @IBOutlet weak var questionLine: UILabel!
     @IBOutlet weak var questionRating: FloatRatingView!
     
+    @IBOutlet weak var LabelLeft: UILabel!
+    @IBOutlet weak var LabelRight: UILabel!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
