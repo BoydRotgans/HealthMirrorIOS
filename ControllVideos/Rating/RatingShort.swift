@@ -30,10 +30,15 @@ class RatingShort: UIViewController {
         submitRating.addTarget(self, action: #selector(self.submitButtonTapped), for: .touchUpInside)
         
         
-        
-        
         let id = UserDefaults.standard.integer(forKey: "videoID")
-        let extraQuestion: String = ViewController().getVideoMeta(id: id)[3] as! String
+        let videoMeta = ViewController().getVideoMeta(id: id)
+        
+        var extraQuestion: String = ""
+        
+        if videoMeta.count >= 4 {
+            print("videoMeta has \(videoMeta.count)")
+            extraQuestion = videoMeta[3] as! String
+        }
         
         // safe Question in UserDefaults
         UserDefaults.standard.set(extraQuestion, forKey: "extraQuestion")
