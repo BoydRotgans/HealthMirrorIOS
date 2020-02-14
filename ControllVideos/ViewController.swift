@@ -12,10 +12,6 @@ import AVFoundation
 import MessageUI
 import CSV
 
-
-var listOfVideos = ["Tandenpoetsen", "Douchen", "Gezicht wassen"]
-var listOfVideoPath = ["example-1", "example-2", "example-3"]
-
 class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerViewControllerDelegate {
 
     @IBOutlet weak var TypeSwitch: UISegmentedControl!
@@ -157,8 +153,8 @@ class ViewController: UIViewController, UIGestureRecognizerDelegate, AVPlayerVie
     func playVideo(id: Int) {
 
         let closeInFullscreen = UIButton()
-        closeInFullscreen.frame = CGRect(x: 20, y: 20, width: 50, height: 50)
-        closeInFullscreen.setTitle("X", for: .normal)
+        closeInFullscreen.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+        closeInFullscreen.setTitle("", for: .normal)
         closeInFullscreen.setTitleColor(UIColor.white, for: .normal)
         closeInFullscreen.addTarget(self, action: #selector(videoDidEnd), for: .touchUpInside)
 

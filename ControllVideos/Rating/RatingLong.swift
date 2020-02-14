@@ -14,9 +14,9 @@ class RatingLong: UIViewController, UIDocumentInteractionControllerDelegate {
     @IBOutlet weak var questionCollectionView: UICollectionView!
     @IBOutlet weak var submitRatingLong: UIButton!
     
-    var listOfQuestions = ["Hoe goed doet de cliënt mee?", "Hoe goed spiegelt de cliënt de bewegingen?", "Is de cliënt ontspannen?", " Is de cliënt angstiger?", "Is de cliënt meer of minder vrolijk?"]
-    var listOfLeft = ["niet goed", "niet goed", "niet ontspannen", "niet angstig", "Minder vrolijk"]
-    var listOfRight = ["goed", "goed", "ontspannen", "wel angstig", "meer vrolijk"]
+    var listOfQuestions = ["Hoe goed doet de cliënt mee?", "Hoe goed spiegelt de cliënt de bewegingen?", "Is de cliënt ontspannen?", "Is de cliënt meer of minder vrolijk?", " Is de cliënt angstiger?"]
+    var listOfLeft = ["niet goed", "niet goed", "niet ontspannen", "Minder vrolijk", "niet angstig"]
+    var listOfRight = ["goed", "goed", "ontspannen", "meer vrolijk", "wel angstig"]
     
     override func viewDidLoad() {
         super.viewDidLoad()
