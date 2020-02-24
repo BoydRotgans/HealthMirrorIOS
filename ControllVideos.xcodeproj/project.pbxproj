@@ -473,13 +473,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TG59HT53UM;
+				DEVELOPMENT_TEAM = XW5AXPD49K;
 				INFOPLIST_FILE = ControllVideos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ferdinandsorg.healthMirror;
+				PRODUCT_BUNDLE_IDENTIFIER = healthMirror;
 				PRODUCT_NAME = "Health Mirror";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -491,13 +491,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = TG59HT53UM;
+				DEVELOPMENT_TEAM = XW5AXPD49K;
 				INFOPLIST_FILE = ControllVideos/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = ferdinandsorg.healthMirror;
+				PRODUCT_BUNDLE_IDENTIFIER = healthMirror;
 				PRODUCT_NAME = "Health Mirror";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 2;
