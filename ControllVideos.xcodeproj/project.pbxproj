@@ -7,19 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		230B00BA23F2B59300BA8A15 /* haar_kammen_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 230B00AD23F2B59300BA8A15 /* haar_kammen_video.mp4 */; };
-		230B00BB23F2B59300BA8A15 /* kunstgebit_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 230B00AE23F2B59300BA8A15 /* kunstgebit_video.mp4 */; };
-		230B00BC23F2B59300BA8A15 /* scheren_animatie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 230B00AF23F2B59300BA8A15 /* scheren_animatie.mp4 */; };
-		230B00BD23F2B59300BA8A15 /* tandenpoetsen_animatie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 230B00B023F2B59300BA8A15 /* tandenpoetsen_animatie.mp4 */; };
-		230B00BE23F2B59300BA8A15 /* videoMeta.csv in Resources */ = {isa = PBXBuildFile; fileRef = 230B00B123F2B59300BA8A15 /* videoMeta.csv */; };
-		230B00BF23F2B59300BA8A15 /* gezicht_wassen_animatie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 230B00B223F2B59300BA8A15 /* gezicht_wassen_animatie.mp4 */; };
-		230B00C023F2B59300BA8A15 /* kunstgebit_animatie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 230B00B323F2B59300BA8A15 /* kunstgebit_animatie.mp4 */; };
-		230B00C123F2B59300BA8A15 /* scheren_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 230B00B423F2B59300BA8A15 /* scheren_video.mp4 */; };
-		230B00C223F2B59300BA8A15 /* haar_kammen_animatie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 230B00B523F2B59300BA8A15 /* haar_kammen_animatie.mp4 */; };
-		230B00C323F2B59300BA8A15 /* handdoek_animatie.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 230B00B623F2B59300BA8A15 /* handdoek_animatie.mp4 */; };
-		230B00C423F2B59300BA8A15 /* handdoek_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 230B00B723F2B59300BA8A15 /* handdoek_video.mp4 */; };
-		230B00C523F2B59300BA8A15 /* tandenpoetsen_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 230B00B823F2B59300BA8A15 /* tandenpoetsen_video.mp4 */; };
-		230B00C623F2B59300BA8A15 /* gezicht_wassen_video.mp4 in Resources */ = {isa = PBXBuildFile; fileRef = 230B00B923F2B59300BA8A15 /* gezicht_wassen_video.mp4 */; };
 		234E76A123E0670700953445 /* saveQuestionsCSV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 234E76A023E0670700953445 /* saveQuestionsCSV.swift */; };
 		237356A023D8511800D9F5DF /* CSV in Frameworks */ = {isa = PBXBuildFile; productRef = 2373569F23D8511800D9F5DF /* CSV */; };
 		237356A523D85A2900D9F5DF /* RatingShort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 237356A423D85A2900D9F5DF /* RatingShort.swift */; };
@@ -50,19 +37,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		230B00AD23F2B59300BA8A15 /* haar_kammen_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = haar_kammen_video.mp4; sourceTree = "<group>"; };
-		230B00AE23F2B59300BA8A15 /* kunstgebit_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = kunstgebit_video.mp4; sourceTree = "<group>"; };
-		230B00AF23F2B59300BA8A15 /* scheren_animatie.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = scheren_animatie.mp4; sourceTree = "<group>"; };
-		230B00B023F2B59300BA8A15 /* tandenpoetsen_animatie.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = tandenpoetsen_animatie.mp4; sourceTree = "<group>"; };
-		230B00B123F2B59300BA8A15 /* videoMeta.csv */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = videoMeta.csv; sourceTree = "<group>"; };
-		230B00B223F2B59300BA8A15 /* gezicht_wassen_animatie.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = gezicht_wassen_animatie.mp4; sourceTree = "<group>"; };
-		230B00B323F2B59300BA8A15 /* kunstgebit_animatie.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = kunstgebit_animatie.mp4; sourceTree = "<group>"; };
-		230B00B423F2B59300BA8A15 /* scheren_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = scheren_video.mp4; sourceTree = "<group>"; };
-		230B00B523F2B59300BA8A15 /* haar_kammen_animatie.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = haar_kammen_animatie.mp4; sourceTree = "<group>"; };
-		230B00B623F2B59300BA8A15 /* handdoek_animatie.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = handdoek_animatie.mp4; sourceTree = "<group>"; };
-		230B00B723F2B59300BA8A15 /* handdoek_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = handdoek_video.mp4; sourceTree = "<group>"; };
-		230B00B823F2B59300BA8A15 /* tandenpoetsen_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = tandenpoetsen_video.mp4; sourceTree = "<group>"; };
-		230B00B923F2B59300BA8A15 /* gezicht_wassen_video.mp4 */ = {isa = PBXFileReference; lastKnownFileType = file; path = gezicht_wassen_video.mp4; sourceTree = "<group>"; };
 		234E76A023E0670700953445 /* saveQuestionsCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveQuestionsCSV.swift; sourceTree = "<group>"; };
 		237356A423D85A2900D9F5DF /* RatingShort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingShort.swift; sourceTree = "<group>"; };
 		237356A623D8621D00D9F5DF /* saveCSV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = saveCSV.swift; sourceTree = "<group>"; };
@@ -108,19 +82,6 @@
 		230B00AC23F2B59300BA8A15 /* videos */ = {
 			isa = PBXGroup;
 			children = (
-				230B00AD23F2B59300BA8A15 /* haar_kammen_video.mp4 */,
-				230B00AE23F2B59300BA8A15 /* kunstgebit_video.mp4 */,
-				230B00AF23F2B59300BA8A15 /* scheren_animatie.mp4 */,
-				230B00B023F2B59300BA8A15 /* tandenpoetsen_animatie.mp4 */,
-				230B00B123F2B59300BA8A15 /* videoMeta.csv */,
-				230B00B223F2B59300BA8A15 /* gezicht_wassen_animatie.mp4 */,
-				230B00B323F2B59300BA8A15 /* kunstgebit_animatie.mp4 */,
-				230B00B423F2B59300BA8A15 /* scheren_video.mp4 */,
-				230B00B523F2B59300BA8A15 /* haar_kammen_animatie.mp4 */,
-				230B00B623F2B59300BA8A15 /* handdoek_animatie.mp4 */,
-				230B00B723F2B59300BA8A15 /* handdoek_video.mp4 */,
-				230B00B823F2B59300BA8A15 /* tandenpoetsen_video.mp4 */,
-				230B00B923F2B59300BA8A15 /* gezicht_wassen_video.mp4 */,
 			);
 			path = videos;
 			sourceTree = SOURCE_ROOT;
@@ -281,24 +242,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				230B00C223F2B59300BA8A15 /* haar_kammen_animatie.mp4 in Resources */,
-				230B00C523F2B59300BA8A15 /* tandenpoetsen_video.mp4 in Resources */,
 				23B1304D23D5D99D00B6AC50 /* LaunchScreen.storyboard in Resources */,
-				230B00BB23F2B59300BA8A15 /* kunstgebit_video.mp4 in Resources */,
-				230B00BE23F2B59300BA8A15 /* videoMeta.csv in Resources */,
 				23B1304A23D5D99D00B6AC50 /* Assets.xcassets in Resources */,
 				23E95E2723DF09F0009047CD /* Questions.xib in Resources */,
-				230B00C123F2B59300BA8A15 /* scheren_video.mp4 in Resources */,
-				230B00BA23F2B59300BA8A15 /* haar_kammen_video.mp4 in Resources */,
-				230B00BF23F2B59300BA8A15 /* gezicht_wassen_animatie.mp4 in Resources */,
-				230B00C323F2B59300BA8A15 /* handdoek_animatie.mp4 in Resources */,
 				311BB79D23D74F160009718A /* ItemCell.xib in Resources */,
-				230B00BD23F2B59300BA8A15 /* tandenpoetsen_animatie.mp4 in Resources */,
-				230B00BC23F2B59300BA8A15 /* scheren_animatie.mp4 in Resources */,
 				23B1304823D5D99B00B6AC50 /* Main.storyboard in Resources */,
-				230B00C623F2B59300BA8A15 /* gezicht_wassen_video.mp4 in Resources */,
-				230B00C423F2B59300BA8A15 /* handdoek_video.mp4 in Resources */,
-				230B00C023F2B59300BA8A15 /* kunstgebit_animatie.mp4 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
