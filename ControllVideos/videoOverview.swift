@@ -74,8 +74,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
         cell.checkVideoPlay.textColor = UIColor(named: "customGreen")
 
         return cell
-    }
-    
+    }   
     
         
 
